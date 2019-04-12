@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HighCharts test</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+    <!--<script src="./highchart-line-symbol-style.js"></script>-->
+
+    <!--Highcharts settings goes here-->
+    <script>
+
+        // Data from server
+        // <w7c-config-replacement/>
+        const w7cConfig = {
+            columncount: 1,
+            rowcount: 1,
+            charts: [
+                {
+                    column: 1,
+                    row: 1,
+                    legendvisible: true,
+                    plotconfiguration: true,
+                    xaxis: [
+                        {
+                            position: 'bottom',
+                            scale: 'auto',
+                            yaxis: [
+                                {
+                                    position: 'left',
+                                    scale: 'auto',
+                                    plots: [
+                                        {
+                                            visible: true,
+                                            lineColor: 'rgb(252, 0, 0)',
+                                            lineSize: 0,
+                                            symbolColor: null,
+                                            symbolFillColor: null,
+                                            symbolStyle: null,
+                                            symbolSize: null
+                                        },
+                                        {
+                                            visible: true,
+                                            lineColor: 'rgb(250, 201, 18)',
+                                            lineSize: 0,
+                                            symbolColor: null,
+                                            symbolFillColor: null,
+                                            symbolStyle: null,
+                                            symbolSize: null
+                                        },
+                                        {
+                                            visible: true,
+                                            lineColor: 'rgb(2, 255, 68)',
+                                            lineSize: 0,
+                                            symbolColor: null,
+                                            symbolFillColor: null,
+                                            symbolStyle: null,
+                                            symbolSize: null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+        // <w7c-data-replacement/>
+        const w7cData = {
+            charts: [
+                {
+                    column: 1,
+                    row: 1,
+                    title: 'MeterCalibration',
+                    subtitle: 'Meter3/1.2.2012',
+                    xaxis: [
+                        {
+                            label: 'd',
+                            unit: '[m]',
+                            yaxis: [
+                                {
+                                    label: 'v',
+                                    unit: 'm/s',
+                                    plots: [
+                                        {
+                                            label: 'q<sub>i</sub>/q [%]',
+                                            data: [
+                                                [1, 0.2],
+                                                [2, 0.5],
+                                                [3, 1.2],
+                                                [4, 1.1],
+                                                [5, 1.3],
+                                                [6, 0.7],
+                                                [7, 1],
+                                                [8, 1.6]
+                                            ]
+                                        },
+                                        {
+                                            label: 'cl<sup>1/2</sup> [m<sup>1/2</sup>/s]',
+                                            data: [
+                                                [1, 1.2],
+                                                [2, 1.5],
+                                                [3, 2.2],
+                                                [4, 2.1],
+                                                [5, 0.3],
+                                                [6, 1.7],
+                                                [7, 3.1],
+                                                [8, 1.6]
+                                            ]
+                                        },
+                                        {
+                                            label: 'v<sub>m</sub> [m/s]',
+                                            data: [
+                                                [1, 2.2],
+                                                [2, 1.5],
+                                                [3, 0.2],
+                                                [4, 0.1],
+                                                [5, 1.3],
+                                                [6, 2.7],
+                                                [7, 1.5],
+                                                [8, 1.9]
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Settings
+        let chart;
+        let highchart_test = function () {
+            let self = this;
+
+            self.Init = function () {
+                self.DisplayHighChart();
+            };
+
+            self.DisplayHighChart = function () {
+                const values = [...w7cData.charts[0].xaxis[0].yaxis[0].plots];
+                for (let i = 0; i < values.length; i++) {
+                    values[i].color = w7cConfig.charts[0].xaxis[0].yaxis[0].plots[i].lineColor;
+                    values[i].name = values[i].label
+                }
+
+                console.log((values));
+                values[0].type = 'line';
+                values[1].type = 'line';
+                values[1].dashStyle = 'shortdot';
+                values[2].type = 'spline';
+
+                let chartElem = 'container';
+                let chartConf = {
+                    chart: {
+                        zoomType: 'xy',
+                        marginBottom: 100
+                    },
+                    title: {
+                        text: w7cData.charts[0].title
+                    },
+                    subtitle: {
+                        text: w7cData.charts[0].subtitle
+                    },
+                    xAxis: {
+                        title: {
+                            useHTML: true,
+                            enabled: true,
+                            text: w7cData.charts[0].xaxis[0].label + ' ' + w7cData.charts[0].xaxis[0].unit,
+                            align: 'high'
+                        },
+                        startOnTick: true,
+                        endOnTick: true,
+                        showLastLabel: true
+                    },
+                    yAxis: [
+                        {
+                            title: {
+                                useHTML: true,
+                                text: w7cData.charts[0].xaxis[0].yaxis[0].plots[0].label,
+                                align: 'high',
+                                rotation: 0
+                            },
+                        },
+                        {
+                            title: {
+                                useHTML: true,
+                                text: w7cData.charts[0].xaxis[0].yaxis[0].plots[1].label,
+                                align: 'high',
+                                rotation: 0
+                            },
+                            labels: {
+                                enable: true
+                            },
+                            opposite: true
+                        },
+                        {
+                            title: {
+                                useHTML: true,
+                                text: w7cData.charts[0].xaxis[0].yaxis[0].plots[2].label,
+                                align: 'high',
+                                rotation: 0
+                            },
+                            label: {
+                                enable: true
+                            },
+                            opposite: true
+                        }
+                    ],
+                    legend: {
+                        useHTML: true,
+                        layout: 'vertical',
+                        align: 'left',
+                        verticalAlign: 'top',
+                        x: 100,
+                        y: 70,
+                        floating: true,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                        borderWidth: 1
+                    },
+                    series: values
+                };
+
+                chart = Highcharts.chart(chartElem, chartConf);
+            }
+        };
+
+        // Init highcharts
+        $(document).ready(function () {
+            let highchart = new highchart_test();
+            highchart.Init();
+        });
+
+    </script>
+    <style>
+        .highcharts-credits {
+            display: none;
+        }
+
+        #container {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+<img src="issue-sample-1.png" alt="" width="100%">
+
+</body>
+</html>
+
