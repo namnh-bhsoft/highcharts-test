@@ -19,6 +19,10 @@
             display: none;
         }
 
+        img {
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -214,14 +218,18 @@
         tooltip: {
             useHTML: true,
             formatter: function () {
-                if (this.y < 0) {
-                    let val = this.y * -1;
-                    return `<strong>${this.series.name}</strong></br>
-                            Value of <strong>${this.x}</strong> is: ${val}`;
+                if (this.series.name === "") {
+                    return false
                 } else {
-                    let val = this.y;
-                    return `<strong>${this.series.name}</strong></br>
+                    if (this.y < 0) {
+                        let val = this.y * -1;
+                        return `<strong>${this.series.name}</strong></br>
                             Value of <strong>${this.x}</strong> is: ${val}`;
+                    } else {
+                        let val = this.y;
+                        return `<strong>${this.series.name}</strong></br>
+                            Value of <strong>${this.x}</strong> is: ${val}`;
+                    }
                 }
             }
         },
@@ -232,6 +240,7 @@
             align: "left",
             verticalAlign: "bottom",
             floating: true,
+            y: 10,
             x: 80,
             borderColor: "#000000",
             borderWidth: 1,
@@ -265,7 +274,7 @@
                     0
                 ],
                 type: "line",
-                step: 'center',
+                step: 'left',
                 color: '#000000',
                 marker: {
                     enabled: false
@@ -315,6 +324,7 @@
                 ],
                 lineColor: 'rgba(0, 0, 0, 0)',
                 yAxis: 2,
+                zIndex: 10,
                 marker: {
                     fillColor: 'rgba(0, 200, 0, 1)',
                     symbol: "triangle-down",
@@ -356,7 +366,8 @@
                 color: '#8d8dff',
                 marker: {
                     enabled: false
-                }
+                },
+                zIndex: -1
             },
             // vm [m/s]
             {
@@ -409,6 +420,7 @@
             // h [m] col
             {
                 name: "",
+                showInLegend: false,
                 type: 'column',
                 pointWidth: 1,
                 data: [
@@ -426,10 +438,11 @@
                     0
                 ],
                 yAxis: 3,
-                color: '#000',
+                color: 'rgba(0,0,0,.5)',
                 marker: {
                     enabled: false
-                }
+                },
+                zIndex: -2
             }
         ]
     });
