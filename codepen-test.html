@@ -23,7 +23,12 @@
 </head>
 <body>
 <div id="container" style="height: 400px"></div>
+<img src="issue-sample-1.png" alt="" width="100%">
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<!-- optional -->
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
 <script>
     Highcharts.chart("container", {
         chart: {
@@ -167,7 +172,43 @@
                     useHTML: true
                 },
                 offset: 110
-            }
+            },
+            // yAxis for h 3/2 [m3/2]
+            {
+                lineWidth: 1,
+                opposite: true,
+                title: {
+                    useHTML: true,
+                    text: "h<sup>3/2</sup> [m <sup>3/2</sup>]",
+                    align: "low",
+                    rotation: 0,
+                    x: 40
+                },
+                linkedTo: 0,
+                labels: {
+                    useHTML: true,
+                    formatter: function () {
+                        if (this.value < 0) {
+                            return "<span>" + this.value * -1 + "</span>";
+                        } else {
+                            return "<span>" + this.value + "</span>";
+                        }
+                    }
+                },
+                offset: 0
+            },
+            // yAxis for h[m] plot col
+            {
+                linkedTo: 0,
+                lineWidth: 1,
+                labels: {
+                    enabled: false
+                },
+                title: {
+                    text: ''
+                },
+                lineColor: 'rgba(0, 0, 0, 0)'
+            },
         ],
 
         tooltip: {
@@ -175,10 +216,12 @@
             formatter: function () {
                 if (this.y < 0) {
                     let val = this.y * -1;
-                    return `<strong><em>${this.x} value is:</em></strong> ${val}`;
+                    return `<strong>${this.series.name}</strong></br>
+                            Value of <strong>${this.x}</strong> is: ${val}`;
                 } else {
                     let val = this.y;
-                    return `<strong><em>${this.x} value is:</em></strong> ${val}`;
+                    return `<strong>${this.series.name}</strong></br>
+                            Value of <strong>${this.x}</strong> is: ${val}`;
                 }
             }
         },
@@ -189,8 +232,7 @@
             align: "left",
             verticalAlign: "bottom",
             floating: true,
-            y: -30,
-            x: 50,
+            x: 80,
             borderColor: "#000000",
             borderWidth: 1,
             padding: 15,
@@ -209,21 +251,22 @@
             {
                 name: "q<sub>i</sub>/q [%]",
                 data: [
-                    45.2,
-                    91.5,
-                    105.4,
-                    120.2,
-                    145.0,
-                    190.0,
-                    220.6,
-                    165.5,
-                    124.4,
-                    100.1,
-                    82.6,
-                    60.6
+                    0,
+                    51.5,
+                    65.4,
+                    80.2,
+                    105.0,
+                    150.0,
+                    180.6,
+                    125.5,
+                    84.4,
+                    60.1,
+                    42.6,
+                    0
                 ],
                 type: "line",
-                step: 'left',
+                step: 'center',
+                color: '#000000',
                 marker: {
                     enabled: false
                 }
@@ -232,22 +275,23 @@
             {
                 name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
                 data: [
-                    122.5,
-                    176.0,
-                    135.6,
-                    148.5,
-                    226.4,
-                    194.1,
+                    0,
+                    136.0,
                     95.6,
-                    54.4,
-                    49.9,
-                    71.5,
-                    106.4,
-                    90.8
+                    108.5,
+                    186.4,
+                    154.1,
+                    55.6,
+                    14.4,
+                    9.9,
+                    31.5,
+                    66.4,
+                    0
                 ],
                 yAxis: 1,
                 type: 'spline',
                 dashStyle: 'LongDash',
+                color: '#f88',
                 marker: {
                     enabled: false
                 }
@@ -256,22 +300,23 @@
             {
                 name: "Observation",
                 data: [
-                    -70.7,
-                    -136.0,
-                    -95.6,
-                    -108.5,
-                    -176.4,
-                    -154.1,
+                    null,
+                    -96.0,
                     -55.6,
-                    -14.4,
-                    -9.9,
-                    -31.5,
-                    -66.4,
-                    -40.9
+                    -68.5,
+                    -136.4,
+                    -114.1,
+                    -45.6,
+                    -34.4,
+                    -79.9,
+                    -81.5,
+                    -46.4,
+                    null
                 ],
                 lineColor: 'rgba(0, 0, 0, 0)',
                 yAxis: 2,
                 marker: {
+                    fillColor: 'rgba(0, 200, 0, 1)',
                     symbol: "triangle-down",
                     enabled: true,
                     radius: 5
@@ -281,20 +326,21 @@
             {
                 name: "h [m]",
                 data: [
-                    -100.7,
-                    -166.0,
-                    -125.6,
-                    -138.5,
-                    -206.4,
-                    -184.1,
+                    0,
+                    -126.0,
                     -85.6,
-                    -44.4,
-                    -39.9,
-                    -61.5,
-                    -96.4,
-                    -70.9
+                    -98.5,
+                    -166.4,
+                    -144.1,
+                    -75.6,
+                    -74.4,
+                    -109.9,
+                    -111.5,
+                    -76.4,
+                    0
                 ],
                 yAxis: 3,
+                color: '#f0a717',
                 marker: {
                     enabled: false
                 }
@@ -307,29 +353,80 @@
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 ],
                 yAxis: 4,
+                color: '#8d8dff',
                 marker: {
                     enabled: false
                 }
             },
-            // vm[m/s]
+            // vm [m/s]
             {
                 name: "v<sub>m</sub> [m/s]",
                 data: [
-                    100.5,
-                    126.0,
-                    115.6,
-                    138.5,
-                    206.4,
-                    154.1,
-                    81.6,
-                    34.4,
-                    29.9,
-                    41.5,
-                    96.4,
-                    60.8
+                    0,
+                    86.0,
+                    75.6,
+                    98.5,
+                    166.4,
+                    114.1,
+                    41.6,
+                    14.4,
+                    19.9,
+                    11.5,
+                    56.4,
+                    0
                 ],
                 yAxis: 5,
                 type: 'spline',
+                color: '#ff82fe',
+                marker: {
+                    enabled: false
+                }
+            },
+            // h3/2 [m3/2]
+            {
+                name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
+                data: [
+                    0,
+                    -96.0,
+                    -55.6,
+                    -68.5,
+                    -136.4,
+                    -114.1,
+                    -45.6,
+                    -34.4,
+                    -79.9,
+                    -81.5,
+                    -46.4,
+                    0
+                ],
+                dashStyle: 'Dash',
+                color: '#ffa9a9',
+                yAxis: 6,
+                marker: {
+                    enabled: false
+                }
+            },
+            // h [m] col
+            {
+                name: "",
+                type: 'column',
+                pointWidth: 1,
+                data: [
+                    0,
+                    -126.0,
+                    -85.6,
+                    -98.5,
+                    -166.4,
+                    -144.1,
+                    -75.6,
+                    -74.4,
+                    -109.9,
+                    -111.5,
+                    -76.4,
+                    0
+                ],
+                yAxis: 3,
+                color: '#000',
                 marker: {
                     enabled: false
                 }
