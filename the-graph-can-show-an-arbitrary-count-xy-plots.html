@@ -145,15 +145,17 @@
 
             self.DisplayHighChart = function () {
                 const values = [...w7cData.charts[0].xaxis[0].yaxis[0].plots];
+                console.log(values);
                 for (let i = 0; i < values.length; i++) {
                     values[i].color = w7cConfig.charts[0].xaxis[0].yaxis[0].plots[i].lineColor;
                     values[i].name = values[i].label
+
                 }
 
-                console.log((values));
+                // console.log((values));
                 values[0].type = 'line';
                 values[1].type = 'line';
-                values[1].dashStyle = 'shortdot';
+                values[1].dashStyle = 'ShortDot';
                 values[2].type = 'spline';
 
                 let chartElem = 'container';
