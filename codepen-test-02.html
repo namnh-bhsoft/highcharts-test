@@ -8,11 +8,11 @@
     <style>
         #container {
             overflow: visible !important;
-            /*height: 95vh !important;*/
+            height: 95vh !important;
         }
 
         .highcharts-container {
-            /*height: 100% !important;*/
+            height: 100% !important;
         }
 
         img {
@@ -24,12 +24,13 @@
 <body>
 
 <div id="container" style="height: 400px"></div>
-<img src="issue-sample-1.png" alt="" width="100%">
+<!--<img src="issue-sample-1.png" alt="" width="100%">-->
 
-<script src="jslibrary/highcharts.js"></script>
-<script src="jslibrary/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!-- optional -->
-<script src="jslibrary/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
 <script>
 
     const w7cConfig = {
@@ -921,17 +922,17 @@
                             y: 15
                         },
                         showFirstLabel: true,
-                        showLastLabel: true,
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                if (this.value <= 6 && this.value % 2 === 0) {
-                                    return this.value
-                                }
-                            }
-                        },
+                        showLastLabel: false, // TODO: set to true later
+                        // labels: {
+                        //     useHTML: true,
+                        //     formatter: function () {
+                        //         if (this.value <= 6 && this.value % 2 === 0) {
+                        //             return this.value
+                        //         }
+                        //     }
+                        // },
                         gridLineColor: 'rgba(0,0,0,0)',
-                        tickAmount: 26,
+                        // tickAmount: 26,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
@@ -948,24 +949,25 @@
                             align: "high",
                             rotation: 0,
                             offset: 15,
-                            y: 15
+                            y: 0
                         },
                         showFirstLabel: true,
                         showLastLabel: false,
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                if (this.value * 10 % 2 === 0 && this.value <= 0.4) {
-                                    return this.value.toFixed(1)
-                                }
-                            }
-                        },
+                        // labels: {
+                        //     useHTML: true,
+                        //     formatter: function () {
+                        //         if (this.value * 10 % 2 === 0 && this.value <= 0.4) {
+                        //             return this.value.toFixed(1)
+                        //         }
+                        //     }
+                        // },
                         gridLineColor: 'rgba(0,0,0,0)',
-                        tickAmount: 31,
+                        // tickAmount: 31,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
                         lineColor: '#000',
+                        linkedTo: 0
                     },
 
                     // yAxis for vm [m/s]
@@ -997,6 +999,7 @@
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
+                        linkedTo: 0
                     },
 
                     // yAxis for h 3/2 [m3/2]
