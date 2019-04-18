@@ -32,7 +32,7 @@
 <script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
 <script src="http://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://rawgithub.com/RolandBanguiran/highstock-yaxis-panning/master/yaxis-panning.js"></script>
-<script src="jslibrary/plugins/tick_positioner.js"></script>
+<!--<script src="jslibrary/plugins/tick_positioner.js"></script>-->
 <script>
 
     const w7cConfig = {
@@ -873,16 +873,16 @@
 
         self.DisplayHighChart = function () {
             const values = [...w7cData.charts[0].xaxis[0].yaxis];
-            console.log(values);
-            console.log(w7cConfig);
+            console.log(values); // TODO: Remember to delete this line
 
             // Chart data of vm m/s
             let chart02data = values[2].plots[0].data;
 
             // Chart data of cI1/2
+            // TODO: Just for UI scaling testing, delete this for loop afterward.
             // for (let i = 0; i < values[3].plots[0].data.length; i++) {
             //     values[3].plots[0].data[i][1] *= 10
-            // } // TODO: Just for UI scaling testing, delete afterward.
+            // }
             let chart03data = values[3].plots[0].data;
 
             // Chart data of h3/2 [m3/2]
@@ -942,10 +942,10 @@
                     formatter: function () {
                         if (this.y < 0) {
                             return `<strong>${this.series.name}</strong></br>
-                                    Value of <strong>${this.x}</strong>: ${this.y * -1}`;
+                                    Value of <strong>${this.x}</strong>: ${(this.y * -1).toFixed(2)}`;
                         } else {
                             return `<strong>${this.series.name}</strong></br>
-                                    Value of <strong>${this.x}</strong>: ${this.y}`;
+                                    Value of <strong>${this.x}</strong>: ${this.y.toFixed(2)}`;
                         }
                         // if (this.y < 0) {
                         //     return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y * -1}`;
@@ -973,7 +973,8 @@
                     x: 80,
                     borderColor: "#000000",
                     borderWidth: 1,
-                    padding: 15
+                    padding: 15,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
                 },
 
                 plotOptions: {
@@ -996,7 +997,14 @@
                     startOnTick: false,
                     endOnTick: false,
                     showFirstLabel: false,
-                    showLastLabel: false
+                    showLastLabel: false,
+                    tickWidth: 1,
+                    tickColor: '#000',
+                    lineColor: '#000',
+                    tickInterval: 5,
+                    labels: {
+                        y: 25
+                    }
                 },
 
                 credits: {
@@ -1028,14 +1036,15 @@
                         },
                         gridLineColor: 'rgba(0,0,0,0)',
                         // tickAmount: 26,
+                        // tickInterval: 2,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
                         lineColor: '#000',
-                        softMin: -1,
-                        softMax: 1
-                        // min: -1,
-                        // max: 1
+                        // softMin: -1,
+                        // softMax: 1,
+                        min: -1,
+                        max: 1
                     },
 
                     // yAxis for cI1/2 [m1/2/2]
@@ -1059,6 +1068,7 @@
                         },
                         gridLineColor: 'rgba(0,0,0,0)',
                         // tickAmount: 31,
+                        // tickInterval: 0.2,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
