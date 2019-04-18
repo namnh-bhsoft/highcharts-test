@@ -211,18 +211,14 @@
         tooltip: {
             useHTML: true,
             formatter: function () {
-                if (this.series.name === "" || this.series.name === "Surface") {
-                    return false
+                if (this.y < 0) {
+                    let val = this.y * -1;
+                    return `<strong>${this.series.name}</strong></br>
+                                Value of <strong>${this.x}</strong>: ${val}`;
                 } else {
-                    if (this.y < 0) {
-                        let val = this.y * -1;
-                        return `<strong>${this.series.name}</strong></br>
+                    let val = this.y;
+                    return `<strong>${this.series.name}</strong></br>
                                 Value of <strong>${this.x}</strong>: ${val}`;
-                    } else {
-                        let val = this.y;
-                        return `<strong>${this.series.name}</strong></br>
-                                Value of <strong>${this.x}</strong>: ${val}`;
-                    }
                 }
             }
         },
@@ -279,6 +275,7 @@
                     enabled: false
                 }
             },
+
             // cI 1/2 [m1/2/2]
             {
                 name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
@@ -304,6 +301,7 @@
                     enabled: false
                 }
             },
+
             // Observation
             {
                 name: "Observation",
@@ -331,6 +329,7 @@
                     radius: 5
                 }
             },
+
             // h [m]
             {
                 name: "h [m]",
@@ -354,12 +353,14 @@
                     enabled: false
                 }
             },
+
             // Surface
             {
                 name: "Surface",
                 data: [
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 ],
+                enableMouseTracking: false,
                 yAxis: 4,
                 color: '#8d8dff',
                 zIndex: -1,
@@ -370,6 +371,7 @@
                     hover: false
                 }
             },
+
             // vm [m/s]
             {
                 name: "v<sub>m</sub> [m/s]",
@@ -394,6 +396,7 @@
                     enabled: false
                 }
             },
+
             // h3/2 [m3/2]
             {
                 name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
@@ -418,12 +421,14 @@
                     enabled: false
                 }
             },
+
             // h [m] col
             {
                 name: "",
                 showInLegend: false,
                 type: 'column',
                 pointWidth: 1,
+                enableMouseTracking: false,
                 data: [
                     0,
                     -126.0,

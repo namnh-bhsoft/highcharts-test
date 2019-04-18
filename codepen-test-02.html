@@ -12,7 +12,7 @@
         }
 
         .highcharts-container {
-            height: 100% !important;
+            /*height: 100% !important;*/
         }
 
         img {
@@ -24,13 +24,15 @@
 <body>
 
 <div id="container" style="height: 400px"></div>
-<!--<img src="issue-sample-1.png" alt="" width="100%">-->
+<img src="issue-sample-1.png" alt="" width="100%">
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <!-- optional -->
 <script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
 <script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://rawgithub.com/RolandBanguiran/highstock-yaxis-panning/master/yaxis-panning.js"></script>
+<script src="jslibrary/plugins/tick_positioner.js"></script>
 <script>
 
     const w7cConfig = {
@@ -315,7 +317,6 @@
                                         [30, 0.08],
                                         [30.001, 0],
                                         [30.001, 0],
-                                        [null, null],
                                         [null, null]
                                     ]
                                 },
@@ -873,15 +874,59 @@
         self.DisplayHighChart = function () {
             const values = [...w7cData.charts[0].xaxis[0].yaxis];
             console.log(values);
-            for (let i = 0; i < values[4].plots[0].data.length; i++) {
+            console.log(w7cConfig);
+
+            // Chart data of vm m/s
+            let chart02data = values[2].plots[0].data;
+
+            // Chart data of cI1/2
+            // for (let i = 0; i < values[3].plots[0].data.length; i++) {
+            //     values[3].plots[0].data[i][1] *= 10
+            // } // TODO: Just for UI scaling testing, delete afterward.
+            let chart03data = values[3].plots[0].data;
+
+            // Chart data of h3/2 [m3/2]
+            for (let i in values[4].plots[0].data) {
                 values[4].plots[0].data[i][1] *= -1
             }
-            let a = values[4].plots[0].data; // TODO: rename lại tên biến, k để là a nữa
+            let chart04data = values[4].plots[0].data;
 
+            // Chart data of h[m]
+            for (let i in values[1].plots[0].data) {
+                if (values[1].plots[0].data[i][1] !== null) {
+                    values[1].plots[0].data[i][1] *= -1
+                }
+            }
+            let chart05data = values[1].plots[0].data;
+
+            // Chart data of Observations
+            for (let i in values[1].plots[2].data) {
+                if (values[1].plots[2].data[i][1] !== null) {
+                    values[1].plots[2].data[i][1] *= -1
+                }
+            }
+            let chart06data = values[1].plots[2].data;
+
+            // Chart data of Surfaces
+            let chart07data = values[1].plots[1].data;
+
+            // Chart data of Verticals
+            for (let i in values[1].plots[3].data) {
+                if (values[1].plots[3].data[i][1] !== null) {
+                    values[1].plots[3].data[i][1] *= -1
+                }
+            }
+            let chart08data = values[1].plots[3].data;
+
+            // Chart elem & config
             let chartElem = 'container';
             let chartConf = {
                 chart: {
-                    marginBottom: 200
+                    marginBottom: 200,
+                    alignThresholds: true,
+                    zoomType: 'y',
+                    panning: true,
+                    panKey: 'shift'
                 },
 
                 title: {
@@ -892,12 +937,61 @@
                     text: "An experiment"
                 },
 
+                tooltip: {
+                    useHTML: true,
+                    formatter: function () {
+                        if (this.y < 0) {
+                            return `<strong>${this.series.name}</strong></br>
+                                    Value of <strong>${this.x}</strong>: ${this.y * -1}`;
+                        } else {
+                            return `<strong>${this.series.name}</strong></br>
+                                    Value of <strong>${this.x}</strong>: ${this.y}`;
+                        }
+                        // if (this.y < 0) {
+                        //     return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y * -1}`;
+                        // } else {
+                        //     switch (this.series.name) {
+                        //         case "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]":
+                        //         case "v<sub>m</sub> [m/s]":
+                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y / 10}`;
+                        //         case "h<sup>3/2</sup> [m<sup>3/2</sup>]":
+                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y / -10}`;
+                        //         default:
+                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y}`;
+                        //     }
+                        // }
+                    }
+                },
+
+                legend: {
+                    useHTML: true,
+                    layout: "vertical",
+                    align: "left",
+                    verticalAlign: "bottom",
+                    floating: true,
+                    y: 0,
+                    x: 80,
+                    borderColor: "#000000",
+                    borderWidth: 1,
+                    padding: 15
+                },
+
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            useHTML: true
+                        },
+                        cursor: 'pointer'
+                    }
+                },
+
                 xAxis: {
                     title: {
                         useHTML: true,
                         enabled: true,
                         text: w7cData.charts[0].xaxis[0].label + ' ' + w7cData.charts[0].xaxis[0].unit,
-                        align: 'high'
+                        align: 'high',
+                        y: -10
                     },
                     startOnTick: false,
                     endOnTick: false,
@@ -918,25 +1012,30 @@
                             text: "q<sub>i</sub>/q [%]",
                             align: "high",
                             rotation: 0,
-                            offset: 15,
-                            y: 15
+                            offset: 15
                         },
                         showFirstLabel: true,
-                        showLastLabel: false, // TODO: set to true later
-                        // labels: {
-                        //     useHTML: true,
-                        //     formatter: function () {
-                        //         if (this.value <= 6 && this.value % 2 === 0) {
-                        //             return this.value
-                        //         }
-                        //     }
-                        // },
+                        showLastLabel: false,
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                if (this.value < 0) {
+                                    return null
+                                } else {
+                                    return this.value
+                                }
+                            }
+                        },
                         gridLineColor: 'rgba(0,0,0,0)',
                         // tickAmount: 26,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
                         lineColor: '#000',
+                        softMin: -1,
+                        softMax: 1
+                        // min: -1,
+                        // max: 1
                     },
 
                     // yAxis for cI1/2 [m1/2/2]
@@ -948,19 +1047,16 @@
                             text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
                             align: "high",
                             rotation: 0,
-                            offset: 15,
-                            y: 0
+                            offset: 15
                         },
                         showFirstLabel: true,
                         showLastLabel: false,
-                        // labels: {
-                        //     useHTML: true,
-                        //     formatter: function () {
-                        //         if (this.value * 10 % 2 === 0 && this.value <= 0.4) {
-                        //             return this.value.toFixed(1)
-                        //         }
-                        //     }
-                        // },
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                return this.value.toFixed(1)
+                            }
+                        },
                         gridLineColor: 'rgba(0,0,0,0)',
                         // tickAmount: 31,
                         tickLength: 10,
@@ -988,14 +1084,12 @@
                         labels: {
                             useHTML: true,
                             formatter: function () {
-                                if (this.value * 100 % 2 === 0) {
-                                    return this.value.toFixed(2)
-                                }
+                                return this.value.toFixed(2)
                             }
                         },
                         gridLineColor: 'rgba(0,0,0,0)',
                         margin: 15,
-                        tickAmount: 35,
+                        // tickAmount: 35,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
@@ -1009,77 +1103,111 @@
                         title: {
                             useHTML: true,
                             text: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
-                            align: "high",
+                            align: "low",
                             rotation: 0,
-                            offset: 10,
-                            y: 0
+                            offset: 0,
+                            y: 0,
+                            x: 80
                         },
-                        showFirstLabel: true,
-                        showLastLabel: false,
+                        showFirstLabel: false,
+                        showLastLabel: true,
                         lineColor: '#000',
                         labels: {
                             useHTML: true,
                             formatter: function () {
-                                if (this.value * 100 % 2 === 0) {
+                                if (this.value <= 0) {
+                                    return this.value.toFixed(2) * -1
+                                } else {
                                     return this.value.toFixed(2)
                                 }
                             }
                         },
                         gridLineColor: 'rgba(0,0,0,0)',
-                        margin: 15,
-                        tickAmount: 35,
+                        // tickAmount: 35,
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
-                        linkedTo: 0,
-                        reversed: true
+                        offset: 0,
+                        linkedTo: 0
                     },
-                ],
 
-                tooltip: {
-                    useHTML: true,
-                    formatter: function () {
-                        if (this.series.name === "" || this.series.name === "Surface") {
-                            return false
-                        } else {
-                            if (this.y < 0) {
-                                let val = this.y * -1;
-                                return `<strong>${this.series.name}</strong></br>
-                                Value of <strong>${this.x}</strong>: ${val}`;
-                            } else {
-                                let val = this.y;
-                                return `<strong>${this.series.name}</strong></br>
-                                Value of <strong>${this.x}</strong>: ${val}`;
-                            }
-                        }
-                    }
-                },
-
-                legend: {
-                    useHTML: true,
-                    layout: "vertical",
-                    align: "left",
-                    verticalAlign: "bottom",
-                    floating: true,
-                    y: 0,
-                    x: 80,
-                    borderColor: "#000000",
-                    borderWidth: 1,
-                    padding: 15
-                },
-
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            useHTML: true
+                    // yAxis for h[m]
+                    {
+                        lineWidth: 1,
+                        title: {
+                            useHTML: true,
+                            text: "h [m]",
+                            align: "low",
+                            rotation: 0,
+                            offset: 0,
+                            y: 0,
+                            x: -45
                         },
-                        cursor: 'pointer'
+                        showFirstLabel: false,
+                        showLastLabel: false,
+                        lineColor: '#000',
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                if (this.value <= 0) {
+                                    return this.value.toFixed(1) * -1
+                                } else {
+                                    return this.value.toFixed(1)
+                                }
+                            }
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        // tickAmount: 35,
+                        tickLength: 10,
+                        tickWidth: 1,
+                        tickColor: '#000',
+                        offset: 0,
+                        linkedTo: 0
+                    },
+
+                    // yAxis for Observation
+                    {
+                        title: "",
+                        lineWidth: 1,
+                        labels: {
+                            enabled: false
+                        },
+                        lineColor: 'rgba(0, 0, 0, 0)',
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        linkedTo: 0,
+                    },
+
+                    // yAxis for Surface
+                    {
+                        title: "",
+                        lineColor: 'rgba(0, 0, 0, 0)',
+                        lineWidth: 1,
+                        labels: {
+                            enabled: false
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        linkedTo: 0,
+                    },
+
+                    // yAxis for Verticals
+                    {
+                        lineWidth: 1,
+                        labels: {
+                            enabled: false
+                        },
+                        title: {
+                            text: ''
+                        },
+                        lineColor: 'rgba(0, 0, 0, 0)',
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        linkedTo: 0,
                     }
-                },
+                ],
 
                 series: [
                     // qi/q [%]
                     {
+                        className: 'chart-01',
                         name: "q<sub>i</sub>/q [%]",
                         data: values[0].plots[0].data,
                         type: "line",
@@ -1089,10 +1217,12 @@
                             enabled: false
                         }
                     },
+
                     // cI 1/2 [m1/2/2]
                     {
+                        className: 'chart-03',
                         name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
-                        data: values[3].plots[0].data,
+                        data: chart03data,
                         yAxis: 1,
                         type: 'spline',
                         dashStyle: 'LongDash',
@@ -1101,10 +1231,12 @@
                             enabled: false
                         }
                     },
+
                     // vm [m/s]
                     {
+                        className: 'chart-02',
                         name: "v<sub>m</sub> [m/s]",
-                        data: values[2].plots[0].data,
+                        data: chart02data,
                         yAxis: 2,
                         type: 'spline',
                         color: '#ff82fe',
@@ -1112,17 +1244,80 @@
                             enabled: false
                         }
                     },
-                    // vm [m/s]
+
+                    // h3/2 [m3/2]
                     {
+                        className: 'chart-04',
                         name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
-                        data: a,
+                        data: chart04data,
                         yAxis: 3,
-                        type: 'spline',
+                        type: 'line',
                         color: '#ffaeae',
+                        dashStyle: 'ShortDot',
                         marker: {
                             enabled: false
                         }
                     },
+
+                    // h[m]
+                    {
+                        className: 'chart-04',
+                        name: "h [m]",
+                        data: chart05data,
+                        yAxis: 4,
+                        type: 'line',
+                        color: '#f0a511',
+                        marker: {
+                            enabled: false
+                        }
+                    },
+
+                    // Observation
+                    {
+                        name: "Observation",
+                        data: chart06data,
+                        yAxis: 5,
+                        zIndex: 10,
+                        lineColor: 'rgba(0, 0, 0, 0)',
+                        marker: {
+                            fillColor: 'rgba(0, 200, 0, 1)',
+                            symbol: "triangle-down",
+                            enabled: true,
+                            radius: 5
+                        }
+                    },
+
+                    // Surface
+                    {
+                        name: "Surface",
+                        data: chart07data,
+                        yAxis: 6,
+                        color: '#8d8dff',
+                        zIndex: -1,
+                        marker: {
+                            enabled: false
+                        },
+                        states: {
+                            hover: false
+                        },
+                        enableMouseTracking: false
+                    },
+
+                    // Verticals
+                    {
+                        name: "",
+                        showInLegend: false,
+                        type: 'column',
+                        pointWidth: 1,
+                        data: chart08data,
+                        yAxis: 7,
+                        color: 'rgba(0,0,0,.5)',
+                        marker: {
+                            enabled: false
+                        },
+                        zIndex: -2,
+                        enableMouseTracking: false
+                    }
                 ]
             };
 
