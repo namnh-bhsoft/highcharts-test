@@ -31,7 +31,6 @@
 <!-- optional -->
 <script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
 <script src="http://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://rawgithub.com/RolandBanguiran/highstock-yaxis-panning/master/yaxis-panning.js"></script>
 <!--<script src="jslibrary/plugins/tick_positioner.js"></script>-->
 <script>
 
@@ -321,7 +320,7 @@
                                     ]
                                 },
                                 {
-                                    "label": "Surface [m]   ",
+                                    "label": "Surface [m]",
                                     "data": [
                                         [1.999, 0],
                                         [1.9995, 0],
@@ -924,9 +923,7 @@
                 chart: {
                     marginBottom: 200,
                     alignThresholds: true,
-                    zoomType: 'y',
-                    panning: true,
-                    panKey: 'shift'
+                    zoomType: 'y'
                 },
 
                 title: {
@@ -938,28 +935,16 @@
                 },
 
                 tooltip: {
+                    backgroundColor: "rgba(255,255,255,1)",
                     useHTML: true,
                     formatter: function () {
                         if (this.y < 0) {
                             return `<strong>${this.series.name}</strong></br>
-                                    Value of <strong>${this.x}</strong>: ${(this.y * -1).toFixed(2)}`;
+                                    Value at <strong>${this.x}</strong> d[m] : ${(this.y * -1).toFixed(2)} ${this.series.userOptions.tooltip.valueSuffix}`;
                         } else {
                             return `<strong>${this.series.name}</strong></br>
-                                    Value of <strong>${this.x}</strong>: ${this.y.toFixed(2)}`;
+                                    Value at <strong>${this.x}</strong> d[m] : ${this.y.toFixed(2)} ${this.series.userOptions.tooltip.valueSuffix}`;
                         }
-                        // if (this.y < 0) {
-                        //     return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y * -1}`;
-                        // } else {
-                        //     switch (this.series.name) {
-                        //         case "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]":
-                        //         case "v<sub>m</sub> [m/s]":
-                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y / 10}`;
-                        //         case "h<sup>3/2</sup> [m<sup>3/2</sup>]":
-                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y / -10}`;
-                        //         default:
-                        //             return `<strong>${this.series.name}</strong></br>Value of <strong>${this.x}</strong>: ${this.y}`;
-                        //     }
-                        // }
                     }
                 },
 
@@ -1053,7 +1038,7 @@
                         opposite: true,
                         title: {
                             useHTML: true,
-                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
+                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
                             align: "high",
                             rotation: 0,
                             offset: 15
@@ -1225,13 +1210,16 @@
                         color: '#000000',
                         marker: {
                             enabled: false
+                        },
+                        tooltip: {
+                            valueSuffix: "[%]"
                         }
                     },
 
                     // cI 1/2 [m1/2/2]
                     {
                         className: 'chart-03',
-                        name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/2]",
+                        name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
                         data: chart03data,
                         yAxis: 1,
                         type: 'spline',
@@ -1239,6 +1227,9 @@
                         color: '#f88',
                         marker: {
                             enabled: false
+                        },
+                        tooltip: {
+                            valueSuffix: "[m<sup>1/2</sup>/s]"
                         }
                     },
 
@@ -1252,6 +1243,9 @@
                         color: '#ff82fe',
                         marker: {
                             enabled: false
+                        },
+                        tooltip: {
+                            valueSuffix: "[m/s]"
                         }
                     },
 
@@ -1261,11 +1255,14 @@
                         name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
                         data: chart04data,
                         yAxis: 3,
-                        type: 'line',
+                        type: 'spline',
                         color: '#ffaeae',
                         dashStyle: 'ShortDot',
                         marker: {
                             enabled: false
+                        },
+                        tooltip: {
+                            valueSuffix: "[m<sup>3/2</sup>]"
                         }
                     },
 
@@ -1279,6 +1276,9 @@
                         color: '#f0a511',
                         marker: {
                             enabled: false
+                        },
+                        tooltip: {
+                            valueSuffix: "[m]"
                         }
                     },
 
@@ -1294,6 +1294,9 @@
                             symbol: "triangle-down",
                             enabled: true,
                             radius: 5
+                        },
+                        tooltip: {
+                            valueSuffix: ""
                         }
                     },
 
