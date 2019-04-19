@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Final issue #1</title>
+    <title>Issue #01</title>
     <style>
         #container {
             overflow: visible !important;
@@ -24,7 +24,7 @@
 <body>
 
 <div id="container" style="height: 400px"></div>
-<img src="issue-sample-1.png" alt="" width="100%">
+<img src="issue01-sample.png" alt="" width="100%">
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -62,9 +62,9 @@
                         "reversed": false,
                         "yaxis": [
                             {
+                                "label": "q<sub>i</sub>/q",
                                 "position": "left",
                                 "scale": "auto",
-                                "label": "q<sub>i</sub>/q",
                                 "reversed": false,
                                 "min": 0,
                                 "max": 0,
@@ -84,9 +84,9 @@
                                 ]
                             },
                             {
+                                "label": "h",
                                 "position": "left",
                                 "scale": "auto",
-                                "label": "h",
                                 "reversed": true,
                                 "min": 0,
                                 "max": 0,
@@ -142,9 +142,9 @@
                                 ]
                             },
                             {
+                                "label": "cI<sup>1/2</sup>",
                                 "position": "right",
                                 "scale": "auto",
-                                "label": "cI<sup>1/2</sup>",
                                 "reversed": false,
                                 "min": 0,
                                 "max": 0,
@@ -164,9 +164,9 @@
                                 ]
                             },
                             {
+                                "label": "v<sub>m</sub>",
                                 "position": "right",
                                 "scale": "auto",
-                                "label": "v<sub>m</sub>",
                                 "reversed": false,
                                 "min": 0,
                                 "max": 0,
@@ -186,9 +186,9 @@
                                 ]
                             },
                             {
+                                "label": "h<sup>3/2</sup>",
                                 "position": "right",
                                 "scale": "auto",
-                                "label": "h<sup>3/2</sup>",
                                 "reversed": true,
                                 "min": 0,
                                 "max": 0,
@@ -914,6 +914,7 @@
                 seriesValues[i].yAxis = i;
             }
 
+            // TODO: remove these console logs
             console.log(configJSON);
             console.log(seriesValues);
 
