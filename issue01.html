@@ -12,7 +12,7 @@
         }
 
         .highcharts-container {
-            /*height: 100% !important;*/
+            height: 100% !important;
         }
 
         img {
@@ -73,10 +73,10 @@
                                         "label": "q<sub>i</sub>/q [%]",
                                         "visible": true,
                                         "flyover": true,
-                                        "lineColor": "RGBa(0,0,0,0.5)",
+                                        "lineColor": "RGBa(0,0,0,1)",
                                         "lineStyle": "solid",
-                                        "lineSize": 40,
-                                        "symbolColor": "RGBa(0,0,0,0.5)",
+                                        "lineSize": 2,
+                                        "symbolColor": "#000000",
                                         "symbolFillColor": "RGBa(0,0,0,0.5)",
                                         "symbolStyle": "circle",
                                         "symbolSize": 0
@@ -95,21 +95,21 @@
                                         "label": "h [m]",
                                         "visible": true,
                                         "flyover": true,
-                                        "lineColor": "RGBa(239,239,0,0.5)",
+                                        "lineColor": "#f0a511",
                                         "lineStyle": "solid",
-                                        "lineSize": 50,
-                                        "symbolColor": "RGBa(0,0,0,0.5)",
+                                        "lineSize": 2,
+                                        "symbolColor": "#f0a511",
                                         "symbolFillColor": "RGBa(0,0,0,0.5)",
                                         "symbolStyle": "circle",
                                         "symbolSize": 0
                                     },
                                     {
-                                        "label": "Surface [m]   ",
+                                        "label": "Surface [m]",
                                         "visible": true,
                                         "flyover": true,
-                                        "lineColor": "RGBa(0,0,255,0.5)",
+                                        "lineColor": "#8d8dff",
                                         "lineStyle": "solid",
-                                        "lineSize": 1,
+                                        "lineSize": 2,
                                         "symbolColor": "RGBa(0,0,0,0.5)",
                                         "symbolFillColor": "RGBa(0,0,0,0.5)",
                                         "symbolStyle": "circle",
@@ -121,17 +121,17 @@
                                         "flyover": true,
                                         "lineColor": "RGBa(0,0,0,0.5)",
                                         "lineStyle": null,
-                                        "lineSize": 0,
+                                        "lineSize": 2,
                                         "symbolColor": "RGBa(46,46,85,0.5)",
-                                        "symbolFillColor": "RGBa(46,46,85,0.5)",
+                                        "symbolFillColor": "RGBa(0,150,0,1)",
                                         "symbolStyle": "triangle-down",
-                                        "symbolSize": 200
+                                        "symbolSize": 5
                                     },
                                     {
                                         "label": "Verticals",
                                         "visible": false,
                                         "flyover": false,
-                                        "lineColor": "RGBa(0,0,0,1)",
+                                        "lineColor": "rgba(0,0,0,.5)",
                                         "lineStyle": "solid",
                                         "lineSize": 1,
                                         "symbolColor": null,
@@ -144,29 +144,7 @@
                             {
                                 "position": "right",
                                 "scale": "auto",
-                                "label": "v@<sub>m</sub>}",
-                                "reversed": false,
-                                "min": 0,
-                                "max": 0,
-                                "plots": [
-                                    {
-                                        "label": "v<sub>m</sub> [m/s]",
-                                        "visible": true,
-                                        "flyover": true,
-                                        "lineColor": "RGBa(255,255,255,0.5)",
-                                        "lineStyle": "solid",
-                                        "lineSize": 1,
-                                        "symbolColor": "RGBa(0,0,0,0.5)",
-                                        "symbolFillColor": "RGBa(0,0,0,0.5)",
-                                        "symbolStyle": "circle",
-                                        "symbolSize": 0
-                                    }
-                                ]
-                            },
-                            {
-                                "position": "right",
-                                "scale": "auto",
-                                "label": "cI<sup>1/2</sup>}",
+                                "label": "cI<sup>1/2</sup>",
                                 "reversed": false,
                                 "min": 0,
                                 "max": 0,
@@ -175,7 +153,7 @@
                                         "label": "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
                                         "visible": true,
                                         "flyover": true,
-                                        "lineColor": "RGBa(255,255,0,0.5)",
+                                        "lineColor": "#f88",
                                         "lineStyle": "longdash",
                                         "lineSize": 1,
                                         "symbolColor": "RGBa(0,0,0,0.5)",
@@ -188,7 +166,29 @@
                             {
                                 "position": "right",
                                 "scale": "auto",
-                                "label": "h@<sup>3/2</sup>",
+                                "label": "v<sub>m</sub>",
+                                "reversed": false,
+                                "min": 0,
+                                "max": 0,
+                                "plots": [
+                                    {
+                                        "label": "v<sub>m</sub> [m/s]",
+                                        "visible": true,
+                                        "flyover": true,
+                                        "lineColor": "#ff82fe",
+                                        "lineStyle": "solid",
+                                        "lineSize": 2,
+                                        "symbolColor": "RGBa(0,0,0,0.5)",
+                                        "symbolFillColor": "RGBa(0,0,0,0.5)",
+                                        "symbolStyle": "circle",
+                                        "symbolSize": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "position": "right",
+                                "scale": "auto",
+                                "label": "h<sup>3/2</sup>",
                                 "reversed": true,
                                 "min": 0,
                                 "max": 0,
@@ -197,7 +197,7 @@
                                         "label": "h<sup>3/2</sup> [m<sup>3/2</sup>]",
                                         "visible": true,
                                         "flyover": true,
-                                        "lineColor": "RGBa(255,255,0,0.5)",
+                                        "lineColor": "#ffaeae",
                                         "lineStyle": "dash",
                                         "lineSize": 1,
                                         "symbolColor": "RGBa(0,0,0,0.5)",
@@ -487,129 +487,7 @@
                             ]
                         },
                         {
-                            "label": "v@<sub>m</sub>}",
-                            "unit": "m/s",
-                            "plots": [
-                                {
-                                    "label": "v<sub>m</sub> [m/s]",
-                                    "data": [
-                                        [1.999, 0],
-                                        [1.999, 0.0023],
-                                        [1.999, 0.0046],
-                                        [1.999, 0.0068],
-                                        [1.999, 0.0088],
-                                        [2, 0.0105],
-                                        [2.1068, 0.0148],
-                                        [2.2923, 0.017],
-                                        [2.5244, 0.0182],
-                                        [2.7709, 0.0193],
-                                        [3, 0.0211],
-                                        [3.3539, 0.03],
-                                        [3.5502, 0.0439],
-                                        [3.6696, 0.0603],
-                                        [3.7926, 0.0764],
-                                        [4, 0.0895],
-                                        [4.2283, 0.0956],
-                                        [4.5143, 0.0998],
-                                        [4.8362, 0.1027],
-                                        [5.172, 0.1051],
-                                        [5.5, 0.1078],
-                                        [5.845, 0.112],
-                                        [6.1591, 0.1176],
-                                        [6.4507, 0.1246],
-                                        [6.7283, 0.1329],
-                                        [7, 0.1426],
-                                        [7.2855, 0.1539],
-                                        [7.5761, 0.1651],
-                                        [7.8739, 0.1746],
-                                        [8.1811, 0.1807],
-                                        [8.5, 0.1819],
-                                        [8.7986, 0.178],
-                                        [9.1032, 0.171],
-                                        [9.4085, 0.1631],
-                                        [9.7092, 0.1565],
-                                        [10, 0.1535],
-                                        [10.2986, 0.1559],
-                                        [10.5887, 0.1629],
-                                        [10.8795, 0.1724],
-                                        [11.1802, 0.1821],
-                                        [11.5, 0.1899],
-                                        [11.7764, 0.1937],
-                                        [12.0679, 0.1953],
-                                        [12.3712, 0.1951],
-                                        [12.683, 0.1936],
-                                        [13, 0.1912],
-                                        [13.3206, 0.1883],
-                                        [13.637, 0.1855],
-                                        [13.9431, 0.1837],
-                                        [14.2329, 0.1834],
-                                        [14.5, 0.1854],
-                                        [14.8199, 0.1923],
-                                        [15.1087, 0.2025],
-                                        [15.3875, 0.2138],
-                                        [15.6776, 0.224],
-                                        [16, 0.2309],
-                                        [16.2701, 0.2329],
-                                        [16.5624, 0.2325],
-                                        [16.8697, 0.2305],
-                                        [17.1846, 0.2276],
-                                        [17.5, 0.2245],
-                                        [17.826, 0.2215],
-                                        [18.1416, 0.2187],
-                                        [18.4443, 0.2155],
-                                        [18.7313, 0.2116],
-                                        [19, 0.2066],
-                                        [19.3049, 0.1986],
-                                        [19.5927, 0.1893],
-                                        [19.878, 0.1799],
-                                        [20.1755, 0.1714],
-                                        [20.5, 0.1648],
-                                        [20.7747, 0.1616],
-                                        [21.068, 0.1599],
-                                        [21.374, 0.1592],
-                                        [21.6866, 0.1592],
-                                        [22, 0.1594],
-                                        [22.3087, 0.1595],
-                                        [22.6126, 0.1594],
-                                        [22.9122, 0.1587],
-                                        [23.2078, 0.1572],
-                                        [23.5, 0.1549],
-                                        [23.7969, 0.1515],
-                                        [24.093, 0.1477],
-                                        [24.3907, 0.1444],
-                                        [24.6922, 0.1424],
-                                        [25, 0.1426],
-                                        [25.3196, 0.1454],
-                                        [25.6388, 0.1498],
-                                        [25.9481, 0.1544],
-                                        [26.2383, 0.1575],
-                                        [26.5, 0.1579],
-                                        [26.8171, 0.1518],
-                                        [27.0909, 0.14],
-                                        [27.3562, 0.1258],
-                                        [27.6477, 0.1122],
-                                        [28, 0.1025],
-                                        [28.189, 0.1001],
-                                        [28.3907, 0.0986],
-                                        [28.5979, 0.0975],
-                                        [28.8034, 0.0963],
-                                        [29, 0.0945],
-                                        [29.2983, 0.0889],
-                                        [29.5488, 0.0807],
-                                        [29.75, 0.0705],
-                                        [29.9009, 0.0592],
-                                        [30, 0.0473],
-                                        [30.001, 0.0376],
-                                        [30.001, 0.0281],
-                                        [30.001, 0.0187],
-                                        [30.001, 0.0093],
-                                        [30.001, 0]
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "label": "cI<sup>1/2</sup>}",
+                            "label": "cI<sup>1/2</sup>",
                             "unit": "m<sup>1/2</sup>/s",
                             "plots": [
                                 {
@@ -731,7 +609,129 @@
                             ]
                         },
                         {
-                            "label": "h@<sup>3/2</sup>",
+                            "label": "v<sub>m</sub>",
+                            "unit": "m/s",
+                            "plots": [
+                                {
+                                    "label": "v<sub>m</sub> [m/s]",
+                                    "data": [
+                                        [1.999, 0],
+                                        [1.999, 0.0023],
+                                        [1.999, 0.0046],
+                                        [1.999, 0.0068],
+                                        [1.999, 0.0088],
+                                        [2, 0.0105],
+                                        [2.1068, 0.0148],
+                                        [2.2923, 0.017],
+                                        [2.5244, 0.0182],
+                                        [2.7709, 0.0193],
+                                        [3, 0.0211],
+                                        [3.3539, 0.03],
+                                        [3.5502, 0.0439],
+                                        [3.6696, 0.0603],
+                                        [3.7926, 0.0764],
+                                        [4, 0.0895],
+                                        [4.2283, 0.0956],
+                                        [4.5143, 0.0998],
+                                        [4.8362, 0.1027],
+                                        [5.172, 0.1051],
+                                        [5.5, 0.1078],
+                                        [5.845, 0.112],
+                                        [6.1591, 0.1176],
+                                        [6.4507, 0.1246],
+                                        [6.7283, 0.1329],
+                                        [7, 0.1426],
+                                        [7.2855, 0.1539],
+                                        [7.5761, 0.1651],
+                                        [7.8739, 0.1746],
+                                        [8.1811, 0.1807],
+                                        [8.5, 0.1819],
+                                        [8.7986, 0.178],
+                                        [9.1032, 0.171],
+                                        [9.4085, 0.1631],
+                                        [9.7092, 0.1565],
+                                        [10, 0.1535],
+                                        [10.2986, 0.1559],
+                                        [10.5887, 0.1629],
+                                        [10.8795, 0.1724],
+                                        [11.1802, 0.1821],
+                                        [11.5, 0.1899],
+                                        [11.7764, 0.1937],
+                                        [12.0679, 0.1953],
+                                        [12.3712, 0.1951],
+                                        [12.683, 0.1936],
+                                        [13, 0.1912],
+                                        [13.3206, 0.1883],
+                                        [13.637, 0.1855],
+                                        [13.9431, 0.1837],
+                                        [14.2329, 0.1834],
+                                        [14.5, 0.1854],
+                                        [14.8199, 0.1923],
+                                        [15.1087, 0.2025],
+                                        [15.3875, 0.2138],
+                                        [15.6776, 0.224],
+                                        [16, 0.2309],
+                                        [16.2701, 0.2329],
+                                        [16.5624, 0.2325],
+                                        [16.8697, 0.2305],
+                                        [17.1846, 0.2276],
+                                        [17.5, 0.2245],
+                                        [17.826, 0.2215],
+                                        [18.1416, 0.2187],
+                                        [18.4443, 0.2155],
+                                        [18.7313, 0.2116],
+                                        [19, 0.2066],
+                                        [19.3049, 0.1986],
+                                        [19.5927, 0.1893],
+                                        [19.878, 0.1799],
+                                        [20.1755, 0.1714],
+                                        [20.5, 0.1648],
+                                        [20.7747, 0.1616],
+                                        [21.068, 0.1599],
+                                        [21.374, 0.1592],
+                                        [21.6866, 0.1592],
+                                        [22, 0.1594],
+                                        [22.3087, 0.1595],
+                                        [22.6126, 0.1594],
+                                        [22.9122, 0.1587],
+                                        [23.2078, 0.1572],
+                                        [23.5, 0.1549],
+                                        [23.7969, 0.1515],
+                                        [24.093, 0.1477],
+                                        [24.3907, 0.1444],
+                                        [24.6922, 0.1424],
+                                        [25, 0.1426],
+                                        [25.3196, 0.1454],
+                                        [25.6388, 0.1498],
+                                        [25.9481, 0.1544],
+                                        [26.2383, 0.1575],
+                                        [26.5, 0.1579],
+                                        [26.8171, 0.1518],
+                                        [27.0909, 0.14],
+                                        [27.3562, 0.1258],
+                                        [27.6477, 0.1122],
+                                        [28, 0.1025],
+                                        [28.189, 0.1001],
+                                        [28.3907, 0.0986],
+                                        [28.5979, 0.0975],
+                                        [28.8034, 0.0963],
+                                        [29, 0.0945],
+                                        [29.2983, 0.0889],
+                                        [29.5488, 0.0807],
+                                        [29.75, 0.0705],
+                                        [29.9009, 0.0592],
+                                        [30, 0.0473],
+                                        [30.001, 0.0376],
+                                        [30.001, 0.0281],
+                                        [30.001, 0.0187],
+                                        [30.001, 0.0093],
+                                        [30.001, 0]
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "h<sup>3/2</sup>",
                             "unit": "m<sup>3/2<sup>",
                             "plots": [
                                 {
@@ -869,30 +869,53 @@
 
         self.DisplayHighChart = function () {
             const dataJSON = w7cData.charts[0].xaxis[0].yaxis;
-            let values = [];
-            let skipIndex = [];
+            const configJSON = w7cConfig.charts[0].xaxis[0].yaxis;
+            let seriesValues = [];
 
             for (let i = 0; i < dataJSON.length; i++) {
+
                 if (dataJSON[i].plots.length <= 1) {
-                    values.push({
-                        name: dataJSON[i].label + " [" + dataJSON[i].unit + "]",
-                        data: dataJSON[i].plots[0].data,
+                    seriesValues.push({
+                        name: dataJSON[i].label + " [" + dataJSON[i].unit + "]" || "",
+                        data: dataJSON[i].plots[0].data || [],
+                        dashStyle: configJSON[i].plots[0].lineStyle || "solid",
+                        color: configJSON[i].plots[0].lineColor || "#000",
+                        lineWidth: configJSON[i].plots[0].lineSize || "2",
+                        enableMouseTracking: configJSON[i].plots[0].flyover || true,
+                        showInLegend: configJSON[i].plots[0].flyover || true,
+                        marker: {
+                            radius: configJSON[i].plots[0].symbolSize || 0,
+                            symbol: configJSON[i].plots[0].symbolStyle || "circle",
+                            fillColor: configJSON[i].plots[0].symbolFillColor || "#000"
+                        }
                     })
                 } else {
-                    skipIndex.push(i);
+                    for (let j = 0; j < dataJSON[i].plots.length; j++) {
+                        seriesValues.push({
+                            name: dataJSON[i].plots[j].label || "",
+                            data: dataJSON[i].plots[j].data || [],
+                            dashStyle: configJSON[i].plots[j].lineStyle || "solid",
+                            color: configJSON[i].plots[j].lineColor || "#000",
+                            lineWidth: configJSON[i].plots[j].lineSize || 2,
+                            enableMouseTracking: configJSON[i].plots[j].flyover || true,
+                            showInLegend: configJSON[i].plots[j].flyover || true,
+                            marker: {
+                                radius: configJSON[i].plots[j].symbolSize || 0,
+                                symbol: configJSON[i].plots[j].symbolStyle || "circle",
+                                fillColor: configJSON[i].plots[j].symbolFillColor || "#000"
+                            }
+                        })
+                    }
                 }
             }
 
-            for (let j = 0; j < skipIndex.length; j++) {
-                for (let k = 0; k < dataJSON[skipIndex[j]].plots.length; k++) {
-                    values.push({
-                        name: dataJSON[skipIndex[j]].plots[k].label,
-                        data: dataJSON[skipIndex[j]].plots[k].data,
-                    })
-                }
-
+            // yAxis anchor for series
+            for (let i = 0; i < seriesValues.length; i++) {
+                seriesValues[i].yAxis = i;
             }
-            console.log(values);
+
+            console.log(configJSON);
+            console.log(seriesValues);
 
             // Chart elem & config
             let chartElem = 'container';
@@ -926,7 +949,7 @@
                     align: "left",
                     verticalAlign: "bottom",
                     floating: true,
-                    y: 0,
+                    y: 10,
                     x: 80,
                     borderColor: "#000000",
                     borderWidth: 1,
@@ -995,98 +1018,6 @@
                         lineColor: '#000',
                         top: '0%',
                         height: '50%',
-                    },
-
-                    // yAxis for vm [m/s]
-                    {
-                        lineWidth: 1,
-                        opposite: true,
-                        title: {
-                            useHTML: true,
-                            text: "v<sub>m</sub> [m/s]",
-                            align: "high",
-                            rotation: 0,
-                            offset: 10,
-                            y: 0
-                        },
-                        showFirstLabel: true,
-                        showLastLabel: false,
-                        lineColor: '#000',
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                return this.value.toFixed(2)
-                            }
-                        },
-                        gridLineColor: 'rgba(0,0,0,0)',
-                        margin: 15,
-                        tickInterval: 0.1,
-                        tickLength: 10,
-                        tickWidth: 1,
-                        tickColor: '#000',
-                        top: '0%',
-                        height: '50%',
-                    },
-
-                    // yAxis for cI1/2 [m1/2/2]
-                    {
-                        lineWidth: 1,
-                        opposite: true,
-                        title: {
-                            useHTML: true,
-                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
-                            align: "high",
-                            rotation: 0,
-                            offset: 15
-                        },
-                        showFirstLabel: true,
-                        showLastLabel: false,
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                return this.value.toFixed(1)
-                            }
-                        },
-                        gridLineColor: 'rgba(0,0,0,0)',
-                        tickInterval: 0.2,
-                        tickLength: 10,
-                        tickWidth: 1,
-                        tickColor: '#000',
-                        lineColor: '#000',
-                        top: '0%',
-                        height: '50%',
-                    },
-
-                    // yAxis for h3/2 [m3/2]
-                    {
-                        lineWidth: 1,
-                        opposite: true,
-                        title: {
-                            useHTML: true,
-                            text: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
-                            align: "low",
-                            rotation: 0,
-                            offset: 0,
-                            y: 0,
-                            x: 80
-                        },
-                        showFirstLabel: false,
-                        showLastLabel: false,
-                        lineColor: '#000',
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                return this.value.toFixed(2)
-                            }
-                        },
-                        gridLineColor: 'rgba(0,0,0,0)',
-                        tickLength: 10,
-                        tickWidth: 1,
-                        tickColor: '#000',
-                        offset: 0,
-                        top: '50%',
-                        height: '50%',
-                        reversed: true
                     },
 
                     // yAxis for h[m]
@@ -1159,144 +1090,102 @@
                         top: '50%',
                         height: '50%',
                         reversed: true
-                    }
+                    },
+
+                    // yAxis for cI1/2 [m1/2/2]
+                    {
+                        lineWidth: 1,
+                        opposite: true,
+                        title: {
+                            useHTML: true,
+                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
+                            align: "high",
+                            rotation: 0,
+                            offset: 15
+                        },
+                        showFirstLabel: true,
+                        showLastLabel: false,
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                return this.value.toFixed(1)
+                            }
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        tickInterval: 0.2,
+                        tickLength: 10,
+                        tickWidth: 1,
+                        tickColor: '#000',
+                        lineColor: '#000',
+                        top: '0%',
+                        height: '50%',
+                    },
+
+                    // yAxis for vm [m/s]
+                    {
+                        lineWidth: 1,
+                        opposite: true,
+                        title: {
+                            useHTML: true,
+                            text: "v<sub>m</sub> [m/s]",
+                            align: "high",
+                            rotation: 0,
+                            offset: 10,
+                            y: 0
+                        },
+                        showFirstLabel: true,
+                        showLastLabel: false,
+                        lineColor: '#000',
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                return this.value.toFixed(2)
+                            }
+                        },
+                        margin: 15,
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        tickInterval: 0.1,
+                        tickLength: 10,
+                        tickWidth: 1,
+                        tickColor: '#000',
+                        top: '0%',
+                        height: '50%',
+                    },
+
+                    // yAxis for h3/2 [m3/2]
+                    {
+                        lineWidth: 1,
+                        opposite: true,
+                        title: {
+                            useHTML: true,
+                            text: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
+                            align: "low",
+                            rotation: 0,
+                            offset: 0,
+                            y: 0,
+                            x: 80
+                        },
+                        showFirstLabel: false,
+                        showLastLabel: false,
+                        lineColor: '#000',
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                return this.value.toFixed(2)
+                            }
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        tickLength: 10,
+                        tickWidth: 1,
+                        tickColor: '#000',
+                        offset: 0,
+                        top: '50%',
+                        height: '50%',
+                        reversed: true
+                    },
                 ],
 
-                series: values,
-
-                // series: [
-                //     // qi/q [%]
-                //     {
-                //         className: 'chart-01',
-                //         name: "q<sub>i</sub>/q [%]",
-                //         data: values[0].plots[0].data,
-                //         type: "line",
-                //         step: 'center',
-                //         color: '#000000',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         tooltip: {
-                //             valueSuffix: "[%]"
-                //         }
-                //     },
-                //
-                //     // cI 1/2 [m1/2/2]
-                //     {
-                //         className: 'chart-03',
-                //         name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
-                //         data: chart03data,
-                //         yAxis: 1,
-                //         type: 'spline',
-                //         dashStyle: 'LongDash',
-                //         color: '#f88',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         tooltip: {
-                //             valueSuffix: "[m<sup>1/2</sup>/s]"
-                //         }
-                //     },
-                //
-                //     // vm [m/s]
-                //     {
-                //         className: 'chart-02',
-                //         name: "v<sub>m</sub> [m/s]",
-                //         data: chart02data,
-                //         yAxis: 2,
-                //         type: 'spline',
-                //         color: '#ff82fe',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         tooltip: {
-                //             valueSuffix: "[m/s]"
-                //         }
-                //     },
-                //
-                //     // h3/2 [m3/2]
-                //     {
-                //         className: 'chart-04',
-                //         name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
-                //         data: chart04data,
-                //         yAxis: 3,
-                //         type: 'spline',
-                //         color: '#ffaeae',
-                //         dashStyle: 'ShortDot',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         tooltip: {
-                //             valueSuffix: "[m<sup>3/2</sup>]"
-                //         }
-                //     },
-                //
-                //     // h[m]
-                //     {
-                //         className: 'chart-04',
-                //         name: "h [m]",
-                //         data: chart05data,
-                //         yAxis: 4,
-                //         type: 'line',
-                //         color: '#f0a511',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         tooltip: {
-                //             valueSuffix: "[m]"
-                //         }
-                //     },
-                //
-                //     // Observation
-                //     {
-                //         name: "Observation",
-                //         data: chart06data,
-                //         yAxis: 5,
-                //         zIndex: 10,
-                //         lineColor: 'rgba(0, 0, 0, 0)',
-                //         marker: {
-                //             fillColor: 'rgba(0, 150, 0, 1)',
-                //             symbol: "triangle-down",
-                //             enabled: true,
-                //             radius: 5
-                //         },
-                //         tooltip: {
-                //             valueSuffix: ""
-                //         }
-                //     },
-                //
-                //     // Surface
-                //     {
-                //         name: "Surface",
-                //         data: chart07data,
-                //         yAxis: 6,
-                //         color: '#8d8dff',
-                //         zIndex: -1,
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         states: {
-                //             hover: false
-                //         },
-                //         enableMouseTracking: false
-                //     },
-                //
-                //     // Verticals
-                //     {
-                //         name: "",
-                //         showInLegend: false,
-                //         type: 'column',
-                //         pointWidth: 1,
-                //         data: chart08data,
-                //         yAxis: 7,
-                //         color: 'rgba(0,0,0,.5)',
-                //         marker: {
-                //             enabled: false
-                //         },
-                //         zIndex: -2,
-                //         enableMouseTracking: false
-                //     }
-                // ]
+                series: seriesValues
             };
 
             chart = Highcharts.chart(chartElem, chartConf);
