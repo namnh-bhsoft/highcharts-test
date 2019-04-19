@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test X&Y arbitrary count</title>
+    <title>Final issue #1</title>
     <style>
         #container {
             overflow: visible !important;
@@ -31,9 +31,7 @@
 <!-- optional -->
 <script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
 <script src="http://code.highcharts.com/modules/export-data.js"></script>
-<!--<script src="jslibrary/plugins/tick_positioner.js"></script>-->
 <script>
-
     const w7cConfig = {
         "columncount": 1,
         "rowcount": 1,
@@ -215,7 +213,6 @@
             }
         ]
     };
-
     const w7cData = {
         "charts": [{
             "column": 0,
@@ -871,30 +868,31 @@
         };
 
         self.DisplayHighChart = function () {
-            let values = [];
             const dataJSON = w7cData.charts[0].xaxis[0].yaxis;
-            console.log(dataJSON);
+            let values = [];
+            let skipIndex = [];
+
             for (let i = 0; i < dataJSON.length; i++) {
-                values[i].push({
-                    data: dataJSON[i].plots[0].data,
-                    name: dataJSON[i].label + " [" + dataJSON[i].unit + "]",
-                })
+                if (dataJSON[i].plots.length <= 1) {
+                    values.push({
+                        name: dataJSON[i].label + " [" + dataJSON[i].unit + "]",
+                        data: dataJSON[i].plots[0].data,
+                    })
+                } else {
+                    skipIndex.push(i);
+                }
             }
 
-            // Chart data of vm m/s
-            let chart02data = values[2].plots[0].data;
-            // Chart data of cI1/2
-            let chart03data = values[3].plots[0].data;
-            // Chart data of h3/2 [m3/2]
-            let chart04data = values[4].plots[0].data;
-            // Chart data of h[m]
-            let chart05data = values[1].plots[0].data;
-            // Chart data of Observations
-            let chart06data = values[1].plots[2].data;
-            // Chart data of Surfaces
-            let chart07data = values[1].plots[1].data;
-            // Chart data of Verticals
-            let chart08data = values[1].plots[3].data;
+            for (let j = 0; j < skipIndex.length; j++) {
+                for (let k = 0; k < dataJSON[skipIndex[j]].plots.length; k++) {
+                    values.push({
+                        name: dataJSON[skipIndex[j]].plots[k].label,
+                        data: dataJSON[skipIndex[j]].plots[k].data,
+                    })
+                }
+
+            }
+            console.log(values);
 
             // Chart elem & config
             let chartElem = 'container';
@@ -918,7 +916,7 @@
                     useHTML: true,
                     formatter: function () {
                         return `<strong>${this.series.name}</strong></br>
-                                Value at <strong>${this.x}</strong> d[m] : ${this.y.toFixed(2)} ${this.series.userOptions.tooltip.valueSuffix}`;
+                                Value at <strong>${this.x}</strong> d[m] : ${this.y.toFixed(2)}`;
                     }
                 },
 
@@ -999,35 +997,6 @@
                         height: '50%',
                     },
 
-                    // yAxis for cI1/2 [m1/2/2]
-                    {
-                        lineWidth: 1,
-                        opposite: true,
-                        title: {
-                            useHTML: true,
-                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
-                            align: "high",
-                            rotation: 0,
-                            offset: 15
-                        },
-                        showFirstLabel: true,
-                        showLastLabel: false,
-                        labels: {
-                            useHTML: true,
-                            formatter: function () {
-                                return this.value.toFixed(1)
-                            }
-                        },
-                        gridLineColor: 'rgba(0,0,0,0)',
-                        tickInterval: 0.2,
-                        tickLength: 10,
-                        tickWidth: 1,
-                        tickColor: '#000',
-                        lineColor: '#000',
-                        top: '0%',
-                        height: '50%',
-                    },
-
                     // yAxis for vm [m/s]
                     {
                         lineWidth: 1,
@@ -1055,6 +1024,35 @@
                         tickLength: 10,
                         tickWidth: 1,
                         tickColor: '#000',
+                        top: '0%',
+                        height: '50%',
+                    },
+
+                    // yAxis for cI1/2 [m1/2/2]
+                    {
+                        lineWidth: 1,
+                        opposite: true,
+                        title: {
+                            useHTML: true,
+                            text: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
+                            align: "high",
+                            rotation: 0,
+                            offset: 15
+                        },
+                        showFirstLabel: true,
+                        showLastLabel: false,
+                        labels: {
+                            useHTML: true,
+                            formatter: function () {
+                                return this.value.toFixed(1)
+                            }
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        tickInterval: 0.2,
+                        tickLength: 10,
+                        tickWidth: 1,
+                        tickColor: '#000',
+                        lineColor: '#000',
                         top: '0%',
                         height: '50%',
                     },
@@ -1122,6 +1120,19 @@
                         reversed: true
                     },
 
+                    // yAxis for Surface
+                    {
+                        title: "",
+                        lineColor: 'rgba(0, 0, 0, 0)',
+                        lineWidth: 1,
+                        labels: {
+                            enabled: false
+                        },
+                        gridLineColor: 'rgba(0,0,0,0)',
+                        top: '50%',
+                        height: '0%',
+                    },
+
                     // yAxis for Observation
                     {
                         title: "",
@@ -1134,19 +1145,6 @@
                         top: '50%',
                         height: '50%',
                         reversed: true,
-                    },
-
-                    // yAxis for Surface
-                    {
-                        title: "",
-                        lineColor: 'rgba(0, 0, 0, 0)',
-                        lineWidth: 1,
-                        labels: {
-                            enabled: false
-                        },
-                        gridLineColor: 'rgba(0,0,0,0)',
-                        top: '50%',
-                        height: '0%',
                     },
 
                     // yAxis for Verticals
@@ -1164,139 +1162,141 @@
                     }
                 ],
 
-                series: [
-                    // qi/q [%]
-                    {
-                        className: 'chart-01',
-                        name: "q<sub>i</sub>/q [%]",
-                        data: values[0].plots[0].data,
-                        type: "line",
-                        step: 'center',
-                        color: '#000000',
-                        marker: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            valueSuffix: "[%]"
-                        }
-                    },
+                series: values,
 
-                    // cI 1/2 [m1/2/2]
-                    {
-                        className: 'chart-03',
-                        name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
-                        data: chart03data,
-                        yAxis: 1,
-                        type: 'spline',
-                        dashStyle: 'LongDash',
-                        color: '#f88',
-                        marker: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            valueSuffix: "[m<sup>1/2</sup>/s]"
-                        }
-                    },
-
-                    // vm [m/s]
-                    {
-                        className: 'chart-02',
-                        name: "v<sub>m</sub> [m/s]",
-                        data: chart02data,
-                        yAxis: 2,
-                        type: 'spline',
-                        color: '#ff82fe',
-                        marker: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            valueSuffix: "[m/s]"
-                        }
-                    },
-
-                    // h3/2 [m3/2]
-                    {
-                        className: 'chart-04',
-                        name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
-                        data: chart04data,
-                        yAxis: 3,
-                        type: 'spline',
-                        color: '#ffaeae',
-                        dashStyle: 'ShortDot',
-                        marker: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            valueSuffix: "[m<sup>3/2</sup>]"
-                        }
-                    },
-
-                    // h[m]
-                    {
-                        className: 'chart-04',
-                        name: "h [m]",
-                        data: chart05data,
-                        yAxis: 4,
-                        type: 'line',
-                        color: '#f0a511',
-                        marker: {
-                            enabled: false
-                        },
-                        tooltip: {
-                            valueSuffix: "[m]"
-                        }
-                    },
-
-                    // Observation
-                    {
-                        name: "Observation",
-                        data: chart06data,
-                        yAxis: 5,
-                        zIndex: 10,
-                        lineColor: 'rgba(0, 0, 0, 0)',
-                        marker: {
-                            fillColor: 'rgba(0, 150, 0, 1)',
-                            symbol: "triangle-down",
-                            enabled: true,
-                            radius: 5
-                        },
-                        tooltip: {
-                            valueSuffix: ""
-                        }
-                    },
-
-                    // Surface
-                    {
-                        name: "Surface",
-                        data: chart07data,
-                        yAxis: 6,
-                        color: '#8d8dff',
-                        zIndex: -1,
-                        marker: {
-                            enabled: false
-                        },
-                        states: {
-                            hover: false
-                        },
-                        enableMouseTracking: false
-                    },
-
-                    // Verticals
-                    {
-                        name: "",
-                        showInLegend: false,
-                        type: 'column',
-                        pointWidth: 1,
-                        data: chart08data,
-                        yAxis: 7,
-                        color: 'rgba(0,0,0,.5)',
-                        marker: {
-                            enabled: false
-                        },
-                        zIndex: -2,
-                        enableMouseTracking: false
-                    }
-                ]
+                // series: [
+                //     // qi/q [%]
+                //     {
+                //         className: 'chart-01',
+                //         name: "q<sub>i</sub>/q [%]",
+                //         data: values[0].plots[0].data,
+                //         type: "line",
+                //         step: 'center',
+                //         color: '#000000',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         tooltip: {
+                //             valueSuffix: "[%]"
+                //         }
+                //     },
+                //
+                //     // cI 1/2 [m1/2/2]
+                //     {
+                //         className: 'chart-03',
+                //         name: "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
+                //         data: chart03data,
+                //         yAxis: 1,
+                //         type: 'spline',
+                //         dashStyle: 'LongDash',
+                //         color: '#f88',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         tooltip: {
+                //             valueSuffix: "[m<sup>1/2</sup>/s]"
+                //         }
+                //     },
+                //
+                //     // vm [m/s]
+                //     {
+                //         className: 'chart-02',
+                //         name: "v<sub>m</sub> [m/s]",
+                //         data: chart02data,
+                //         yAxis: 2,
+                //         type: 'spline',
+                //         color: '#ff82fe',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         tooltip: {
+                //             valueSuffix: "[m/s]"
+                //         }
+                //     },
+                //
+                //     // h3/2 [m3/2]
+                //     {
+                //         className: 'chart-04',
+                //         name: "h<sup>3/2</sup> [m<sup>3/2</sup>]",
+                //         data: chart04data,
+                //         yAxis: 3,
+                //         type: 'spline',
+                //         color: '#ffaeae',
+                //         dashStyle: 'ShortDot',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         tooltip: {
+                //             valueSuffix: "[m<sup>3/2</sup>]"
+                //         }
+                //     },
+                //
+                //     // h[m]
+                //     {
+                //         className: 'chart-04',
+                //         name: "h [m]",
+                //         data: chart05data,
+                //         yAxis: 4,
+                //         type: 'line',
+                //         color: '#f0a511',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         tooltip: {
+                //             valueSuffix: "[m]"
+                //         }
+                //     },
+                //
+                //     // Observation
+                //     {
+                //         name: "Observation",
+                //         data: chart06data,
+                //         yAxis: 5,
+                //         zIndex: 10,
+                //         lineColor: 'rgba(0, 0, 0, 0)',
+                //         marker: {
+                //             fillColor: 'rgba(0, 150, 0, 1)',
+                //             symbol: "triangle-down",
+                //             enabled: true,
+                //             radius: 5
+                //         },
+                //         tooltip: {
+                //             valueSuffix: ""
+                //         }
+                //     },
+                //
+                //     // Surface
+                //     {
+                //         name: "Surface",
+                //         data: chart07data,
+                //         yAxis: 6,
+                //         color: '#8d8dff',
+                //         zIndex: -1,
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         states: {
+                //             hover: false
+                //         },
+                //         enableMouseTracking: false
+                //     },
+                //
+                //     // Verticals
+                //     {
+                //         name: "",
+                //         showInLegend: false,
+                //         type: 'column',
+                //         pointWidth: 1,
+                //         data: chart08data,
+                //         yAxis: 7,
+                //         color: 'rgba(0,0,0,.5)',
+                //         marker: {
+                //             enabled: false
+                //         },
+                //         zIndex: -2,
+                //         enableMouseTracking: false
+                //     }
+                // ]
             };
 
             chart = Highcharts.chart(chartElem, chartConf);
@@ -1307,7 +1307,7 @@
         let highchart = new highchart_test();
         highchart.Init();
     });
-
 </script>
+
 </body>
 </html>
