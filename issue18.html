@@ -278,7 +278,7 @@
                     },
                     series: values
                 });
-            }
+            };
 
             self.ConfigLineSymbol = function () {
                 $('#SelectPlot').empty()
@@ -306,7 +306,7 @@
                 var menuContext = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var menuContexSeparator = {
                     separator: true
-                }
+                };
                 menuContext.splice(2, 0, menuContexSeparator);
 
                 var menuConfigChart = {
@@ -512,7 +512,6 @@
 
                     $.each(chart.series, function (j, series) {
                         $.each(storeLineSymbolConfig, function (jj, value) {
-                            debugger;
                             if (series.name === value.name) {
                                 // plot visible
                                 series.setVisible(value.visible, value.visible);
@@ -550,7 +549,6 @@
 
                     $.each(chart.series, function (j, series) {
                         $.each(storeLineSymbolConfig, function (jj, value) {
-                            debugger
                             if (series.name === value.name) {
                                 // plot visible
                                 series.setVisible(value.visible, value.visible);
@@ -609,7 +607,7 @@
                     yAxis: {
                         offset: parseInt($('#txtyAxistOffset').val())
                     }
-                })
+                });
                 $("#modal_config_chartmargin").modal("hide");
             });
         }
