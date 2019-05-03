@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>High Chart - Tiled layout should be available</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script charset="UTF-8" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script charset="UTF-8" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/highcharts.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <style>
+        .highcharts-menu hr {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+    <script>
+        var w7cConfig = {
+            "columncount": 3,
+            "rowcount": 2,
+            "locale": "en",
+            "charts": [{
+                "column": 0,
+                "row": 0,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "plotconfiguration": true,
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 1,
+                "row": 0,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 2,
+                "row": 0,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 0,
+                "row": 1,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 1,
+                "row": 1,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 2,
+                "row": 1,
+                "type": "regular",
+                "legend": {
+                    "visible": false,
+                    "floating": true,
+                    "layout": "vertical",
+                    "hAlign": "center",
+                    "vAlign": "middle",
+                    "padding": 20,
+                    "margin": 20,
+                    "bordersize": 1,
+                    "xpos": 0,
+                    "ypos": 0
+                },
+                "mainlayer": {
+                    "borderSize": 0,
+                    "borderColor": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                    },
+                    "leftMargin": 170,
+                    "rightMargin": 170,
+                    "topMargin": 100,
+                    "bottomMargin": 270
+                },
+                "xaxis": [{
+                    "label": "v",
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "middle",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "fixed",
+                    "min": 0,
+                    "max": 0.2895110808632791,
+                    "yaxis": [{
+                        "position": {
+                            "opposite": false,
+                            "reversed": false,
+                            "top": 0,
+                            "height": 100
+                        },
+                        "title": {
+                            "visible": true,
+                            "ticks": true,
+                            "rotation": 0,
+                            "align": "high",
+                            "xoffset": 0,
+                            "yoffset": 0
+                        },
+                        "scale": "fixed",
+                        "label": "h",
+                        "reversed": false,
+                        "min": 0,
+                        "max": 0.814,
+                        "plots": [{
+                            "label": "Observations",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": null,
+                            "lineSize": 0,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "square",
+                            "symbolSize": 2
+                        },
+                        {
+                            "label": "---",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Surface",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 46,
+                                "g": 139,
+                                "b": 85,
+                                "a": 0.8
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0.8
+                            },
+                            "symbolStyle": "circle",
+                            "symbolSize": 0
+                        }]
+                    }]
+                }]
+            }]
+        }
+
+        var w7cData = {
+            "charts": [{
+                "column": 0,
+                "row": 0,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.0211,
+                                0.148]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.148],
+                            [0.0211,
+                                0.148],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.02405088313010429,
+                                0.37],
+                            [0,
+                                0.37]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.02405088313010429,
+                                0.37],
+                            [0.02387529167342448,
+                                0.3515],
+                            [0.02369159192806393,
+                                0.333],
+                            [0.023498926201097,
+                                0.3145],
+                            [0.02329628873851744,
+                                0.296],
+                            [0.02308248898682747,
+                                0.2775],
+                            [0.02285610258060383,
+                                0.259],
+                            [0.02261540474313703,
+                                0.2405],
+                            [0.02235827787827472,
+                                0.222],
+                            [0.02208208023785008,
+                                0.2035],
+                            [0.02178345399738104,
+                                0.185],
+                            [0.02145803545333125,
+                                0.1665],
+                            [0.0211,
+                                0.148],
+                            [0.02070131298009623,
+                                0.1295],
+                            [0.02025042136654163,
+                                0.111],
+                            [0.0197297897748322,
+                                0.0925],
+                            [0.01911076931596843,
+                                0.074],
+                            [0.01834128584299219,
+                                0.0555],
+                            [0.01730907601176116,
+                                0.037],
+                            [0.01567723975039481,
+                                0.0185],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 1,
+                "row": 0,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.0895,
+                                0.224]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.224],
+                            [0.0895,
+                                0.224],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.10201677915376,
+                                0.56],
+                            [0,
+                                0.56]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.10201677915376,
+                                0.56],
+                            [0.1012719717901181,
+                                0.532],
+                            [0.1004927714484228,
+                                0.504],
+                            [0.09967554004730714,
+                                0.476],
+                            [0.09881601147380621,
+                                0.448],
+                            [0.09790913574981318,
+                                0.42],
+                            [0.09694887113573661,
+                                0.392],
+                            [0.09592790163558124,
+                                0.364],
+                            [0.09483724502870083,
+                                0.336],
+                            [0.09366569579561998,
+                                0.308],
+                            [0.09239901103154515,
+                                0.28],
+                            [0.09101868118830081,
+                                0.252],
+                            [0.0895,
+                                0.224],
+                            [0.08780888681130866,
+                                0.196],
+                            [0.08589633707608889,
+                                0.168],
+                            [0.08368797084585222,
+                                0.14],
+                            [0.08106226795161965,
+                                0.112],
+                            [0.07779834516340288,
+                                0.084],
+                            [0.0734200143626836,
+                                0.056],
+                            [0.06649824443887845,
+                                0.028],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 2,
+                "row": 0,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.1078,
+                                0.232]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.232],
+                            [0.1078,
+                                0.232],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.1228760758969309,
+                                0.58],
+                            [0,
+                                0.58]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.1228760758969309,
+                                0.58],
+                            [0.1219789783125668,
+                                0.551],
+                            [0.1210404554429048,
+                                0.522],
+                            [0.120056125330723,
+                                0.493],
+                            [0.119020849574037,
+                                0.464],
+                            [0.1179285456293839,
+                                0.435],
+                            [0.116771936407066,
+                                0.406],
+                            [0.1155422100147,
+                                0.377],
+                            [0.1142285476435078,
+                                0.348],
+                            [0.1128174525895847,
+                                0.319],
+                            [0.1112917697117382,
+                                0.29],
+                            [0.10962920482792,
+                                0.261],
+                            [0.1078,
+                                0.232],
+                            [0.1057631061257997,
+                                0.203],
+                            [0.1034594987352221,
+                                0.174],
+                            [0.1007995894657304,
+                                0.145],
+                            [0.09763701100764914,
+                                0.116],
+                            [0.09370571629737241,
+                                0.087],
+                            [0.08843215137762336,
+                                0.058],
+                            [0.08009509218448152,
+                                0.029],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 0,
+                "row": 1,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.1426,
+                                0.24]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.24],
+                            [0.1426,
+                                0.24],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.1625429352773873,
+                                0.6],
+                            [0,
+                                0.6]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.1625429352773873,
+                                0.6],
+                            [0.1613562366175513,
+                                0.57],
+                            [0.1601147397602803,
+                                0.54],
+                            [0.1588126481647597,
+                                0.51],
+                            [0.1574431646498856,
+                                0.48],
+                            [0.1559982431052889,
+                                0.45],
+                            [0.1544682572509055,
+                                0.42],
+                            [0.1528415505389261,
+                                0.39],
+                            [0.1511038116323211,
+                                0.36],
+                            [0.1492371868207308,
+                                0.33],
+                            [0.1472189829396463,
+                                0.3],
+                            [0.1450197087983429,
+                                0.27],
+                            [0.1426,
+                                0.24],
+                            [0.13990555596975,
+                                0.21],
+                            [0.136858297955869,
+                                0.18],
+                            [0.133339716677302,
+                                0.15],
+                            [0.1291561945240331,
+                                0.12],
+                            [0.1239557991095112,
+                                0.09],
+                            [0.1169798217666892,
+                                0.06],
+                            [0.1059513928154644,
+                                0.03],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 1,
+                "row": 1,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.1819,
+                                0.256]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.256],
+                            [0.1819,
+                                0.256],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.2073391299225579,
+                                0.64],
+                            [0,
+                                0.64]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.2073391299225579,
+                                0.64],
+                            [0.2058253817723182,
+                                0.608],
+                            [0.2042417332566269,
+                                0.576],
+                            [0.202580790330784,
+                                0.544],
+                            [0.2008338825372665,
+                                0.512],
+                            [0.1989907462892851,
+                                0.48],
+                            [0.1970391023417932,
+                                0.448],
+                            [0.1949640816481813,
+                                0.416],
+                            [0.1927474287231361,
+                                0.384],
+                            [0.1903663694438355,
+                                0.352],
+                            [0.1877919564987493,
+                                0.32],
+                            [0.1849865710408035,
+                                0.288],
+                            [0.1819,
+                                0.256],
+                            [0.1784629777762798,
+                                0.224],
+                            [0.174575907420565,
+                                0.192],
+                            [0.1700876189593354,
+                                0.16],
+                            [0.1647511345296046,
+                                0.128],
+                            [0.1581175305611507,
+                                0.096],
+                            [0.1492190012577894,
+                                0.064],
+                            [0.1351511805970055,
+                                0.032],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            },
+            {
+                "column": 2,
+                "row": 1,
+                "title": null,
+                "subtitle": null,
+                "xaxis": [{
+                    "label": "v",
+                    "unit": "m/s",
+                    "yaxis": [{
+                        "label": "h",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Observations",
+                            "data": [[0.1535,
+                                0.272]]
+                        },
+                        {
+                            "label": "---",
+                            "data": [[0,
+                                0.272],
+                            [0.1535,
+                                0.272],
+                            [null,
+                                null]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": [[0.1749673251408061,
+                                0.68],
+                            [0,
+                                0.68]]
+                        },
+                        {
+                            "label": "Velocity profile",
+                            "data": [[0.1749673251408061,
+                                0.68],
+                            [0.1736899180981354,
+                                0.646],
+                            [0.17235352421601,
+                                0.612],
+                            [0.1709519038800184,
+                                0.578],
+                            [0.1694777403489302,
+                                0.544],
+                            [0.1679223724871097,
+                                0.51],
+                            [0.1662754382048667,
+                                0.476],
+                            [0.1645243899559969,
+                                0.442],
+                            [0.1626538224793919,
+                                0.408],
+                            [0.1606445173701415,
+                                0.374],
+                            [0.1584720468529853,
+                                0.34],
+                            [0.1561046655017226,
+                                0.306],
+                            [0.1535,
+                                0.272],
+                            [0.1505995991679987,
+                                0.238],
+                            [0.1473194161025659,
+                                0.204],
+                            [0.1435318829590873,
+                                0.17],
+                            [0.1390285824645097,
+                                0.136],
+                            [0.1334306813696351,
+                                0.102],
+                            [0.1259214771471724,
+                                0.068],
+                            [0.1140500616912608,
+                                0.034],
+                            [0,
+                                0]]
+                        }]
+                    }]
+                }]
+            }]
+        }
+
+        var highchart_test = function () {
+            var self = this;
+
+            self.Init = function () {
+                var rows = w7cConfig['rowcount'];
+                var columns = w7cConfig['columncount'];
+                for (var r = 0; r < rows; r++) {
+                    var tr = $('<div class="row mb-5">');
+                    for (var c = 0; c < columns; c++)
+                        $("<div class='col-md-4' id='c" + c.toString() + '-r' + r.toString() + "'></div>").appendTo(tr); //fill in your cells with something meaningful here
+                    tr.appendTo('#container');
+                }
+
+                w7cConfig['charts'].forEach(function (key, value) {
+                    self.createChart('c' + key.column + '-r' + key.row);
+                })
+            }
+
+            self.createChart = function (id) {
+                var columnx = parseInt(id.substr(0, id.indexOf("-")).substring(1));
+                var rowx = parseInt(id.substr(id.indexOf("-") + 1).substring(1));
+                let xaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+
+                var configs_yaxis = [...xaxis_conf[0].xaxis[0].yaxis]
+                var config_yaxis_array = [];
+                for (i = 0; i < configs_yaxis.length; i++) {
+                    for (j = 0; j < configs_yaxis[i].plots.length; j++) {
+                        configs_yaxis[i].plots[j].label.trim();
+                        configs_yaxis[i].plots[j].name = configs_yaxis[i].label
+                        configs_yaxis[i].plots[j].scale = configs_yaxis[i].scale
+                        configs_yaxis[i].plots[j].max = configs_yaxis[i].max !== undefined ? configs_yaxis[i].max : 0
+                        configs_yaxis[i].plots[j].min = configs_yaxis[i].min !== undefined ? configs_yaxis[i].min : 0
+                        configs_yaxis[i].plots[j].title = configs_yaxis[i].title
+                        configs_yaxis[i].plots[j].position = configs_yaxis[i].position
+                        config_yaxis_array.push(configs_yaxis[i].plots[j])
+                    }
+                }
+
+                var yaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx)[0].xaxis[0].yaxis;
+                var series_array = [];
+                var yaxis_array = [];
+                var count = 0
+                for (i = 0; i < yaxis_data.length; i++) {
+                    for (j = 0; j < yaxis_data[i].plots.length; j++) {
+                        let conf = config_yaxis_array.filter(x => x.label.trim() === yaxis_data[i].plots[j].label.trim())
+                        if (conf.length > 0) {
+                            yaxis_data[i].plots[j].yAxis = count;
+                            yaxis_data[i].plots[j].name = yaxis_data[i].plots[j].label;
+
+                            yaxis_data[i].plots[j].lineWidth = conf[0].lineSize;
+                            yaxis_data[i].plots[j].dashStyle = conf[0].lineStyle;
+                            yaxis_data[i].plots[j].color = conf[0].lineColor !== null ? "rgba(" + Object.values(conf[0].lineColor).toString() + ")" : null;
+                            yaxis_data[i].plots[j].tooltip = conf[0].flyover;
+                            yaxis_data[i].plots[j].visible = conf[0].visible;
+
+                            yaxis_data[i].plots[j].marker = {
+                                symbol: conf[0].symbolStyle,
+                                radius: conf[0].symbolSize,
+                                lineColor: conf[0].lineColor !== null ? "rgba(" + Object.values(conf[0].symbolColor).toString() + ")" : null,
+                                fillColor: conf[0].lineColor !== null ? "rgba(" + Object.values(conf[0].symbolFillColor).toString() + ")" : null,
+                                lineWidth: 1
+                            }
+                            series_array.push(yaxis_data[i].plots[j])
+                            let yaxis = {
+                                title: {
+                                    useHTML: true,
+                                    enabled: conf[0].title.visible,
+                                    text: conf[0].label,
+                                    align: conf[0].title.align,
+                                    rotation: conf[0].title.rotation,
+                                    y: conf[0].title.yoffset,
+                                    x: conf[0].title.xoffset
+                                },
+                                labels: {
+                                    enabled: conf[0].title.ticks
+                                },
+                                top: conf[0].position.top + '%',
+                                height: conf[0].position.height + '%',
+                                reversed: conf[0].position.reversed,
+                                opposite: conf[0].position.opposite,
+                                offset: 0,
+                                min: conf[0].scale === 'auto' ? null : conf[0].min,
+                                max: conf[0].scale === 'auto' ? null : conf[0].max,
+                                gridLineWidth: 0,
+                                lineColor: '#000',
+                                lineWidth: 1,
+                                tickLength: 10,
+                                tickWidth: 1,
+                                tickColor: '#000'
+                            };
+
+                            yaxis_array.push(yaxis);
+                            count++;
+                        }
+                    }
+                }
+
+                $('#' + id.toString()).highcharts({
+                    chart: {
+                        zoomType: 'xy',
+                        height: 400,
+                        className: id.toString()
+                    },
+                    title: {
+                        useHTML: true,
+                        text: w7cData.charts[0].title
+                    },
+                    subtitle: {
+                        text: w7cData.charts[0].subtitle
+                    },
+                    xAxis: {
+                        title: {
+                            enabled: xaxis_conf[0].xaxis[0].title.visible,
+                            text: w7cData.charts[0].xaxis[0].label + '(' + w7cData.charts[0].xaxis[0].unit + ')',
+                            align: xaxis_conf[0].xaxis[0].title.align,
+                            rotation: xaxis_conf[0].xaxis[0].title.rotation,
+                            y: xaxis_conf[0].xaxis[0].title.yoffset,
+                            x: xaxis_conf[0].xaxis[0].title.xoffset
+                        },
+                        labels: {
+                            enabled: xaxis_conf[0].xaxis[0].title.ticks
+                        },
+                        showLastLabel: true,
+                        gridLineWidth: 1,
+                        reversed: xaxis_conf[0].xaxis[0].position.reversed,
+                        opposite: xaxis_conf[0].xaxis[0].position.opposite,
+                        top: xaxis_conf[0].xaxis[0].position.top + '%',
+                        height: xaxis_conf[0].xaxis[0].position.height + '%',
+                        min: null,
+                        max: null
+                    },
+                    yAxis: yaxis_array,
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.series.name + '</b><br/>' +
+                                Highcharts.numberFormat(this.y, 2);
+                        }
+                    },
+                    legend: {
+                        enabled: xaxis_conf[0].legend.visible,
+                        floating: xaxis_conf[0].legend.floating,
+                        layout: xaxis_conf[0].legend.layout,
+                        align: xaxis_conf[0].legend.hAlign,
+                        verticalAlign: xaxis_conf[0].legend.vAlign,
+                        x: xaxis_conf[0].legend.xpos,
+                        y: xaxis_conf[0].legend.ypos,
+                        padding: xaxis_conf[0].legend.padding,
+                        margin: xaxis_conf[0].legend.margin,
+                        borderWidth: xaxis_conf[0].legend.bordersize,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },                   
+                    series: series_array
+                });
+            }
+
+            if (w7cConfig.charts[0].plotconfiguration) {
+                var menuContext = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
+                var menuContexSeparator = {
+                    separator: true
+                }
+                menuContext.splice(2, 0, menuContexSeparator);
+
+                var menuConfigChart = {
+                    text: "Export complete chart as pdf",
+                    onclick: function () {
+                        var allchartArray = [];
+                        $(Highcharts.charts).each(function (i, chart) {
+                            allchartArray.push(chart);
+                        });
+
+                        self.exportCharts(allchartArray, {
+                            type: 'application/pdf',
+                            filename: 'issues13_multi_chart'
+                        });
+                    }
+                };
+                menuContext.splice(3, 0, menuConfigChart);
+
+                var menuConfigChart = {
+                    text: "Export complete chart as png",
+                    onclick: function () {
+                        var allchartArray = [];
+                        $(Highcharts.charts).each(function (i, chart) {
+                            allchartArray.push(chart);
+                        });
+
+                        self.exportCharts(allchartArray, {
+                            filename: 'issues13_multi_chart',
+                            type: "image/png"
+                        });
+                    }
+                };
+                menuContext.splice(4, 0, menuConfigChart);
+
+                var menuConfig_yaxis = {
+                    text: "Configuration yAxis",
+                    onclick: function () {
+                        $('input[name="yAxisChart"]').val(this.userOptions.chart.className);
+                        let columnx = parseInt(this.userOptions.chart.className.substr(0, this.userOptions.chart.className.indexOf("-")).substring(1));
+                        let rowx = parseInt(this.userOptions.chart.className.substr(this.userOptions.chart.className.indexOf("-") + 1).substring(1));
+                        let yaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+                        if (yaxis_conf.length > 0) {
+                            $('#drpyAxis').empty();
+                            yaxis_conf[0].xaxis[0].yaxis.map(plot => plot.plots.map(data => {
+                                if (data.hidden !== true) {
+                                    $('#drpyAxis').append(
+                                        $('<option></option>').val(data.label).html(data.label)
+                                    );
+                                }
+                            }));
+                        }
+                        let yaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx);
+                        self.LoadDefault_yAxis(this.userOptions.chart.className, yaxis_data[0].xaxis[0].yaxis[0].plots[0].label);
+                        $("#modal_config_yaxis").modal("show");
+                    }
+                };
+                menuContext.splice(5, 0, menuConfig_yaxis);
+
+                var menuConfig_xAxis = {
+                    text: "Configuration xAxis",
+                    onclick: function () {
+                        $('input[name="xAxisChart"]').val(this.userOptions.chart.className);
+                        let columnx = parseInt(this.userOptions.chart.className.substr(0, this.userOptions.chart.className.indexOf("-")).substring(1));
+                        let rowx = parseInt(this.userOptions.chart.className.substr(this.userOptions.chart.className.indexOf("-") + 1).substring(1));
+                        let xaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+                        if (xaxis_conf.length > 0) {
+                            $('#drpxAxis').empty();
+                            xaxis_conf[0].xaxis.map(data => {
+                                if (data.hidden !== true) {
+                                    $('#drpxAxis').append(
+                                        $('<option></option>').val(data.label + '(' + w7cData.charts[0].xaxis[0].unit + ')').html(data.label + '(' + w7cData.charts[0].xaxis[0].unit + ')')
+                                    );
+                                }
+                            });
+                        }
+                        let xaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx);
+                        self.LoadDefault_xAxis(this.userOptions.chart.className, xaxis_data[0].xaxis[0].label + '(' + xaxis_data[0].xaxis[0].unit + ')');
+                        $("#modal_config_xaxis").modal("show");
+                    }
+                };
+                menuContext.splice(6, 0, menuConfig_xAxis);
+            }
+
+            self.getSVG = function (charts) {
+                var svgArr = [],
+                    top = 0,
+                    width = 0,
+                    endWidth = 0;
+
+                Highcharts.each(charts, function (chart) {
+                    var svg = chart.getSVG(),
+                        // Get width/height of SVG for export
+                        svgWidth = +svg.match(
+                            /^<svg[^>]*width\s*=\s*\"?(\d+)\"?[^>]*>/
+                        )[1],
+                        svgHeight = +svg.match(
+                            /^<svg[^>]*height\s*=\s*\"?(\d+)\"?[^>]*>/
+                        )[1];
+
+                    svg = svg.replace(
+                        '<svg',
+                        '<g  transform="translate(' + width + ', ' + top + ')" '
+                    );
+
+                    svg = svg.replace('</svg>', '</g>');
+
+                    width += svgWidth;
+                    endWidth = Math.max(endWidth, width)
+
+                    if (width === w7cConfig['columncount'] * svgWidth) {
+                        width = 0;
+                        top += svgHeight;
+                    }
+
+                    svgArr.push(svg);
+                });
+                // top += 100;
+                return '<svg height="' + top + '" width="' + endWidth +
+                    '" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+                    svgArr.join('') + '</svg>';
+            };
+
+            self.exportCharts = function (charts, options) {
+                // Merge the options
+                options = Highcharts.merge(Highcharts.getOptions().exporting, options);
+
+                // Post to export server
+                Highcharts.post(options.url, {
+                    filename: options.filename || 'chart',
+                    type: options.type,
+                    width: options.width,
+                    svg: self.getSVG(charts)
+                });
+            };
+
+            // Config yAxis 
+            self.LoadDefault_yAxis = function (chartClass, plot) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === chartClass) {
+                        Highcharts.each(chart.options.yAxis, function (ob, j) {
+                            if (ob.title.text.trim() == plot) {
+                                $('#chktitleenable').prop('checked', ob.title.enabled);
+                                $('#drptitlealign').val(ob.title.align);
+                                $('#txtrotation').val(ob.title.rotation);
+                                $('#txttitle_x').val(ob.title.x);
+                                $('#txttitle_y').val(ob.title.y);
+                                $('#chklabelenable').prop('checked', ob.labels.enabled);
+                                $('#chkopposite').prop('checked', ob.opposite);
+                                $('#chkreversed').prop('checked', ob.reversed);
+                                $('#txttop').val(parseFloat(ob.top));
+                                $('#txtheight').val(parseFloat(ob.height));
+                                $('#txtyAxis_offset').val(ob.offset);
+                                if (ob.min !== null || ob.max !== null) {
+                                    $('#drpscale').val('fixed');
+                                    $('#txtscalemin').val(ob.min !== null ? ob.min : 0);
+                                    $('#txtscalemax').val(ob.max !== null ? ob.max : 0);
+                                } else {
+                                    $('#drpscale').val('auto');
+                                    $("#txtscalemin").prop('disabled', true);
+                                    $("#txtscalemax").prop('disabled', true);
+                                    $('#txtscalemin').val(null);
+                                    $('#txtscalemax').val(null);
+                                }
+
+                            }
+                        });
+                    }
+                });
+            }
+
+            $('#drpscale').on('change', function () {
+                if ($('#drpscale').val() === 'auto') {
+                    $("#txtscalemin").prop('disabled', true);
+                    $("#txtscalemax").prop('disabled', true);
+                    $('#txtscalemin').val(null);
+                    $('#txtscalemax').val(null);
+                } else {
+                    $("#txtscalemin").prop('disabled', false);
+                    $("#txtscalemax").prop('disabled', false);
+                    $('#txtscalemin').val("0");
+                    $('#txtscalemax').val("0");
+                }
+            });
+
+            $('#btnOK').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="yAxisChart"]').val()) {
+                        Highcharts.each(chart.options.yAxis, function (ob, j) {
+                            if (ob.title.text.trim() == $('#drpyAxis').val().trim()) {
+                                chart.yAxis[j].update({
+                                    title: {
+                                        enabled: $('#chktitleenable').is(':checked'),
+                                        align: $('#drptitlealign').val(),
+                                        rotation: parseInt($('#txtrotation').val()),
+                                        y: parseInt($('#txttitle_y').val()),
+                                        x: parseInt($('#txttitle_x').val())
+                                    },
+                                    labels: {
+                                        enabled: $('#chklabelenable').is(':checked')
+                                    },
+                                    min: $('#txtscalemin').val() > 0 ? $('#txtscalemin').val() : null,
+                                    max: $('#txtscalemax').val() > 0 ? $('#txtscalemax').val() : null,
+                                    opposite: $('#chkopposite').is(':checked'),
+                                    reversed: $('#chkreversed').is(':checked'),
+                                    top: $('#txttop').val() !== '' ? $('#txttop').val() + '%' : null,
+                                    height: $('#txtheight').val() !== '' ? $('#txtheight').val() + '%' : null,
+                                    offset: $('#txtyAxis_offset').val() !== '' ? parseInt($('#txtyAxis_offset').val()) : null
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#drpyAxis').on('change', function () {
+                self.LoadDefault_yAxis($('input[name="yAxisChart"]').val(), $('#drpyAxis').val().trim());
+            });
+
+            // Config xAxis
+            self.LoadDefault_xAxis = function (chartClass, plot) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === chartClass) {
+                        Highcharts.each(chart.options.xAxis, function (ob, j) {
+                            if (ob.title.text.trim() == plot) {
+                                $('#chkxAxis_titleenable').prop('checked', ob.title.enabled);
+                                $('#drpxAxis_titlealign').val(ob.title.align);
+                                $('#txtxAxis_rotation').val(ob.title.rotation);
+                                $('#txtxAxis_title_x').val(ob.title.x);
+                                $('#txtxAxis_title_y').val(ob.title.y);
+                                $('#chkxAxis_labelenable').prop('checked', ob.title.tick);
+                                $('#chkxAxis_opposite').prop('checked', ob.opposite);
+                                $('#chkxAxis_reversed').prop('checked', ob.reversed);
+                                $('#txtxAxis_top').val(parseFloat(ob.top));
+                                $('#txtxAxis_height').val(parseFloat(ob.height));
+                                if (ob.min !== null || ob.max !== null) {
+                                    $('#drpxAxis_scale').val('fixed');
+                                    $('#txtscalexAxis_min').val(ob.min !== null ? ob.min : 0);
+                                    $('#txtscalexAxis_max').val(ob.max !== null ? ob.max : 0);
+                                } else {
+                                    $('#drpxAxis_scale').val('auto');
+                                    $("#txtscalexAxis_min").prop('disabled', true);
+                                    $("#txtscalexAxis_max").prop('disabled', true);
+                                    $('#txtscalexAxis_min').val(null);
+                                    $('#txtscalexAxis_max').val(null);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            $('#drpxAxis_scale').on('change', function () {
+                if ($('#drpxAxis_scale').val() === 'auto') {
+                    $("#txtscalexAxis_min").prop('disabled', true);
+                    $("#txtscalexAxis_max").prop('disabled', true);
+                    $('#txtscalexAxis_min').val(null);
+                    $('#txtscalexAxis_max').val(null);
+                } else {
+                    $("#txtscalexAxis_min").prop('disabled', false);
+                    $("#txtscalexAxis_max").prop('disabled', false);
+                    $('#txtscalexAxis_min').val("0");
+                    $('#txtscalexAxis_max').val("0");
+                }
+            });
+
+            $('#btnOK_xAxis').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="xAxisChart"]').val()) {
+                        Highcharts.each(chart.options.xAxis, function (ob, j) {
+                            if (ob.title.text.trim() == $('#drpxAxis').val().trim()) {
+                                chart.xAxis[j].update({
+                                    title: {
+                                        enabled: $('#chkxAxis_titleenable').is(':checked'),
+                                        align: $('#drpxAxis_titlealign').val(),
+                                        rotation: parseInt($('#txtxAxis_rotation').val()),
+                                        y: parseInt($('#txtxAxis_title_y').val()),
+                                        x: parseInt($('#txtxAxis_title_x').val())
+                                    },
+                                    labels: {
+                                        enabled: $('#chkxAxis_labelenable').is(':checked')
+                                    },
+                                    min: $('#txtscalexAxis_min').val() > 0 ? $('#txtscalexAxis_min').val() : null,
+                                    max: $('#txtscalexAxis_max').val() > 0 ? $('#txtscalexAxis_max').val() : null,
+                                    opposite: $('#chkxAxis_opposite').is(':checked'),
+                                    reversed: $('#chkxAxis_reversed').is(':checked'),
+                                    top: $('#txtxAxis_top').val() !== '' ? $('#txtxAxis_top').val() + '%' : null,
+                                    height: $('#txtxAxis_height').val() !== '' ? $('#txtxAxis_height').val() + '%' : null,
+                                });
+                            }
+                        });
+                    }
+                });
+                // $("#modal_config_xaxis").modal("hide");
+            });
+
+            $('#drpxAxis').on('change', function () {
+                self.LoadDefault_xAxis($('input[name="xAxisChart"]').val(), $('#drpxAxis').val().trim());
+            });
+        }
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var highchart = new highchart_test();
+            highchart.Init();
+        });
+    </script>
+    <style>
+        #container {
+            height: 95vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="container" style="min-width: 310px;  margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal Config yAxis-->
+    <div class="modal" id="modal_config_yaxis">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" data-i18n="configurationyAxis">Configuration yAxis Plot</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <input type="hidden" name="yAxisChart" value="" id="yAxisChart">
+                        <div class="form-group row">
+                            <label for="chart_title" class="col-sm-5">yAxis Plot</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" name="drpyAxis" id="drpyAxis">
+                                </select>
+                            </div>
+                        </div>
+                        <fieldset class="box-border">
+                            <legend class="box-border">Title</legend>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="titleEnable" for="chktitleenable" class="col-sm-5">Title
+                                            Visible</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chktitleenable" name="chktitleenable" checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="align" for="drptitlealign" class="col-sm-5">Align</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="drptitlealign" id="drptitlealign">
+                                                <option value="high">high</option>
+                                                <option value="low">low</option>
+                                                <option value="middle">middle</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="rotation" for="txtrotation" class="col-sm-5">Rotation</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtrotation"
+                                                name="txtrotation" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="txttitle_x" class="col-sm-5">X</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txttitle_x" name="txttitle_x"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txttitle_y" class="col-sm-5">Y</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txttitle_y" name="txttitle_y"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="labelEnable" for="chklabelenable" class="col-sm-5">Label
+                                            Enable</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chklabelenable" name="chklabelenable" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="box-border">
+                            <legend data-i18n="scale" class="box-border">Scale</legend>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <label data-i18n="scale" for="drpscale" class="col-sm-5">Scale</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="drpscale" id="drpscale">
+                                                <option value="auto">auto</option>
+                                                <option value="fixed">fixed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="min" for="txtscalemin" class="col-sm-5">Min</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtscalemin"
+                                                name="txtscalemin" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="max" for="txtscalemax" class="col-sm-5">Max</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtscalemax"
+                                                name="txtscalemax" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="box-border">
+                            <legend data-i18n="position" class="box-border">Position</legend>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="opposite" for="chkopposite" class="col-sm-5">Opposite</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkopposite" name="chkopposite" checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="reversed" for="chkreversed" class="col-sm-5">Reversed</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkreversed" name="chkreversed" checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="offset" for="txtyAxis_offset" class="col-sm-5">Offset</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtyAxis_offset"
+                                                name="txtyAxis_offset" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="top" for="txttop" class="col-sm-5">Top(%)</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txttop" name="txttop"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="height" for="txtheight" class="col-sm-5">Height(%)</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtheight" name="txtheight"
+                                                value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-i18n="ok" id="btnOK" type="button" class="btn btn-primary">OK</button>
+                        <button data-i18n="close" type="button" class="btn btn-danger"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal Config xAxis-->
+    <div class="modal" id="modal_config_xaxis">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" data-i18n="configurationxAxis">Configuration xAxis</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <input type="hidden" name="xAxisChart" value="" id="xAxisChart">
+                        <div class="form-group row">
+                            <label for="drpxAxis" class="col-sm-5">xAxis</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" name="drpxAxis" id="drpxAxis">
+                                </select>
+                            </div>
+                        </div>
+                        <fieldset class="box-border">
+                            <legend data-i18n="title" class="box-border">Title</legend>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="titleEnable" for="chkxAxis_titleenable" class="col-sm-5">Title
+                                            Enable</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkxAxis_titleenable" name="chkxAxis_titleenable"
+                                                checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="align" for="drpxAxis_titlealign"
+                                            class="col-sm-5">Align</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="drpxAxis_titlealign"
+                                                id="drpxAxis_titlealign">
+                                                <option value="high">high</option>
+                                                <option value="low">low</option>
+                                                <option value="middle">middle</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="rotation" for="txtxAxis_rotation"
+                                            class="col-sm-5">Rotation</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtxAxis_rotation"
+                                                name="txtxAxis_rotation" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="txtxAxis_title_x" class="col-sm-5">X</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtxAxis_title_x"
+                                                name="txtxAxis_title_x" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtxAxis_title_y" class="col-sm-5">Y</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtxAxis_title_y"
+                                                name="txtxAxis_title_y" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="labelEnable" for="chkxAxis_labelenable" class="col-sm-5">Label
+                                            Enable</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkxAxis_labelenable" name="chkxAxis_labelenable"
+                                                checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="box-border">
+                            <legend data-i18n="scale" class="box-border">Scale</legend>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group row">
+                                        <label data-i18n="scale" for="drpxAxis_scale" class="col-sm-5">Scale</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="drpxAxis_scale" id="drpxAxis_scale">
+                                                <option value="auto">auto</option>
+                                                <option value="fixed">fixed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="min" for="txtscalexAxis_min" class="col-sm-5">Min</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtscalexAxis_min"
+                                                name="txtscalexAxis_min" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="max" for="txtscalexAxis_max" class="col-sm-5">Max</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtscalexAxis_max"
+                                                name="txtscalexAxis_max" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="box-border">
+                            <legend data-i18n="position" class="box-border">Position</legend>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="opposite" for="chkxAxis_opposite"
+                                            class="col-sm-5">Opposite</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkxAxis_opposite" name="chkxAxis_opposite"
+                                                checked>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="reversed" for="chkxAxis_reversed"
+                                            class="col-sm-5">Reversed</label>
+                                        <div class="col-sm-7">
+                                            <input type="checkbox" id="chkxAxis_reversed" name="chkxAxis_reversed"
+                                                checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label data-i18n="top" for="txtxAxis_top" class="col-sm-5">Top(%)</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtxAxis_top"
+                                                name="txtxAxis_top" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label data-i18n="height" for="txtxAxis_height"
+                                            class="col-sm-5">Height(%)</label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control" id="txtxAxis_height"
+                                                name="txtxAxis_height" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-i18n="ok" id="btnOK_xAxis" type="button" class="btn btn-primary">OK</button>
+                        <button data-i18n="close" type="button" class="btn btn-danger"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

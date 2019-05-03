@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Highcharts test - Dry cross section</title>
+    <script charset="UTF-8" src="lib/jquery-1.9.1.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+
+<div id="container" style="min-width: 310px;  margin: 0 auto"></div>
+
+<script>
+    let w7cConfig = {
+        "columncount": 1,
+        "rowcount": 1,
+        "locale": "en",
+        "charts": [{
+            "column": 0,
+            "row": 0,
+            "type": "xsection",
+            "legend": {
+                "visible": false,
+                "floating": true,
+                "layout": "vertical",
+                "hAlign": "center",
+                "vAlign": "middle",
+                "padding": 20,
+                "margin": 20,
+                "bordersize": 1,
+                "xpos": 0,
+                "ypos": 0
+            },
+            "mainlayer": {
+                "borderSize": 0,
+                "borderColor": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                },
+                "leftMargin": 170,
+                "rightMargin": 170,
+                "topMargin": 100,
+                "bottomMargin": 270
+            },
+            "xaxis": [{
+                "label": "Distance",
+                "position": {
+                    "opposite": false,
+                    "reversed": false,
+                    "top": 0,
+                    "height": 100
+                },
+                "title": {
+                    "visible": true,
+                    "ticks": true,
+                    "rotation": 0,
+                    "align": "middle",
+                    "xoffset": 0,
+                    "yoffset": 0
+                },
+                "scale": "auto",
+                "min": 0,
+                "max": 0,
+                "yaxis": [{
+                    "position": {
+                        "opposite": false,
+                        "reversed": false,
+                        "top": 0,
+                        "height": 100
+                    },
+                    "title": {
+                        "visible": true,
+                        "ticks": true,
+                        "rotation": 0,
+                        "align": "high",
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "scale": "auto",
+                    "label": "Height above gauge datum",
+                    "reversed": false,
+                    "min": 0,
+                    "max": 0,
+                    "plots": [{
+                        "label": "Dry cross section",
+                        "hidden": false,
+                        "visible": true,
+                        "flyover": false,
+                        "lineColor": {
+                            "r": 255,
+                            "g": 100,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "lineStyle": "solid",
+                        "lineSize": 1,
+                        "symbolColor": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                        },
+                        "symbolFillColor": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                        },
+                        "symbolStyle": null,
+                        "symbolSize": 0
+                    },
+                        {
+                            "label": "test",
+                            "hidden": false,
+                            "visible": true,
+                            "flyover": true,
+                            "lineColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 255,
+                                "a": 1
+                            },
+                            "lineStyle": "solid",
+                            "lineSize": 1,
+                            "symbolColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0
+                            },
+                            "symbolFillColor": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0,
+                                "a": 0
+                            },
+                            "symbolStyle": null,
+                            "symbolSize": 0
+                        }]
+                }]
+            }]
+        }]
+    };
+    let w7cData = {
+        "charts": [{
+            "column": 0,
+            "row": 0,
+            "title": null,
+            "subtitle": null,
+            "additonalInfo": {
+                "fillValue": 2.5,
+                "tsValues": [
+                    {
+                        "value": 1.4,
+                        "tstamp": "2019-04-08T17:00:00Z"
+                    },
+                    {
+                        "value": 1.1,
+                        "tstamp": "2019-04-08T18:00:00Z"
+                    },
+                    {
+                        "value": 1.6,
+                        "tstamp": "2019-04-08T20:00:00Z"
+                    },
+                    {
+                        "value": 3.1,
+                        "tstamp": "2019-04-08T22:00:00Z"
+                    },
+                    {
+                        "value": 3.1,
+                        "tstamp": "2019-04-09T00:00:00Z"
+                    },
+                    {
+                        "value": 2.5,
+                        "tstamp": "2019-04-09T00:02:00Z"
+                    }]
+            },
+            "xaxis": [{
+                "label": "Distance",
+                "unit": "m",
+                "yaxis": [{
+                    "label": "Height above gauge datum",
+                    "unit": "m",
+                    "plots": [{
+                        "label": "Dry cross section",
+                        "data": [
+                            [0, 5],
+                            [3, 1],
+                            [7, 5]
+                        ]
+                    },
+                        {
+                            "label": "test",
+                            "data": [
+                                [0, 2],
+                                [7, 2]
+                            ]
+                        }]
+                }]
+            }]
+        }]
+    };
+
+    let crossSection = [];
+    let dateArr = [];
+
+
+    for (let i = 0; i < w7cData.charts[0].additonalInfo.tsValues.length; i++) {
+        dateArr.push([
+            new Date(w7cData.charts[0].additonalInfo.tsValues[i].tstamp).getTime()
+        ]);
+        crossSection.push([
+            w7cData.charts[0].additonalInfo.tsValues[i].value,
+            dateArr[i][0]
+        ]);
+    }
+
+    console.log(dateArr);
+    console.log(crossSection);
+
+    Highcharts.chart("container", {
+        chart: {
+            marginTop: 40,
+            marginBottom: 80,
+            inverted: true
+        },
+        title: {
+            text: "Cross section chart"
+        },
+        xAxis: {
+            // reversed: true,
+            startOnTick: true,
+        },
+        yAxis: [{
+            type: "datetime",
+            labels: {
+                format: '{value:%e}.{value:%m}.{value:%y}'
+            },
+        }],
+        series: [
+            {
+                type: "line",
+                data: crossSection
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
