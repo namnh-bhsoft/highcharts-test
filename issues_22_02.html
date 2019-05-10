@@ -1,0 +1,2727 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Issue #22 - Solution 2</title>
+
+    <script charset="UTF-8" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <script charset="UTF-8" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/highcharts.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.5/jquery.i18n.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.5/jquery.i18n.messagestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.4/jquery.minicolors.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.4/jquery.minicolors.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script>
+        let w7cConfig = {
+            "columncount": 1,
+            "rowcount": 1,
+            "locale": "en",
+            "charts": [
+                {
+                    "column": 0,
+                    "row": 0,
+                    "type": "regular",
+                    "legend": {
+                        "visible": true,
+                        "floating": true,
+                        "layout": "vertical",
+                        "hAlign": "left",
+                        "vAlign": "bottom",
+                        "padding": 20,
+                        "margin": 20,
+                        "bordersize": 1,
+                        "xpos": 60,
+                        "ypos": 0
+                    },
+                    "mainlayer": {
+                        "borderSize": 0,
+                        "borderColor": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                        },
+                        "leftMargin": 70,
+                        "rightMargin": 200,
+                        "topMargin": 100,
+                        "bottomMargin": 200
+                    },
+                    "plotconfiguration": true,
+                    "xaxis": [
+                        {
+                            "label": "d",
+                            "position": {
+                                "opposite": false,
+                                "reversed": false,
+                                "top": 0,
+                                "height": 100,
+                                "offset": null
+                            },
+                            "title": {
+                                "visible": true,
+                                "ticks": true,
+                                "rotation": 0,
+                                "align": "high",
+                                "xoffset": 0,
+                                "yoffset": 0
+                            },
+                            "scale": "auto",
+                            "min": 0,
+                            "max": 0,
+                            "yaxis": [
+                                {
+                                    "position": {
+                                        "opposite": false,
+                                        "reversed": false,
+                                        "top": 0,
+                                        "height": 50,
+                                        "offset": null
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "high",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "q<sub>i</sub>/q",
+                                    "reversed": false,
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "q<sub>i</sub>/q [%]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "solid",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "position": {
+                                        "opposite": false,
+                                        "reversed": true,
+                                        "top": 50,
+                                        "height": 50,
+                                        "offset": 0
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "low",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "h",
+                                    "reversed": true,
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "h [m]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 239,
+                                                "g": 159,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "solid",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        },
+                                        {
+                                            "label": "Surface [m]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 255,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "solid",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        },
+                                        {
+                                            "label": "Observations",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": null,
+                                            "lineSize": 0,
+                                            "symbolColor": {
+                                                "r": 46,
+                                                "g": 139,
+                                                "b": 85,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 46,
+                                                "g": 139,
+                                                "b": 85,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "triangle-down",
+                                            "symbolSize": 5
+                                        },
+                                        {
+                                            "label": "Verticals",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": false,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 1
+                                            },
+                                            "lineStyle": "solid",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolStyle": null,
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "position": {
+                                        "opposite": true,
+                                        "reversed": false,
+                                        "top": 0,
+                                        "height": 50,
+                                        "offset": null
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "high",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "v<sub>m</sub>",
+                                    "reversed": false,
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "v<sub>m</sub> [m/s]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 255,
+                                                "g": 0,
+                                                "b": 255,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "solid",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "position": {
+                                        "opposite": true,
+                                        "reversed": false,
+                                        "top": 0,
+                                        "height": 50,
+                                        "offset": null
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "high",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "cI<sup>1/2</sup>",
+                                    "reversed": false,
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 255,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "longdash",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "position": {
+                                        "opposite": true,
+                                        "reversed": true,
+                                        "top": 50,
+                                        "height": 50,
+                                        "offset": 0
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "low",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "h<sup>3/2</sup>",
+                                    "reversed": true,
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "h<sup>3/2</sup> [m<sup>3/2</sup>]",
+                                            "hidden": false,
+                                            "visible": true,
+                                            "flyover": true,
+                                            "lineColor": {
+                                                "r": 255,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "lineStyle": "dash",
+                                            "lineSize": 1,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0.8
+                                            },
+                                            "symbolStyle": "circle",
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+        let w7cData = {
+            "charts": [
+                {
+                    "column": 0,
+                    "row": 0,
+                    "title": "Animation of configuration dialogs",
+                    "subtitle": "Issue no.22",
+                    "xaxis": [
+                        {
+                            "label": "d",
+                            "unit": "[m]",
+                            "yaxis": [
+                                {
+                                    "label": "q<sub>i</sub>/q",
+                                    "unit": "%",
+                                    "plots": [
+                                        {
+                                            "label": "q<sub>i</sub>/q [%]",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.999,
+                                                    0.0000370868952054782],
+                                                [2,
+                                                    0.0000370868952054782],
+                                                [2,
+                                                    0.1767081477437685],
+                                                [3,
+                                                    0.1767081477437685],
+                                                [3,
+                                                    1.063474732937133],
+                                                [4,
+                                                    1.063474732937133],
+                                                [4,
+                                                    3.488287695877121],
+                                                [5.5,
+                                                    3.488287695877121],
+                                                [5.5,
+                                                    4.582438988076776],
+                                                [7,
+                                                    4.582438988076776],
+                                                [7,
+                                                    6.240462040471965],
+                                                [8.5,
+                                                    6.240462040471965],
+                                                [8.5,
+                                                    6.866214221020112],
+                                                [10,
+                                                    6.866214221020112],
+                                                [10,
+                                                    6.976730480527055],
+                                                [11.5,
+                                                    6.976730480527055],
+                                                [11.5,
+                                                    7.388041414905892],
+                                                [13,
+                                                    7.388041414905892],
+                                                [13,
+                                                    7.476023275723025],
+                                                [14.5,
+                                                    7.476023275723025],
+                                                [14.5,
+                                                    8.393249295896972],
+                                                [16,
+                                                    8.393249295896972],
+                                                [16,
+                                                    8.616546110993934],
+                                                [17.5,
+                                                    8.616546110993934],
+                                                [17.5,
+                                                    7.889334855271157],
+                                                [19,
+                                                    7.889334855271157],
+                                                [19,
+                                                    7.718396009876052],
+                                                [20.5,
+                                                    7.718396009876052],
+                                                [20.5,
+                                                    6.687210759438703],
+                                                [22,
+                                                    6.687210759438703],
+                                                [22,
+                                                    5.605606148959665],
+                                                [23.5,
+                                                    5.605606148959665],
+                                                [23.5,
+                                                    4.429335351555231],
+                                                [25,
+                                                    4.429335351555231],
+                                                [25,
+                                                    3.075875631211305],
+                                                [26.5,
+                                                    3.075875631211305],
+                                                [26.5,
+                                                    2.019255822032532],
+                                                [28,
+                                                    2.019255822032532],
+                                                [28,
+                                                    0.89620632183195],
+                                                [29,
+                                                    0.89620632183195],
+                                                [29,
+                                                    0.4105015445106516],
+                                                [30,
+                                                    0.4105015445106516],
+                                                [30,
+                                                    0.0000782037848255507],
+                                                [30.001,
+                                                    0.0000782037848255507],
+                                                [30.001,
+                                                    0],
+                                                [null,
+                                                    null]
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "h",
+                                    "unit": "m",
+                                    "plots": [
+                                        {
+                                            "label": "h [m]",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [2,
+                                                    0.17],
+                                                [3,
+                                                    0.37],
+                                                [4,
+                                                    0.56],
+                                                [5.5,
+                                                    0.58],
+                                                [7,
+                                                    0.6],
+                                                [8.5,
+                                                    0.64],
+                                                [10,
+                                                    0.68],
+                                                [11.5,
+                                                    0.63],
+                                                [13,
+                                                    0.62],
+                                                [14.5,
+                                                    0.66],
+                                                [16,
+                                                    0.64],
+                                                [17.5,
+                                                    0.58],
+                                                [19,
+                                                    0.6],
+                                                [20.5,
+                                                    0.74],
+                                                [22,
+                                                    0.59],
+                                                [23.5,
+                                                    0.56],
+                                                [25,
+                                                    0.4],
+                                                [26.5,
+                                                    0.26],
+                                                [28,
+                                                    0.24],
+                                                [29,
+                                                    0.2],
+                                                [30,
+                                                    0.08],
+                                                [30.001,
+                                                    0],
+                                                [30.001,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [null,
+                                                    null]]
+                                        },
+                                        {
+                                            "label": "Surface [m]   ",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.9995,
+                                                    0],
+                                                [1.9995,
+                                                    0],
+                                                [2.5,
+                                                    0],
+                                                [2.5,
+                                                    0],
+                                                [3.5,
+                                                    0],
+                                                [3.5,
+                                                    0],
+                                                [4.75,
+                                                    0],
+                                                [4.75,
+                                                    0],
+                                                [6.25,
+                                                    0],
+                                                [6.25,
+                                                    0],
+                                                [7.75,
+                                                    0],
+                                                [7.75,
+                                                    0],
+                                                [9.25,
+                                                    0],
+                                                [9.25,
+                                                    0],
+                                                [10.75,
+                                                    0],
+                                                [10.75,
+                                                    0],
+                                                [12.25,
+                                                    0],
+                                                [12.25,
+                                                    0],
+                                                [13.75,
+                                                    0],
+                                                [13.75,
+                                                    0],
+                                                [15.25,
+                                                    0],
+                                                [15.25,
+                                                    0],
+                                                [16.75,
+                                                    0],
+                                                [16.75,
+                                                    0],
+                                                [18.25,
+                                                    0],
+                                                [18.25,
+                                                    0],
+                                                [19.75,
+                                                    0],
+                                                [19.75,
+                                                    0],
+                                                [21.25,
+                                                    0],
+                                                [21.25,
+                                                    0],
+                                                [22.75,
+                                                    0],
+                                                [22.75,
+                                                    0],
+                                                [24.25,
+                                                    0],
+                                                [24.25,
+                                                    0],
+                                                [25.75,
+                                                    0],
+                                                [25.75,
+                                                    0],
+                                                [27.25,
+                                                    0],
+                                                [27.25,
+                                                    0],
+                                                [28.5,
+                                                    0],
+                                                [28.5,
+                                                    0],
+                                                [29.5,
+                                                    0],
+                                                [29.5,
+                                                    0],
+                                                [30.0005,
+                                                    0],
+                                                [30.0005,
+                                                    0],
+                                                [30.001,
+                                                    0]
+                                            ]
+                                        },
+                                        {
+                                            "label": "Observations",
+                                            "data": [
+                                                [3,
+                                                    0.222],
+                                                [null,
+                                                    null],
+                                                [4,
+                                                    0.336],
+                                                [null,
+                                                    null],
+                                                [5.5,
+                                                    0.348],
+                                                [null,
+                                                    null],
+                                                [7,
+                                                    0.36],
+                                                [null,
+                                                    null],
+                                                [8.5,
+                                                    0.384],
+                                                [null,
+                                                    null],
+                                                [10,
+                                                    0.408],
+                                                [null,
+                                                    null],
+                                                [11.5,
+                                                    0.378],
+                                                [null,
+                                                    null],
+                                                [13,
+                                                    0.372],
+                                                [null,
+                                                    null],
+                                                [14.5,
+                                                    0.396],
+                                                [null,
+                                                    null],
+                                                [16,
+                                                    0.384],
+                                                [null,
+                                                    null],
+                                                [17.5,
+                                                    0.348],
+                                                [null,
+                                                    null],
+                                                [19,
+                                                    0.36],
+                                                [null,
+                                                    null],
+                                                [20.5,
+                                                    0.444],
+                                                [null,
+                                                    null],
+                                                [22,
+                                                    0.354],
+                                                [null,
+                                                    null],
+                                                [23.5,
+                                                    0.336],
+                                                [null,
+                                                    null],
+                                                [25,
+                                                    0.24],
+                                                [null,
+                                                    null],
+                                                [26.5,
+                                                    0.156],
+                                                [null,
+                                                    null],
+                                                [28,
+                                                    0.144],
+                                                [null,
+                                                    null],
+                                                [29,
+                                                    0.12],
+                                                [null,
+                                                    null]]
+                                        },
+                                        {
+                                            "label": "Verticals",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.999,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [2,
+                                                    0.17],
+                                                [2,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [3,
+                                                    0.37],
+                                                [3,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [4,
+                                                    0.56],
+                                                [4,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [5.5,
+                                                    0.58],
+                                                [5.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [7,
+                                                    0.6],
+                                                [7,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [8.5,
+                                                    0.64],
+                                                [8.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [10,
+                                                    0.68],
+                                                [10,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [11.5,
+                                                    0.63],
+                                                [11.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [13,
+                                                    0.62],
+                                                [13,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [14.5,
+                                                    0.66],
+                                                [14.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [16,
+                                                    0.64],
+                                                [16,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [17.5,
+                                                    0.58],
+                                                [17.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [19,
+                                                    0.6],
+                                                [19,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [20.5,
+                                                    0.74],
+                                                [20.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [22,
+                                                    0.59],
+                                                [22,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [23.5,
+                                                    0.56],
+                                                [23.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [25,
+                                                    0.4],
+                                                [25,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [26.5,
+                                                    0.26],
+                                                [26.5,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [28,
+                                                    0.24],
+                                                [28,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [29,
+                                                    0.2],
+                                                [29,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [30,
+                                                    0.08],
+                                                [30,
+                                                    0],
+                                                [null,
+                                                    null],
+                                                [30.001,
+                                                    0],
+                                                [30.001,
+                                                    0],
+                                                [null,
+                                                    null]
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "v<sub>m</sub>",
+                                    "unit": "m/s",
+                                    "plots": [
+                                        {
+                                            "label": "v<sub>m</sub> [m/s]",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.999,
+                                                    0.0023],
+                                                [1.999,
+                                                    0.0046],
+                                                [1.999,
+                                                    0.0068],
+                                                [1.999,
+                                                    0.0088],
+                                                [2,
+                                                    0.0105],
+                                                [2.1068,
+                                                    0.0148],
+                                                [2.2923,
+                                                    0.017],
+                                                [2.5244,
+                                                    0.0182],
+                                                [2.7709,
+                                                    0.0193],
+                                                [3,
+                                                    0.0211],
+                                                [3.3539,
+                                                    0.03],
+                                                [3.5502,
+                                                    0.0439],
+                                                [3.6696,
+                                                    0.0603],
+                                                [3.7926,
+                                                    0.0764],
+                                                [4,
+                                                    0.0895],
+                                                [4.2283,
+                                                    0.0956],
+                                                [4.5143,
+                                                    0.0998],
+                                                [4.8362,
+                                                    0.1027],
+                                                [5.172,
+                                                    0.1051],
+                                                [5.5,
+                                                    0.1078],
+                                                [5.845,
+                                                    0.112],
+                                                [6.1591,
+                                                    0.1176],
+                                                [6.4507,
+                                                    0.1246],
+                                                [6.7283,
+                                                    0.1329],
+                                                [7,
+                                                    0.1426],
+                                                [7.2855,
+                                                    0.1539],
+                                                [7.5761,
+                                                    0.1651],
+                                                [7.8739,
+                                                    0.1746],
+                                                [8.1811,
+                                                    0.1807],
+                                                [8.5,
+                                                    0.1819],
+                                                [8.7986,
+                                                    0.178],
+                                                [9.1032,
+                                                    0.171],
+                                                [9.4085,
+                                                    0.1631],
+                                                [9.7092,
+                                                    0.1565],
+                                                [10,
+                                                    0.1535],
+                                                [10.2986,
+                                                    0.1559],
+                                                [10.5887,
+                                                    0.1629],
+                                                [10.8795,
+                                                    0.1724],
+                                                [11.1802,
+                                                    0.1821],
+                                                [11.5,
+                                                    0.1899],
+                                                [11.7764,
+                                                    0.1937],
+                                                [12.0679,
+                                                    0.1953],
+                                                [12.3712,
+                                                    0.1951],
+                                                [12.683,
+                                                    0.1936],
+                                                [13,
+                                                    0.1912],
+                                                [13.3206,
+                                                    0.1883],
+                                                [13.637,
+                                                    0.1855],
+                                                [13.9431,
+                                                    0.1837],
+                                                [14.2329,
+                                                    0.1834],
+                                                [14.5,
+                                                    0.1854],
+                                                [14.8199,
+                                                    0.1923],
+                                                [15.1087,
+                                                    0.2025],
+                                                [15.3875,
+                                                    0.2138],
+                                                [15.6776,
+                                                    0.224],
+                                                [16,
+                                                    0.2309],
+                                                [16.2701,
+                                                    0.2329],
+                                                [16.5624,
+                                                    0.2325],
+                                                [16.8697,
+                                                    0.2305],
+                                                [17.1846,
+                                                    0.2276],
+                                                [17.5,
+                                                    0.2245],
+                                                [17.826,
+                                                    0.2215],
+                                                [18.1416,
+                                                    0.2187],
+                                                [18.4443,
+                                                    0.2155],
+                                                [18.7313,
+                                                    0.2116],
+                                                [19,
+                                                    0.2066],
+                                                [19.3049,
+                                                    0.1986],
+                                                [19.5927,
+                                                    0.1893],
+                                                [19.878,
+                                                    0.1799],
+                                                [20.1755,
+                                                    0.1714],
+                                                [20.5,
+                                                    0.1648],
+                                                [20.7747,
+                                                    0.1616],
+                                                [21.068,
+                                                    0.1599],
+                                                [21.374,
+                                                    0.1592],
+                                                [21.6866,
+                                                    0.1592],
+                                                [22,
+                                                    0.1594],
+                                                [22.3087,
+                                                    0.1595],
+                                                [22.6126,
+                                                    0.1594],
+                                                [22.9122,
+                                                    0.1587],
+                                                [23.2078,
+                                                    0.1572],
+                                                [23.5,
+                                                    0.1549],
+                                                [23.7969,
+                                                    0.1515],
+                                                [24.093,
+                                                    0.1477],
+                                                [24.3907,
+                                                    0.1444],
+                                                [24.6922,
+                                                    0.1424],
+                                                [25,
+                                                    0.1426],
+                                                [25.3196,
+                                                    0.1454],
+                                                [25.6388,
+                                                    0.1498],
+                                                [25.9481,
+                                                    0.1544],
+                                                [26.2383,
+                                                    0.1575],
+                                                [26.5,
+                                                    0.1579],
+                                                [26.8171,
+                                                    0.1518],
+                                                [27.0909,
+                                                    0.14],
+                                                [27.3562,
+                                                    0.1258],
+                                                [27.6477,
+                                                    0.1122],
+                                                [28,
+                                                    0.1025],
+                                                [28.189,
+                                                    0.1001],
+                                                [28.3907,
+                                                    0.0986],
+                                                [28.5979,
+                                                    0.0975],
+                                                [28.8034,
+                                                    0.0963],
+                                                [29,
+                                                    0.0945],
+                                                [29.2983,
+                                                    0.0889],
+                                                [29.5488,
+                                                    0.0807],
+                                                [29.75,
+                                                    0.0705],
+                                                [29.9009,
+                                                    0.0592],
+                                                [30,
+                                                    0.0473],
+                                                [30.001,
+                                                    0.0376],
+                                                [30.001,
+                                                    0.0281],
+                                                [30.001,
+                                                    0.0187],
+                                                [30.001,
+                                                    0.0093],
+                                                [30.001,
+                                                    0]
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "label": "cI<sup>1/2</sup>",
+                                    "unit": "m<sup>1/2</sup>/s",
+                                    "plots": [
+                                        {
+                                            "label": "cI<sup>1/2</sup> [m<sup>1/2</sup>/s]",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.999,
+                                                    0.0144],
+                                                [1.999,
+                                                    0.0288],
+                                                [1.999,
+                                                    0.0429],
+                                                [1.999,
+                                                    0.0567],
+                                                [2,
+                                                    0.0701],
+                                                [2.1179,
+                                                    0.1022],
+                                                [2.3097,
+                                                    0.1323],
+                                                [2.5426,
+                                                    0.1618],
+                                                [2.7837,
+                                                    0.1922],
+                                                [3,
+                                                    0.2251],
+                                                [3.1962,
+                                                    0.2684],
+                                                [3.3523,
+                                                    0.3133],
+                                                [3.5104,
+                                                    0.356],
+                                                [3.7123,
+                                                    0.3925],
+                                                [4,
+                                                    0.4191],
+                                                [4.2467,
+                                                    0.4295],
+                                                [4.5333,
+                                                    0.4355],
+                                                [4.8466,
+                                                    0.4386],
+                                                [5.1732,
+                                                    0.4402],
+                                                [5.5,
+                                                    0.4417],
+                                                [5.8164,
+                                                    0.4443],
+                                                [6.1221,
+                                                    0.448],
+                                                [6.4197,
+                                                    0.4528],
+                                                [6.7115,
+                                                    0.4584],
+                                                [7,
+                                                    0.4648],
+                                                [7.2999,
+                                                    0.472],
+                                                [7.5994,
+                                                    0.4801],
+                                                [7.8989,
+                                                    0.4893],
+                                                [8.199,
+                                                    0.4998],
+                                                [8.5,
+                                                    0.512],
+                                                [8.8032,
+                                                    0.5257],
+                                                [9.1062,
+                                                    0.5394],
+                                                [9.4077,
+                                                    0.5511],
+                                                [9.7062,
+                                                    0.5589],
+                                                [10,
+                                                    0.5607],
+                                                [10.2974,
+                                                    0.5553],
+                                                [10.5922,
+                                                    0.544],
+                                                [10.8883,
+                                                    0.5294],
+                                                [11.1896,
+                                                    0.5139],
+                                                [11.5,
+                                                    0.5],
+                                                [11.7948,
+                                                    0.4906],
+                                                [12.0963,
+                                                    0.4847],
+                                                [12.4005,
+                                                    0.4823],
+                                                [12.7031,
+                                                    0.4834],
+                                                [13,
+                                                    0.4882],
+                                                [13.3043,
+                                                    0.4969],
+                                                [13.6021,
+                                                    0.5078],
+                                                [13.8977,
+                                                    0.5192],
+                                                [14.1955,
+                                                    0.5293],
+                                                [14.5,
+                                                    0.5362],
+                                                [14.8005,
+                                                    0.5385],
+                                                [15.1059,
+                                                    0.5368],
+                                                [15.4111,
+                                                    0.5315],
+                                                [15.7108,
+                                                    0.5231],
+                                                [16,
+                                                    0.512],
+                                                [16.3042,
+                                                    0.4973],
+                                                [16.5977,
+                                                    0.4815],
+                                                [16.8891,
+                                                    0.466],
+                                                [17.187,
+                                                    0.4522],
+                                                [17.5,
+                                                    0.4417],
+                                                [17.7997,
+                                                    0.4362],
+                                                [18.1091,
+                                                    0.4352],
+                                                [18.4187,
+                                                    0.4392],
+                                                [18.7189,
+                                                    0.4488],
+                                                [19,
+                                                    0.4648],
+                                                [19.3919,
+                                                    0.5024],
+                                                [19.7249,
+                                                    0.5478],
+                                                [20.0119,
+                                                    0.5916],
+                                                [20.266,
+                                                    0.6243],
+                                                [20.5,
+                                                    0.6366],
+                                                [20.7374,
+                                                    0.621],
+                                                [20.9866,
+                                                    0.5839],
+                                                [21.2671,
+                                                    0.5362],
+                                                [21.5984,
+                                                    0.489],
+                                                [22,
+                                                    0.4532],
+                                                [22.2873,
+                                                    0.4407],
+                                                [22.5948,
+                                                    0.4338],
+                                                [22.9086,
+                                                    0.4298],
+                                                [23.215,
+                                                    0.4258],
+                                                [23.5,
+                                                    0.4191],
+                                                [23.8751,
+                                                    0.3993],
+                                                [24.1904,
+                                                    0.3696],
+                                                [24.4681,
+                                                    0.3333],
+                                                [24.7306,
+                                                    0.2934],
+                                                [25,
+                                                    0.253],
+                                                [25.2482,
+                                                    0.2206],
+                                                [25.5198,
+                                                    0.1913],
+                                                [25.8173,
+                                                    0.1662],
+                                                [26.1432,
+                                                    0.1462],
+                                                [26.5,
+                                                    0.1326],
+                                                [26.7897,
+                                                    0.1268],
+                                                [27.0915,
+                                                    0.1239],
+                                                [27.3985,
+                                                    0.1223],
+                                                [27.7036,
+                                                    0.1207],
+                                                [28,
+                                                    0.1176],
+                                                [28.1979,
+                                                    0.1139],
+                                                [28.3926,
+                                                    0.1091],
+                                                [28.5883,
+                                                    0.1033],
+                                                [28.7894,
+                                                    0.0966],
+                                                [29,
+                                                    0.0894],
+                                                [29.2626,
+                                                    0.0802],
+                                                [29.5194,
+                                                    0.0697],
+                                                [29.7448,
+                                                    0.0571],
+                                                [29.9135,
+                                                    0.0417],
+                                                [30,
+                                                    0.0226],
+                                                [30.001,
+                                                    0.0183],
+                                                [30.001,
+                                                    0.0139],
+                                                [30.001,
+                                                    0.0093],
+                                                [30.001,
+                                                    0.0047],
+                                                [30.001,
+                                                    0]]
+                                        }]
+                                },
+                                {
+                                    "label": "h<sup>3/2</sup>",
+                                    "unit": "m<sup>3/2</sup>",
+                                    "plots": [
+                                        {
+                                            "label": "h<sup>3/2</sup> [m<sup>3/2</sup>]",
+                                            "data": [
+                                                [1.999,
+                                                    0],
+                                                [1.999,
+                                                    0.006],
+                                                [1.999,
+                                                    0.0118],
+                                                [1.999,
+                                                    0.0172],
+                                                [1.999,
+                                                    0.0218],
+                                                [2,
+                                                    0.0256],
+                                                [2.1274,
+                                                    0.0298],
+                                                [2.3184,
+                                                    0.0316],
+                                                [2.5458,
+                                                    0.0322],
+                                                [2.7821,
+                                                    0.0329],
+                                                [3,
+                                                    0.0347],
+                                                [3.3317,
+                                                    0.0451],
+                                                [3.5275,
+                                                    0.0624],
+                                                [3.6574,
+                                                    0.0829],
+                                                [3.7916,
+                                                    0.1032],
+                                                [4,
+                                                    0.1196],
+                                                [4.2312,
+                                                    0.1275],
+                                                [4.518,
+                                                    0.1326],
+                                                [4.8393,
+                                                    0.1359],
+                                                [5.1737,
+                                                    0.1385],
+                                                [5.5,
+                                                    0.1415],
+                                                [5.8383,
+                                                    0.1466],
+                                                [6.1484,
+                                                    0.1535],
+                                                [6.4393,
+                                                    0.1621],
+                                                [6.7201,
+                                                    0.1723],
+                                                [7,
+                                                    0.1841],
+                                                [7.2877,
+                                                    0.1971],
+                                                [7.5826,
+                                                    0.2097],
+                                                [7.8837,
+                                                    0.2202],
+                                                [8.1898,
+                                                    0.2267],
+                                                [8.5,
+                                                    0.2274],
+                                                [8.8085,
+                                                    0.2215],
+                                                [9.1163,
+                                                    0.2113],
+                                                [9.4199,
+                                                    0.1999],
+                                                [9.7156,
+                                                    0.1905],
+                                                [10,
+                                                    0.1861],
+                                                [10.2947,
+                                                    0.1896],
+                                                [10.5818,
+                                                    0.1997],
+                                                [10.8716,
+                                                    0.2133],
+                                                [11.1742,
+                                                    0.2275],
+                                                [11.5,
+                                                    0.2393],
+                                                [11.7759,
+                                                    0.245],
+                                                [12.068,
+                                                    0.2479],
+                                                [12.3721,
+                                                    0.2481],
+                                                [12.6842,
+                                                    0.2463],
+                                                [13,
+                                                    0.2428],
+                                                [13.3223,
+                                                    0.238],
+                                                [13.6388,
+                                                    0.2331],
+                                                [13.9442,
+                                                    0.229],
+                                                [14.233,
+                                                    0.227],
+                                                [14.5,
+                                                    0.2282],
+                                                [14.8154,
+                                                    0.2357],
+                                                [15.1032,
+                                                    0.2481],
+                                                [15.3833,
+                                                    0.2628],
+                                                [15.6756,
+                                                    0.2772],
+                                                [16,
+                                                    0.2886],
+                                                [16.2709,
+                                                    0.294],
+                                                [16.5635,
+                                                    0.2967],
+                                                [16.8705,
+                                                    0.2975],
+                                                [17.1851,
+                                                    0.2966],
+                                                [17.5,
+                                                    0.2948],
+                                                [17.8335,
+                                                    0.292],
+                                                [18.1547,
+                                                    0.2882],
+                                                [18.4592,
+                                                    0.283],
+                                                [18.7424,
+                                                    0.276],
+                                                [19,
+                                                    0.2667],
+                                                [19.3136,
+                                                    0.2501],
+                                                [19.5947,
+                                                    0.2314],
+                                                [19.8689,
+                                                    0.2134],
+                                                [20.1621,
+                                                    0.1992],
+                                                [20.5,
+                                                    0.1916],
+                                                [20.7661,
+                                                    0.1913],
+                                                [21.0571,
+                                                    0.1941],
+                                                [21.3649,
+                                                    0.1987],
+                                                [21.6819,
+                                                    0.2036],
+                                                [22,
+                                                    0.2075],
+                                                [22.3046,
+                                                    0.2094],
+                                                [22.6048,
+                                                    0.2097],
+                                                [22.9028,
+                                                    0.209],
+                                                [23.2006,
+                                                    0.2079],
+                                                [23.5,
+                                                    0.207],
+                                                [23.8135,
+                                                    0.2069],
+                                                [24.1257,
+                                                    0.2081],
+                                                [24.4311,
+                                                    0.2113],
+                                                [24.7243,
+                                                    0.2169],
+                                                [25,
+                                                    0.2255],
+                                                [25.3858,
+                                                    0.2448],
+                                                [25.7223,
+                                                    0.2677],
+                                                [26.016,
+                                                    0.2894],
+                                                [26.2731,
+                                                    0.305],
+                                                [26.5,
+                                                    0.3097],
+                                                [26.7307,
+                                                    0.2984],
+                                                [26.9636,
+                                                    0.275],
+                                                [27.2313,
+                                                    0.2472],
+                                                [27.566,
+                                                    0.2227],
+                                                [28,
+                                                    0.2092],
+                                                [28.1898,
+                                                    0.2083],
+                                                [28.391,
+                                                    0.2091],
+                                                [28.5973,
+                                                    0.2104],
+                                                [28.8025,
+                                                    0.2115],
+                                                [29,
+                                                    0.2113],
+                                                [29.2563,
+                                                    0.2077],
+                                                [29.4847,
+                                                    0.2006],
+                                                [29.685,
+                                                    0.191],
+                                                [29.8568,
+                                                    0.1795],
+                                                [30,
+                                                    0.1672],
+                                                [30.001,
+                                                    0.1339],
+                                                [30.001,
+                                                    0.1004],
+                                                [30.001,
+                                                    0.067],
+                                                [30.001,
+                                                    0.0335],
+                                                [30.001,
+                                                    0]]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        let chart;
+        let storeLineSymbolConfig = [];
+        let highchart_test = function () {
+            let self = this;
+
+            // Data binding & display
+            self.DisplayHighChart = function () {
+                const dataJSON = w7cData.charts[0].xaxis[0].yaxis;
+                const configJSON = w7cConfig.charts[0].xaxis[0].yaxis;
+
+                let seriesValues = [];
+                let yAxisValues = [];
+
+                for (let i = 0; i < dataJSON.length; i++) {
+
+                    for (let j = 0; j < dataJSON[i].plots.length; j++) {
+
+                        if (!configJSON[i].plots[j].hidden) {
+                            seriesValues.push({
+                                name: dataJSON[i].plots[j].label,
+                                data: dataJSON[i].plots[j].data,
+                                unit: dataJSON[i].unit,
+                                dashStyle: configJSON[i].plots[j].lineStyle !== null ? configJSON[i].plots[j].lineStyle : "solid",
+                                color: configJSON[i].plots[j].lineColor !== null ? "rgba(" + Object.values(configJSON[i].plots[j].lineColor) + ")" : null,
+                                lineWidth: configJSON[i].plots[j].lineSize,
+                                enableMouseTracking: configJSON[i].plots[j].flyover,
+                                showInLegend: configJSON[i].plots[j].flyover,
+                                visible: configJSON[i].plots[j].visible,
+                                marker: {
+                                    radius: configJSON[i].plots[j].symbolSize,
+                                    symbol: configJSON[i].plots[j].symbolStyle,
+                                    fillColor: configJSON[i].plots[j].symbolFillColor !== null ? "rgba(" + Object.values(configJSON[i].plots[j].symbolFillColor) + ")" : null
+                                },
+                                yAxis: i
+                            });
+                        }
+                    }
+
+                    yAxisValues.push({
+                        title: {
+                            useHTML: true,
+                            rotation: configJSON[i].title.rotation,
+                            align: configJSON[i].title.align,
+                            text: dataJSON[i].label + " [" + dataJSON[i].unit + "]",
+                            x: configJSON[i].title.xoffset,
+                            y: configJSON[i].title.yoffset,
+                            offset: 20
+                        },
+                        reversed: configJSON[i].position.reversed,
+                        height: "" + configJSON[i].position.height + "%",
+                        top: "" + configJSON[i].position.top + "%",
+                        min: configJSON[i].scale === "auto" ? null : configJSON[i].min,
+                        max: configJSON[i].scale === "auto" ? null : configJSON[i].max,
+                        opposite: configJSON[i].position.opposite,
+                        labels: {
+                            enabled: true
+                        },
+                        offset: configJSON[i].position.offset,
+                        lineColor: "#000",
+                        lineWidth: 1,
+                        margin: 15,
+                        tickLength: configJSON[i].title.ticks ? 10 : null,
+                        tickWidth: configJSON[i].title.ticks ? 1 : null,
+                        tickColor: "#000",
+                        // Default values
+                        showLastLabel: false,
+                        gridLineColor: "rgba(0,0,0,0)"
+                    });
+                }
+
+                for (let i = 0; i < yAxisValues.length; i++) {
+                    // yAxis revert option
+                    if (yAxisValues[i].reversed && yAxisValues[i].opposite) {
+                        yAxisValues[i].title.textAlign = "left";
+                    } else if (yAxisValues[i].reversed && !yAxisValues[i].opposite) {
+                        yAxisValues[i].title.textAlign = "right";
+                    }
+                }
+
+                // Chart elem & config
+                let chartElem = "container";
+                let chartConf = {
+                    chart: {
+                        borderWidth: w7cConfig.charts[0].mainlayer.borderSize,
+                        borderColor: "rgba(" + Object.values(w7cConfig.charts[0].mainlayer.borderColor) + ")",
+                        marginBottom: w7cConfig.charts[0].mainlayer.bottomMargin,
+                        marginLeft: w7cConfig.charts[0].mainlayer.leftMargin,
+                        marginRight: w7cConfig.charts[0].mainlayer.rightMargin,
+                        marginTop: w7cConfig.charts[0].mainlayer.topMargin
+                    },
+
+                    title: {
+                        text: w7cData.charts[0].title
+                    },
+
+                    subtitle: {
+                        text: w7cData.charts[0].subtitle
+                    },
+
+                    tooltip: {
+                        backgroundColor: "rgba(255,255,255,1)",
+                        useHTML: true,
+                        formatter: function () {
+                            return `<strong>${this.series.name}</strong></br>
+                                Value at <strong>${this.x}</strong> d [m] : ${this.y.toFixed(2)} ${this.series.userOptions.unit}`;
+                        }
+                    },
+
+                    legend: {
+                        useHTML: true,
+                        enabled: w7cConfig.charts[0].legend.visible,
+                        layout: w7cConfig.charts[0].legend.layout,
+                        align: w7cConfig.charts[0].legend.hAlign,
+                        verticalAlign: w7cConfig.charts[0].legend.vAlign,
+                        floating: w7cConfig.charts[0].legend.floating,
+                        x: w7cConfig.charts[0].legend.xpos,
+                        y: w7cConfig.charts[0].legend.ypos,
+                        borderWidth: w7cConfig.charts[0].legend.bordersize,
+                        padding: w7cConfig.charts[0].legend.padding,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || "#FFFFFF"
+                    },
+
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                useHTML: true
+                            },
+                        }
+                    },
+
+                    xAxis: {
+                        title: {
+                            useHTML: true,
+                            enabled: true,
+                            text: w7cData.charts[0].xaxis[0].label + " " + w7cData.charts[0].xaxis[0].unit,
+                            align: w7cConfig.charts[0].xaxis[0].title.align,
+                            y: -10
+                        },
+                        reversed: w7cConfig.charts[0].xaxis[0].reversed,
+                        startOnTick: false,
+                        endOnTick: false,
+                        showFirstLabel: false,
+                        showLastLabel: false,
+                        tickWidth: 1,
+                        tickColor: "#000",
+                        lineColor: "#000",
+                        tickInterval: 5,
+                        labels: {
+                            y: 25
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    yAxis: yAxisValues,
+
+                    series: seriesValues
+                };
+
+                chart = Highcharts.chart(chartElem, chartConf);
+
+                console.log({w7cData, w7cConfig}, {dataJSON, configJSON}, {yAxisValues, seriesValues})
+            };
+
+            // Init chart
+            self.Init = function () {
+                self.DisplayHighChart();
+            };
+
+            // Other settings
+            // Hamburger menu
+            self.ConfigLineSymbol = function () {
+                $("#SelectPlot").empty();
+                w7cConfig.charts[0].xaxis[0].yaxis.map(plot => plot.plots.map(cat => {
+                    if (cat.hidden !== true) {
+                        $("#SelectPlot").append(
+                            $("<option></option>").val(cat.label).html(cat.label)
+                        );
+                    }
+                }));
+                storeLineSymbolConfig = [];
+                self.LoadDefaultChart(w7cData.charts[0].xaxis[0].yaxis[0].plots[0].label);
+            };
+
+            self.ConfigSizeLayer = function () {
+                // Get current config size layer setting
+                $("#chart_title").val(w7cData.charts[0].title);
+                $("#chart_subtitle").val(w7cData.charts[0].subtitle);
+                $("#txtborder").val(w7cConfig.charts[0].mainlayer.borderSize);
+                $("#txtmargin_top").val(w7cConfig.charts[0].mainlayer.topMargin);
+                $("#txtmargin_left").val(w7cConfig.charts[0].mainlayer.leftMargin);
+                $("#txtmargin_right").val(w7cConfig.charts[0].mainlayer.rightMargin);
+                $("#txtmargin_bottom").val(w7cConfig.charts[0].mainlayer.bottomMargin);
+                $("#txtlayerbordercolor").attr("value", "rgba(" + Object.values(w7cConfig.charts[0].mainlayer.borderColor) + ")");
+                self.LoadDefaultChart();
+                $("#txtlayerbordercolor").minicolors("value", w7cConfig.charts[0].mainlayer.borderColor);
+            };
+
+            self.ConfigLegend = function () {
+                // Get current legend setting
+                if (w7cConfig.charts[0].legend.visible) {
+                    $("#chkHideShowLegend").attr("checked", "checked")
+                } else {
+                    $("#chkHideShowLegend").attr("checked", false)
+                }
+                if (w7cConfig.charts[0].legend.floating) {
+                    $("#chkLegendFloating").attr("checked", "checked")
+                } else {
+                    $("#chkLegendFloating").attr("checked", false)
+                }
+                $("#SelectLegendLayout option").each(function () {
+                    if ($(this).attr("value") === w7cConfig.charts[0].legend.layout) {
+                        $(this).attr("selected", "selected")
+                    } else {
+                        $(this).attr("selected", false)
+                    }
+                });
+                $("#SelectLegendAlign option").each(function () {
+                    if ($(this).attr("value") === w7cConfig.charts[0].legend.hAlign) {
+                        $(this).attr("selected", "selected")
+                    } else {
+                        $(this).attr("selected", false)
+                    }
+                });
+                $("#SelectLegendVerticalAlign option").each(function () {
+                    if ($(this).attr("value") === w7cConfig.charts[0].legend.vAlign) {
+                        $(this).attr("selected", "selected")
+                    } else {
+                        $(this).attr("selected", false)
+                    }
+                });
+                $("#txtlegendx").val(w7cConfig.charts[0].legend.xpos);
+                $("#txtlegendy").val(w7cConfig.charts[0].legend.ypos);
+                $("#txtpadding").val(w7cConfig.charts[0].legend.padding);
+                $("#txtmargin").val(w7cConfig.charts[0].legend.margin);
+                $("#txtlegendbordersize").val(w7cConfig.charts[0].legend.bordersize);
+            };
+
+            self.ConfigW7C = function () {
+                // Show settings
+                $("#modal_w7cConfig").dialog({
+                    minWidth: 400,
+                    minHeight: 300,
+                    maxHeight: 500
+                });
+            };
+
+            if (w7cConfig.charts[0].plotconfiguration) {
+                let menuContext = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
+                let menuContextSeparator = {
+                    separator: true
+                };
+                menuContext.splice(2, 0, menuContextSeparator);
+
+                let menuConfigChart = {
+                    text: "Configuration size and extension of drawing layer",
+                    onclick: function () {
+                        self.ConfigSizeLayer();
+                        // Show settings
+                        $("#modal_config_chartmargin").dialog({
+                            minWidth: 400,
+                            minHeight: 300,
+                            maxHeight: 500
+                        });
+                    }
+                };
+                menuContext.splice(3, 0, menuConfigChart);
+
+
+                let menuConfigLineAndSymbol = {
+                    text: "Configuration Line and Symbol style",
+                    onclick: function () {
+                        self.ConfigLineSymbol();
+                        // Show modal & resize chart
+                        $("#modal_config_line_marker").dialog({
+                            minWidth: 400,
+                            minHeight: 300,
+                            maxHeight: 500
+                        });
+                    }
+                };
+                menuContext.splice(4, 0, menuConfigLineAndSymbol);
+
+                let menuConfigLegend = {
+                    text: "Configuration legend",
+                    onclick: function () {
+                        self.ConfigLegend();
+                        // Show settings
+                        $("#modal_config_legend").dialog({
+                            minWidth: 400,
+                            minHeight: 300,
+                            maxHeight: 500
+                        });
+                    }
+                };
+                menuContext.splice(5, 0, menuConfigLegend);
+
+                menuContext.splice(6, 0, menuContextSeparator);
+
+                let menuConfigRawTxt = {
+                    text: "w7cConfig editor",
+                    onclick: self.ConfigW7C
+                };
+                menuContext.splice(7, 0, menuConfigRawTxt);
+            }
+
+            self.LoadDefaultChart = function (plot) {
+                // Color picker
+                $(".color-picker-1").each(function () {
+                    $(this).minicolors({
+                        control: $(this).attr("data-control") || "hue",
+                        defaultValue: $(this).attr("data-defaultValue") || "",
+                        format: $(this).attr("data-format") || "hex",
+                        opacity: $(this).attr("data-opacity"),
+                        change: function (value, opacity) {
+                            if (opacity) {
+                                value += ", " + opacity;
+                            }
+                        },
+                        theme: "bootstrap"
+                    });
+                });
+
+                Highcharts.each(chart.series, function (ob) {
+                    if (ob.name === plot) {
+                        let isLineSymbolConfig = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === plot);
+                        if (isLineSymbolConfig.length === 0) {
+                            storeLineSymbolConfig.push({
+                                name: ob.name,
+                                visible: ob.options.visible,
+                                options: {
+                                    lineWidth: ob.options.lineWidth,
+                                    dashStyle: ob.options.dashStyle,
+                                    color: ob.options.color,
+                                    marker: {
+                                        radius: ob.options.marker.radius,
+                                        symbol: ob.options.marker.symbol,
+                                        lineColor: ob.options.marker.lineColor,
+                                        fillColor: ob.options.marker.fillColor
+                                    }
+                                }
+                            })
+                        }
+
+                        //plot
+                        $("#SelectPlot").val(ob.name);
+                        $("#chkplotvisible").prop("checked", ob.options.visible);
+
+                        //line
+                        $("#txtlineSize").val(ob.options.lineWidth);
+                        $("#SelectLineStyle").val(ob.options.dashStyle);
+                        $("#txtLineColor").minicolors("value", ob.options.color);
+
+                        //marker
+                        $("#txtMarkerRadius").val(ob.options.marker.radius);
+                        $("#SelectSymbolStyle").val(ob.options.marker.symbol);
+                        $("#txtMarkerlinecolor").minicolors("value", ob.options.marker.lineColor);
+                        $("#txtMarkerfillColor").minicolors("value", ob.options.marker.fillColor);
+                    }
+                });
+            };
+
+            $("#SelectPlot").on("change", function () {
+                const result = w7cConfig.charts[0].xaxis[0].yaxis
+                    .reduce((arr, item) => arr.concat(item.plots), [])
+                    .find(sub => sub.label === $("#SelectPlot").val());
+
+                Highcharts.each(chart.series, function (ob) {
+                    if (ob.name === result.label) {
+                        let isLineSymbolConfig = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === result.label);
+                        if (isLineSymbolConfig.length === 0) {
+                            //plot
+                            $("#chkplotvisible").prop("checked", ob.options.visible);
+
+                            //line
+                            $("#txtlineSize").val(ob.options.lineWidth);
+                            $("#SelectLineStyle").val(ob.options.dashStyle);
+                            $("#txtLineColor").minicolors("value", ob.options.color);
+
+                            //marker
+                            $("#txtMarkerRadius").val(ob.options.marker.radius);
+                            $("#SelectSymbolStyle").val(ob.options.marker.symbol);
+                            $("#txtMarkerlinecolor").minicolors("value", ob.options.marker.lineColor);
+                            $("#txtMarkerfillColor").minicolors("value", ob.options.marker.fillColor);
+
+                            storeLineSymbolConfig.push({
+                                name: ob.name,
+                                visible: ob.options.visible,
+                                options: {
+                                    lineWidth: ob.options.lineWidth,
+                                    dashStyle: ob.options.dashStyle,
+                                    color: ob.options.color,
+                                    marker: {
+                                        radius: ob.options.marker.radius,
+                                        symbol: ob.options.marker.symbol,
+                                        lineColor: ob.options.marker.lineColor,
+                                        fillColor: ob.options.marker.fillColor
+                                    }
+                                }
+                            })
+                        } else {
+                            $("#chkplotvisible").prop("checked", isLineSymbolConfig[0].visible);
+
+                            //line
+                            $("#txtlineSize").val(isLineSymbolConfig[0].options.lineWidth);
+                            $("#SelectLineStyle").val(isLineSymbolConfig[0].options.dashStyle);
+                            $("#txtLineColor").minicolors("value", isLineSymbolConfig[0].options.color);
+
+                            //marker
+                            $("#txtMarkerRadius").val(isLineSymbolConfig[0].options.marker.radius);
+                            $("#SelectSymbolStyle").val(isLineSymbolConfig[0].options.marker.symbol);
+                            $("#txtMarkerlinecolor").minicolors("value", isLineSymbolConfig[0].options.marker.lineColor);
+                            $("#txtMarkerfillColor").minicolors("value", isLineSymbolConfig[0].options.marker.fillColor);
+                        }
+                    }
+                });
+            });
+
+            // plot visible change
+            $("#chkplotvisible").change(function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].visible = $("#chkplotvisible").is(":checked");
+                }
+            });
+
+            // line size change
+            $("#txtlineSize").on("input propertychange paste", function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.lineWidth = $("#txtlineSize").val();
+                }
+            });
+
+            // line style change
+            $("#SelectLineStyle").change(function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.dashStyle = $("#SelectLineStyle").val();
+                }
+            });
+
+            // line color change
+            $("#txtLineColor").on("input propertychange paste", function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.color = $("#txtLineColor").val();
+                }
+            });
+
+            // marker size change
+            $("#txtMarkerRadius").on("input propertychange paste", function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.marker.radius = $("#txtMarkerRadius").val();
+                }
+            });
+
+            // marker style change
+            $("#SelectSymbolStyle").change(function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.marker.symbol = $("#SelectSymbolStyle").val();
+                }
+            });
+
+            // marker color change
+            $("#txtMarkerlinecolor").on("input propertychange paste", function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.marker.lineColor = $("#txtMarkerlinecolor").val();
+                }
+            });
+
+            // marker fill color change
+            $("#txtMarkerfillColor").on("input propertychange paste", function () {
+                let x = storeLineSymbolConfig && storeLineSymbolConfig.filter(d => d.name === $("#SelectPlot").val());
+                if (x.length > 0) {
+                    x[0].options.marker.fillColor = $("#txtMarkerfillColor").val();
+                }
+            });
+
+            // Convert RGBA string to object RGBA
+            function getColorValues(color) {
+                let pars = color.indexOf(","),
+                    repars = color.indexOf(",", pars + 1);
+                return {
+                    r: parseInt(color.substr(5, pars)),
+                    g: parseInt(color.substr(pars + 1, repars)),
+                    b: parseInt(color.substr(color.indexOf(",", pars + 1) + 1, color.indexOf(",", repars))),
+                    a: parseFloat(color.substr(color.indexOf(",", repars + 1) + 1, color.indexOf(")")))
+                };
+            }
+
+            // Update chart settings
+            self.updateChartSettings = function () {
+                if (storeLineSymbolConfig.length > 0) {
+                    $.each(chart.series, function (j, series) {
+                        $.each(storeLineSymbolConfig, function (jj, value) {
+                            if (series.name === value.name) {
+
+                                // plot visible
+                                series.setVisible(value.visible);
+
+                                // line and marker
+                                series.update({
+                                    lineWidth: value.options.lineWidth === 0 ? 0 : value.options.lineWidth,
+                                    dashStyle: value.options.dashStyle,
+                                    color: value.options.color,
+                                    marker: {
+                                        enabled: true,
+                                        symbol: value.options.marker.symbol,
+                                        radius: value.options.marker.radius === 0 ? 0 : value.options.marker.radius,
+                                        lineColor: value.options.marker.lineColor,
+                                        fillColor: value.options.marker.fillColor,
+                                        lineWidth: 1
+                                    }
+                                });
+
+                                // Update w7cConfig file after user makes custom settings
+                                for (let i = 0; i < w7cConfig.charts[0].xaxis[0].yaxis.length; i++) {
+                                    for (let j = 0; j < w7cConfig.charts[0].xaxis[0].yaxis[i].plots.length; j++) {
+                                        if (w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].label === series.name) {
+                                            // Visibility
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].visible = value.visible;
+                                            // Plots color & line size
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].lineColor = getColorValues(value.options.color);
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].lineSize = (value.options.lineWidth === 0 ? 0 : value.options.lineWidth);
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].lineStyle = value.options.dashStyle;
+                                            // Update marker setting
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].symbolColor = value.options.marker.fillColor;
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].symbolSize = (value.options.marker.radius === 0 ? 0 : value.options.marker.radius);
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].symbolStyle = value.options.marker.symbol;
+                                            w7cConfig.charts[0].xaxis[0].yaxis[i].plots[j].symbolFillColor = value.options.marker.fillColor;
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    });
+                }
+            };
+
+            // Update legend settings
+            self.updateLegendSetting = function () {
+
+                let legendSettings = {
+                    enabled: $("#chkHideShowLegend").is(":checked"),
+                    floating: $("#chkLegendFloating").is(":checked"),
+                    layout: $("#SelectLegendLayout").val(),
+                    align: $("#SelectLegendAlign").val(),
+                    verticalAlign: $("#SelectLegendVerticalAlign").val(),
+                    x: parseInt($("#txtlegendx").val()),
+                    y: parseInt($("#txtlegendy").val()),
+                    padding: parseInt($("#txtpadding").val()),
+                    margin: parseInt($("#txtmargin").val()),
+                    borderWidth: parseInt($("#txtlegendbordersize").val())
+                };
+                chart.legend.update({
+                    enabled: legendSettings.enabled,
+                    floating: legendSettings.floating,
+                    layout: legendSettings.layout,
+                    align: legendSettings.align,
+                    verticalAlign: legendSettings.verticalAlign,
+                    x: legendSettings.x,
+                    y: legendSettings.y,
+                    padding: legendSettings.padding,
+                    margin: legendSettings.margin,
+                    borderWidth: legendSettings.borderWidth
+                });
+
+                // Update w7cConfig file  after user makes custom settings for legend
+                w7cConfig.charts[0].legend.visible = legendSettings.enabled;
+                w7cConfig.charts[0].legend.floating = legendSettings.floating;
+                w7cConfig.charts[0].legend.layout = legendSettings.layout;
+                w7cConfig.charts[0].legend.hAlign = legendSettings.align;
+                w7cConfig.charts[0].legend.vAlign = legendSettings.verticalAlign;
+                w7cConfig.charts[0].legend.padding = legendSettings.padding;
+                w7cConfig.charts[0].legend.margin = legendSettings.margin;
+                w7cConfig.charts[0].legend.bordersize = legendSettings.borderWidth;
+            };
+
+            // Update chart settings.
+            self.updateChartMargin = function () {
+                let chartMarginSettings = {
+                    title: $("#chart_title").val(),
+                    subtitle: $("#chart_subtitle").val(),
+                    borderWidth: parseInt($("#txtborder").val()),
+                    borderColor: $("#txtlayerbordercolor").val(),
+                    marginTop: parseInt($("#txtmargin_top").val()),
+                    marginRight: parseInt($("#txtmargin_right").val()),
+                    marginBottom: parseInt($("#txtmargin_bottom").val()),
+                    marginLeft: parseInt($("#txtmargin_left").val())
+                };
+
+                chart.update({
+                    chart: {
+                        borderWidth: chartMarginSettings.borderWidth,
+                        borderColor: chartMarginSettings.borderColor,
+                        marginTop: chartMarginSettings.marginTop,
+                        marginRight: chartMarginSettings.marginRight,
+                        marginBottom: chartMarginSettings.marginBottom,
+                        marginLeft: chartMarginSettings.marginLeft
+                    },
+                    title: {
+                        text: chartMarginSettings.title
+                    },
+                    subtitle: {
+                        text: chartMarginSettings.subtitle
+                    }
+                });
+
+                // Update w7cConfig & w7cData file after user makes custom settings
+                w7cData.charts[0].title = chartMarginSettings.title;
+                w7cData.charts[0].subtitle = chartMarginSettings.subtitle;
+                w7cConfig.charts[0].mainlayer.borderSize = chartMarginSettings.borderWidth;
+                w7cConfig.charts[0].mainlayer.borderColor = getColorValues(chartMarginSettings.borderColor);
+                w7cConfig.charts[0].mainlayer.bottomMargin = chartMarginSettings.marginBottom;
+                w7cConfig.charts[0].mainlayer.leftMargin = chartMarginSettings.marginLeft;
+                w7cConfig.charts[0].mainlayer.rightMargin = chartMarginSettings.marginRight;
+                w7cConfig.charts[0].mainlayer.topMargin = chartMarginSettings.marginTop;
+            };
+
+            // Close modal
+            $(".modal-footer button[data-dismiss=\"modal\"]").click(function () {
+                $(this).closest(".ui-dialog").find(".ui-dialog-titlebar-close").trigger("click"); // New dialog
+            });
+
+            // Action for main chart setting buttons
+            $("#btnApplyPlot").click(function () {
+                self.updateChartSettings();
+                self.saveMyConfig();
+            });
+
+            $("#btnChangePlot").click(function () {
+                self.updateChartSettings();
+                self.saveMyConfig();
+                $(this).closest(".ui-dialog").find(".ui-dialog-titlebar-close").trigger("click"); // New dialog
+            });
+
+            // Action for legend setting button
+            $("#btnApplyLegend").click(function () {
+                self.updateLegendSetting();
+                self.saveMyConfig();
+            });
+
+            $("#btnchangelegend").click(function () {
+                self.updateLegendSetting();
+                self.saveMyConfig();
+                $(this).closest(".ui-dialog").find(".ui-dialog-titlebar-close").trigger("click");
+            });
+
+            // Action for chart margin setting buttons
+            $("#btnApplyChartMargin").click(function () {
+                self.updateChartMargin();
+                self.saveMyConfig();
+            });
+
+            $("#btnchangechartmargin").click(function () {
+                self.updateChartMargin();
+                self.saveMyConfig();
+                $(this).closest(".ui-dialog").find(".ui-dialog-titlebar-close").trigger("click");
+            });
+
+            // In case of changed plot settings inform parent (desktop application)
+            // With the help of the built in event handling a (changed) configuration can be sent to the parent
+            self.saveMyConfig = function () {
+                self.saveConfiguration(w7cConfig);
+            };
+
+            self.saveConfiguration = function (config) {
+                let event = new CustomEvent("SaveConfiguration", {
+                    detail: JSON.stringify(config)
+                });
+                document.dispatchEvent(event);
+            };
+
+            $("#btnchangew7cConfig").click(function () {
+                self.saveMyConfig();
+                $(this).hide();
+                $("#modal_w7cConfig .modal-body").append("<div class=\"form-group\"><label for=\"w7cConfig-content\">Current settings:</label><textarea class=\"form-control\" rows=\"10\" id=\"w7cConfig-content\">" + JSON.stringify(w7cConfig) + "</textarea></div>");
+                $("#btnsubmitw7cConfig").show();
+            });
+
+            // Process changed config coming from parent application.
+            // When done, the config is sent to the third tab (configuration tab).
+            // Here the configuration can be changed and with the help of the “Submit configuration button” it can be sent to the chart, when an appropriate handler is registered.
+            $("#btnsubmitw7cConfig").click(function () {
+                let content = $("#w7cConfig-content").val();
+                let event = new CustomEvent("ConfigurationChanged", {
+                    detail: content
+                });
+                document.dispatchEvent(event);
+                w7cConfig = JSON.parse(content);
+                $(this).hide();
+                $("#btnchangew7cConfig").show();
+                $("#modal_w7cConfig .modal-body").empty();
+                self.Init();
+                $(this).closest(".ui-dialog").find(".ui-dialog-titlebar-close").trigger("click");
+            });
+        };
+
+        $(document).ready(function () {
+            let highchart = new highchart_test();
+            highchart.Init();
+        });
+    </script>
+
+</head>
+
+<body>
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div id="container" style="min-width: 310px;  margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- Plot configuration modal -->
+<aside class="dialog-box" id="modal_config_line_marker" title="Configuration Line and Symbol style">
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="SelectPlot" class="col-sm-5">Plot</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="SelectPlot" id="SelectPlot">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="chkplotvisible" class="col-sm-5">Plot visible</label>
+            <div class="col-sm-7">
+                <input type="checkbox" id="chkplotvisible" name="chkplotvisible" checked>
+            </div>
+        </div>
+
+        <fieldset class="box-border">
+            <legend class="box-border">Lines</legend>
+            <div class="form-group row">
+                <label for="txtlineSize" class="col-sm-5">Size (px)</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="txtlineSize" name="txtlineSize"
+                           value="2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="txtLineColor" class="col-sm-5">Colour</label>
+                <div class="col-sm-7">
+                    <input type="text" id="txtLineColor" class="form-control color-picker-1"
+                           data-format="rgb" data-opacity="1" value="rgba(250, 37, 26, 0.5)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="SelectLineStyle" class="col-sm-5">Style</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="SelectLineStyle" id="SelectLineStyle">
+                        <option value="0">No line</option>
+                        <option value="solid">Solid</option>
+                        <option value="dot">Dot</option>
+                        <option value="dash">Dash</option>
+                        <option value="longdash">LongDash</option>
+                        <option value="dashdot">DashDot</option>
+                        <option value="longdashdot">LongDashDot</option>
+                        <option value="longdashdotdot">LongDashDotDot</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="box-border">
+            <legend class="box-border">Symbol</legend>
+            <div class="form-group row">
+                <label for="txtMarkerRadius" class="col-sm-5">Size (px)</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="txtMarkerRadius"
+                           name="txtMarkerRadius" value="2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="SelectSymbolStyle" class="col-sm-5">Style</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="SelectSymbolStyle" id="SelectSymbolStyle">
+                        <option value="0">No symbol</option>
+                        <option value="cross">cross</option>
+                        <option value="circle">circle</option>
+                        <option value="square">square</option>
+                        <option value="diamond">diamond</option>
+                        <option value="triangle">triangle</option>
+                        <option value="triangle-down">triangle-down</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="txtMarkerlinecolor" class="col-sm-5">Colour outline</label>
+                <div class="col-sm-7">
+                    <input type="text" id="txtMarkerlinecolor" class="form-control color-picker-1"
+                           data-format="rgb" data-opacity="1" value="rgba(0, 0, 0, 1)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="txtMarkerfillColor" class="col-sm-5">Fill color </label>
+                <div class="col-sm-7">
+                    <input type="text" id="txtMarkerfillColor" class="form-control color-picker-1"
+                           data-format="rgb" data-opacity="1" value="rgba(0, 0, 0, 1)">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button id="btnApplyPlot" type="button" class="btn btn-primary">Apply</button>
+        <button id="btnChangePlot" type="button" class="btn btn-success">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    </div>
+</aside>
+
+<!-- Layout configuration modal -->
+<aside class="dialog-box" id="modal_config_chartmargin" title="Configuration the size and extension of drawing layer">
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="chart_title" class="col-sm-5">Chart title</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="chart_title" name="chart_title"
+                       value='Chart Title'>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="chart_subtitle" class="col-sm-5">Chart subtitle</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="chart_subtitle" name="chart_subtitle"
+                       value='Chart Subtitle'>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <label for="txtborder" class="col-sm-5">Border width</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtborder" value="1">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtlayerbordercolor" class="col-sm-5">Border color</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control color-picker-1" id="txtlayerbordercolor" data-format="rgb" data-opacity="1" value="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtmargin_top" class="col-sm-5">Margin top</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtmargin_top" value="100">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtmargin_right" class="col-sm-5">Margin right</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtmargin_right" value="100">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtmargin_bottom" class="col-sm-5">Margin bottom</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtmargin_bottom" value="100">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtmargin_left" class="col-sm-5">Margin Left</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtmargin_left" value="100">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="btnApplyChartMargin" type="button" class="btn btn-primary">Apply</button>
+        <button id="btnchangechartmargin" type="button" class="btn btn-success">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+</aside>
+
+<!-- w7cConfig editor modal -->
+<aside class="dialog-box" id="modal_w7cConfig" title="w7cConfig file">
+    <div class="modal-body">
+        <!--w7cConfig here-->
+    </div>
+    <div class="modal-footer">
+        <button id="btnchangew7cConfig" type="button" class="btn btn-primary">Save
+            configuration
+        </button>
+        <button id="btnsubmitw7cConfig" type="button" class="btn btn-success">Submit
+            configuration
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+</aside>
+
+<!-- Legend configuration modal -->
+<aside class="dialog-box" id="modal_config_legend" title="Configuration Legend">
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="chkHideShowLegend" class="col-sm-5">Legend visible</label>
+            <div class="col-sm-7">
+                <input type="checkbox" id="chkHideShowLegend" name="chkHideShowLegend" checked>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="chkLegendFloating" class="col-sm-5">Floating</label>
+            <div class="col-sm-7">
+                <input type="checkbox" id="chkLegendFloating" name="chkLegendFloating" checked>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="SelectLegendLayout" class="col-sm-5">Layout</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="SelectLegendLayout" id="SelectLegendLayout">
+                    <option value="vertical">vertical</option>
+                    <option value="horizontal">horizontal</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="SelectLegendAlign" class="col-sm-5">Align</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="SelectLegendAlign" id="SelectLegendAlign">
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="center" selected>center</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="SelectLegendVerticalAlign" class="col-sm-5">Vertical Align</label>
+            <div class="col-sm-7">
+                <select class="form-control" name="SelectLegendVerticalAlign"
+                        id="SelectLegendVerticalAlign">
+                    <option value="top">top</option>
+                    <option value="middle">middle</option>
+                    <option value="bottom" selected>bottom</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtlegendx" class="col-sm-5">X</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtlegendx" name="txtlegendx"
+                       value="0">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtlegendy" class="col-sm-5">Y</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtlegendy" name="txtlegendy"
+                       value="0">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtpadding" class="col-sm-5">Padding</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtpadding" name="txtpadding"
+                       value="8">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtmargin" class="col-sm-5">Margin</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtmargin" name="txtmargin"
+                       value="12">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtlegendbordersize" class="col-sm-5">Border width</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="txtlegendbordersize"
+                       name="txtlegendbordersize" value="1">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="btnApplyLegend" type="button" class="btn btn-primary">Apply</button>
+        <button id="btnchangelegend" type="button" class="btn btn-success">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+</aside>
+
+<style>
+    .ui-dialog-titlebar-close {
+        -webkit-transition: ease .3s;
+        -moz-transition: ease .3s;
+        -ms-transition: ease .3s;
+        -o-transition: ease .3s;
+        transition: ease .3s;
+    }
+
+    .ui-dialog-titlebar-close:hover {
+        transform: scale(1.3);
+        -webkit-transition: ease .3s;
+        -moz-transition: ease .3s;
+        -ms-transition: ease .3s;
+        -o-transition: ease .3s;
+        transition: ease .3s;
+    }
+
+    .ui-dialog-titlebar-close:before {
+        display: block;
+        content: '\f00d';
+        font-family: FontAwesome, sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+    }
+
+    .dialog-box {
+        display: none;
+        width: 100% !important;
+    }
+
+    .dialog-box .modal-body {
+        padding-bottom: 70px;
+    }
+
+    .dialog-box .modal-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: white;
+        width: 100%;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .ui-dialog {
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+        box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+    }
+
+    .ui-dialog .ui-dialog-content {
+        position: static !important;
+    }
+
+    #container {
+        overflow: visible !important;
+        height: 90vh !important;
+    }
+
+    .highcharts-container {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    img {
+        margin-top: 20px;
+    }
+
+    fieldset.box-border {
+        border: 1px groove rgba(0, 0, 0, .2) !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0 0 0 0 #000;
+        box-shadow: 0 0 0 0 #000;
+    }
+
+    legend.box-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+
+    body {
+        /*overflow: hidden;*/
+        position: relative;
+    }
+
+    #btnsubmitw7cConfig {
+        display: none;
+    }
+</style>
+
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <title>Issues 20 - Provide integrated solution</title>
+    <title>Issues 29 - Text elem config</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -1982,8 +1982,8 @@
                         unit: w7cData.charts[0].xaxis[0].unit.replace(/[\[\]']+/g, ""),
                         showLastLabel: true,
                         gridLineWidth: 0,
-                        minPadding: 0,
-                        maxPadding: 0,
+                        minPadding: w7cConfig.charts[0].type === "xsection" ? 0 : 0.01,
+                        maxPadding: w7cConfig.charts[0].type === "xsection" ? 0 : 0.01,
                         reversed: xaxis_conf[0].xaxis[0].position.reversed,
                         opposite: xaxis_conf[0].xaxis[0].position.opposite,
                         top: xaxis_conf[0].xaxis[0].position.top + "%",

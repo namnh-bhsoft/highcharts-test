@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Issues 21 - Countour plot</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.4/jquery.minicolors.min.css">
+
+    <script charset="UTF-8" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script charset="UTF-8" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/highcharts.js"></script>
+    <script charset="UTF-8" src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.5/jquery.i18n.js"></script>
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.5/jquery.i18n.messagestore.js"></script>
+
+    <script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.4/jquery.minicolors.min.js"></script>
+
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://rawgithub.com/paulo-raca/highcharts-contour/master/highcharts-contour.js"></script>
+    <script src="https://rawgithub.com/ironwallaby/delaunay/master/delaunay.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <script>
+        var w7cConfig = {
+            "columncount": 1,
+            "rowcount": 1,
+            "locale": "en",
+            "charts": [
+                {
+                    "column": 0,
+                    "row": 0,
+                    "type": "contour",
+                    "legend": {
+                        "visible": false,
+                        "floating": true,
+                        "layout": "vertical",
+                        "hAlign": "center",
+                        "vAlign": "middle",
+                        "padding": 20,
+                        "margin": 20,
+                        "bordersize": 1,
+                        "xpos": 0,
+                        "ypos": 0
+                    },
+                    "mainlayer": {
+                        "borderSize": 0,
+                        "borderColor": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "leftMargin": 170,
+                        "rightMargin": 170,
+                        "topMargin": 100,
+                        "bottomMargin": 270
+                    },
+                    "plotconfiguration": true,
+                    "legendconfiguration": true,
+                    "layerconfiguration": true,
+                    "additonalInfo": {
+                        "level": [
+                            {
+                                "value": 0.02,
+                                "color": {
+                                    "r": 255,
+                                    "g": 0,
+                                    "b": 0,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.04,
+                                "color": {
+                                    "r": 0,
+                                    "g": 255,
+                                    "b": 0,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.06,
+                                "color": {
+                                    "r": 255,
+                                    "g": 127,
+                                    "b": 127,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.08,
+                                "color": {
+                                    "r": 0,
+                                    "g": 0,
+                                    "b": 255,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.1,
+                                "color": {
+                                    "r": 46,
+                                    "g": 139,
+                                    "b": 85,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.12,
+                                "color": {
+                                    "r": 255,
+                                    "g": 255,
+                                    "b": 0,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.14,
+                                "color": {
+                                    "r": 0,
+                                    "g": 0,
+                                    "b": 255,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.16,
+                                "color": {
+                                    "r": 255,
+                                    "g": 0,
+                                    "b": 255,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.18,
+                                "color": {
+                                    "r": 127,
+                                    "g": 127,
+                                    "b": 255,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.2,
+                                "color": {
+                                    "r": 111,
+                                    "g": 31,
+                                    "b": 111,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.22,
+                                "color": {
+                                    "r": 64,
+                                    "g": 64,
+                                    "b": 64,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.24,
+                                "color": {
+                                    "r": 239,
+                                    "g": 159,
+                                    "b": 0,
+                                    "a": 1
+                                }
+                            },
+                            {
+                                "value": 0.26,
+                                "color": {
+                                    "r": 128,
+                                    "g": 128,
+                                    "b": 128,
+                                    "a": 1
+                                }
+                            }
+                        ]
+                    },
+                    "xaxis": [
+                        {
+                            "label": "Distance",
+                            "position": {
+                                "opposite": false,
+                                "reversed": false,
+                                "offset": 0,
+                                "top": 0,
+                                "height": 100
+                            },
+                            "title": {
+                                "visible": true,
+                                "ticks": true,
+                                "rotation": 0,
+                                "align": "middle",
+                                "xoffset": 0,
+                                "yoffset": 0
+                            },
+                            "scale": "auto",
+                            "min": 0,
+                            "max": 0,
+                            "yaxis": [
+                                {
+                                    "position": {
+                                        "opposite": false,
+                                        "reversed": true,
+                                        "offset": 0,
+                                        "top": 0,
+                                        "height": 100
+                                    },
+                                    "title": {
+                                        "visible": true,
+                                        "ticks": true,
+                                        "rotation": 0,
+                                        "align": "high",
+                                        "xoffset": 0,
+                                        "yoffset": 0
+                                    },
+                                    "scale": "auto",
+                                    "label": "Height",
+                                    "min": 0,
+                                    "max": 0,
+                                    "plots": [
+                                        {
+                                            "label": "Ground",
+                                            "hidden": false,
+                                            "visible": false,
+                                            "flyover": false,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "lineStyle": null,
+                                            "lineSize": 0,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolStyle": null,
+                                            "symbolSize": 0
+                                        },
+                                        {
+                                            "label": "Surface",
+                                            "hidden": false,
+                                            "visible": false,
+                                            "flyover": false,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "lineStyle": null,
+                                            "lineSize": 0,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolStyle": null,
+                                            "symbolSize": 0
+                                        },
+                                        {
+                                            "label": "Verticals",
+                                            "hidden": false,
+                                            "visible": false,
+                                            "flyover": false,
+                                            "lineColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "lineStyle": null,
+                                            "lineSize": 0,
+                                            "symbolColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolFillColor": {
+                                                "r": 0,
+                                                "g": 0,
+                                                "b": 0,
+                                                "a": 0
+                                            },
+                                            "symbolStyle": null,
+                                            "symbolSize": 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        var w7cData = {
+            "charts": [{
+                "column": 0,
+                "row": 0,
+                "title": "BIBER Iso Velocities",
+                "subtitle": null,
+                "additonalInfo": {
+                    "data": {
+                        "z": [[0.0241,
+                            0.102,
+                            0.1229,
+                            0.1625,
+                            0.2073,
+                            0.175,
+                            0.2165,
+                            0.2179,
+                            0.2113,
+                            0.2632,
+                            0.2559,
+                            0.2355,
+                            0.1878,
+                            0.1817,
+                            0.1766,
+                            0.1625,
+                            0.18,
+                            0.1168,
+                            0.1077],
+                        [0.0233,
+                            0.0997,
+                            0.1201,
+                            0.1588,
+                            0.2026,
+                            0.171,
+                            0.2115,
+                            0.2129,
+                            0.2065,
+                            0.2572,
+                            0.25,
+                            0.2301,
+                            0.1835,
+                            0.1775,
+                            0.1725,
+                            0.1574,
+                            0.171,
+                            0.1099,
+                            0.1001],
+                        [0.0224,
+                            0.0969,
+                            0.1168,
+                            0.156,
+                            0.199,
+                            0.1679,
+                            0.2077,
+                            0.2092,
+                            0.2028,
+                            0.2526,
+                            0.2432,
+                            0.226,
+                            0.182,
+                            0.1727,
+                            0.1678,
+                            0.1511,
+                            0.1579,
+                            0.1006,
+                            0.0884],
+                        [0.0211,
+                            0.0948,
+                            0.1142,
+                            0.1511,
+                            0.195,
+                            0.1645,
+                            0.2012,
+                            0.2026,
+                            0.1987,
+                            0.2475,
+                            0.2379,
+                            0.2189,
+                            0.1785,
+                            0.1689,
+                            0.1641,
+                            0.1426,
+                            0.1295,
+                            0.0762,
+                            null],
+                        [0.0191,
+                            0.091,
+                            0.1096,
+                            0.1472,
+                            0.1878,
+                            0.1606,
+                            0.1961,
+                            0.1974,
+                            0.194,
+                            0.2384,
+                            0.2283,
+                            0.2133,
+                            0.1746,
+                            0.1621,
+                            0.1575,
+                            0.1333,
+                            null,
+                            null,
+                            null],
+                        [0,
+                            0.0859,
+                            0.1058,
+                            0.1399,
+                            0.1819,
+                            0.1561,
+                            0.1899,
+                            0.1912,
+                            0.1854,
+                            0.2309,
+                            0.2203,
+                            0.2027,
+                            0.1701,
+                            0.1564,
+                            0.1487,
+                            0.106,
+                            null,
+                            null,
+                            null],
+                        [null,
+                            0.0811,
+                            0.0976,
+                            0.1333,
+                            0.1746,
+                            0.1473,
+                            0.1776,
+                            0.1788,
+                            0.1779,
+                            0.2216,
+                            0.2033,
+                            0.1932,
+                            0.1648,
+                            0.1444,
+                            0.1403,
+                            null,
+                            null,
+                            null,
+                            null],
+                        [null,
+                            0.0665,
+                            0.0884,
+                            0.117,
+                            0.1581,
+                            0.139,
+                            0.1651,
+                            0.1662,
+                            0.1679,
+                            0.2007,
+                            0.1842,
+                            0.1695,
+                            0.1582,
+                            0.1308,
+                            0.1151,
+                            null,
+                            null,
+                            null,
+                            null],
+                        [null,
+                            null,
+                            null,
+                            0,
+                            0.1352,
+                            0.1259,
+                            0.1411,
+                            0,
+                            0.1521,
+                            0.1716,
+                            null,
+                            0,
+                            0.1493,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null],
+                        [null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            0,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            0.1352,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null]],
+                        "y": [0,
+                            0.074,
+                            0.148,
+                            0.222,
+                            0.296,
+                            0.37,
+                            0.444,
+                            0.518,
+                            0.592,
+                            0.666],
+                        "x": [3,
+                            4,
+                            5.5,
+                            7,
+                            8.5,
+                            10,
+                            11.5,
+                            13,
+                            14.5,
+                            16,
+                            17.5,
+                            19,
+                            20.5,
+                            22,
+                            23.5,
+                            25,
+                            26.5,
+                            28,
+                            29]
+                    }
+                },
+                "xaxis": [{
+                    "label": "Distance",
+                    "unit": "m",
+                    "yaxis": [{
+                        "label": "Height",
+                        "unit": "m",
+                        "plots": [{
+                            "label": "Ground",
+                            "data": [[1.999,
+                                0],
+                            [2,
+                                0.17],
+                            [3,
+                                0.37],
+                            [4,
+                                0.56],
+                            [5.5,
+                                0.58],
+                            [7,
+                                0.6],
+                            [8.5,
+                                0.64],
+                            [10,
+                                0.68],
+                            [11.5,
+                                0.63],
+                            [13,
+                                0.62],
+                            [14.5,
+                                0.66],
+                            [16,
+                                0.64],
+                            [17.5,
+                                0.58],
+                            [19,
+                                0.6],
+                            [20.5,
+                                0.74],
+                            [22,
+                                0.59],
+                            [23.5,
+                                0.56],
+                            [25,
+                                0.4],
+                            [26.5,
+                                0.26],
+                            [28,
+                                0.24],
+                            [29,
+                                0.2],
+                            [30,
+                                0.08],
+                            [30.001,
+                                0]]
+                        },
+                        {
+                            "label": "Surface",
+                            "data": []
+                        },
+                        {
+                            "label": "Verticals",
+                            "data": []
+                        }]
+                    }]
+                }]
+            }]
+        }
+
+        var language = [{
+            'en': {
+                decimalPoint: '.',
+                thousandsSep: '\u0020',
+                loading: 'Loading...',
+                months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                exportButtonTitle: "Export",
+                printButtonTitle: "Print",
+                rangeSelectorFrom: "From",
+                rangeSelectorTo: "To",
+                rangeSelectorZoom: "Zoom",
+                downloadPNG: 'Download PNG image',
+                downloadJPEG: 'Download JPEG image',
+                downloadPDF: 'Download PDF document',
+                downloadSVG: 'Download SVG vector image',
+                resetZoom: "Reset zoom",
+                resetZoomTitle: "Reset zoom level 1:1",
+                viewFullscreen: "View in full screen",
+                printChart: "Print chart",
+                tooltip: 'Tooltip',
+                language: 'Language',
+                configurationLanguage: 'Configuration Language',
+                configurationTextElement: 'Configuration Text Element',
+                configurationxAxis: 'Configuration xAxis',
+                configurationyAxis: 'Configuration yAxis',
+                configurationLayer: "Configuration Layer",
+                configurationLineSymbol: "Configuration Plot",
+                configurationLegend: "Configuration Legend",
+                configurationContour: 'Configuration Contour Color',
+                ok: 'OK',
+                close: 'Close',
+                textElement: 'Text Element',
+                title: 'Title',
+                titleEnable: 'Title Enable',
+                align: 'Align',
+                rotation: 'Rotation',
+                labelEnable: 'Label Enable',
+                scale: 'Scale',
+                position: 'Position',
+                opposite: 'Opposite',
+                reversed: 'Reversed',
+                offset: 'Offset',
+                height: 'Height',
+                width: 'Width',
+                borderWidth: 'Border width',
+                borderColor: 'Border color',
+                marginTop: 'Margin top',
+                marginRight: 'Margin right',
+                marginBottom: 'Margin bottom',
+                marginLeft: 'Margin Left',
+                plot: 'Plot',
+                plotvisible: 'Plot visible',
+                lines: 'Lines',
+                size: 'Size',
+                colour: 'Colour',
+                style: 'Style',
+                symbol: 'Symbol',
+                colourOutline: 'Colour Outline',
+                fillColour: 'Fill Colour',
+                legendVisible: 'Legend visible',
+                floating: 'Floating',
+                layout: 'Layout',
+                verticalAlign: 'Vertical Align',
+                padding: 'Padding',
+                margin: 'Margin',
+                top: 'Top',
+                min: 'Min',
+                max: 'Max',
+                fontSize: 'Font Size',
+                fontColor: 'Font Color'
+            },
+            'de': {
+                decimalPoint: '.',
+                thousandsSep: '\u0020',
+                loading: 'Daten werden geladen...',
+                months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                weekdays: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                shortMonths: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                exportButtonTitle: "Exportieren",
+                printButtonTitle: "Drucken",
+                rangeSelectorFrom: "Von",
+                rangeSelectorTo: "Bis",
+                rangeSelectorZoom: "Zeitraum",
+                downloadPNG: 'Download als PNG-Bild',
+                downloadJPEG: 'Download als JPEG-Bild',
+                downloadPDF: 'Download als PDF-Dokument',
+                downloadSVG: 'Download als SVG-Bild',
+                resetZoom: "Zoom zurücksetzen",
+                resetZoomTitle: "Zoom zurücksetzen",
+                viewFullscreen: "Im Vollbild anzeigen",
+                printChart: "Diagramm drucken",
+                tooltip: 'Tooltip',
+                language: 'Sprache',
+                configurationLanguage: 'Konfigurationssprache',
+                configurationTextElement: 'Konfigurations-Textelement',
+                configurationxAxis: 'Konfiguration xAxis',
+                configurationyAxis: 'Konfiguration yAxis',
+                configurationLayer: "Konfigurationsschicht",
+                configurationLineSymbol: "Konfigurationsdiagramm",
+                configurationLegend: "Legende der Konfiguration",
+                configurationContour: 'Konfigurationskonturfarbe',
+                ok: 'OK',
+                close: 'schließen',
+                textElement: 'Textelement',
+                title: 'Titel',
+                titleEnable: 'Titel aktivieren',
+                align: 'Ausrichten',
+                rotation: 'Drehung',
+                labelEnable: 'Beschriftung aktivieren',
+                scale: 'Rahmen',
+                position: 'Position',
+                opposite: 'Gegenteil',
+                reversed: 'Rückgängiggemacht',
+                offset: 'Versatz',
+                height: 'Höhe',
+                width: 'Breite',
+                borderWidth: 'Rahmenbreite',
+                borderColor: 'Randfarbe',
+                marginTop: 'Rand oben',
+                marginRight: 'Marge richtig',
+                marginBottom: 'Rand unten',
+                marginLeft: 'Margin übrig',
+                plot: 'Handlung',
+                plotvisible: 'Plot sichtbar',
+                lines: 'Linien',
+                size: 'Größe',
+                colour: 'Farbe',
+                style: 'Stil',
+                symbol: 'Symbol',
+                colourOutline: 'Farbe Gliederung',
+                fillColour: 'Füllfarbe',
+                legendVisible: 'Legende sichtbar',
+                floating: 'Schwimmend',
+                layout: 'Layout',
+                verticalAlign: 'Vertikale Ausrichtung',
+                padding: 'Polsterung',
+                margin: 'Spanne',
+                top: 'oben',
+                min: 'Mindest',
+                max: 'Max',
+                fontSize: 'Schriftgröße',
+                fontColor: 'Schriftfarbe'
+            },
+            'cn': {
+                decimalPoint: '.',
+                thousandsSep: '\u0020',
+                loading: '加载中...',
+                months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                shortMonths: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                weekdays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                exportButtonTitle: '导出',
+                printButtonTitle: '打印',
+                rangeSelectorFrom: '从',
+                rangeSelectorTo: '到',
+                rangeSelectorZoom: "缩放",
+                downloadPNG: '下载PNG格式',
+                downloadJPEG: '下载JPEG格式',
+                downloadPDF: '下载PDF格式',
+                downloadSVG: '下载SVG格式',
+                viewFullscreen: "全屏查看",
+                printChart: "打印图表",
+                tooltip: '提示',
+                language: '语言',
+                configurationLanguage: '配置语言',
+                configurationTextElement: '配置文本元素',
+                configurationxAxis: '配置xAxis',
+                configurationyAxis: '配置yAxis',
+                configurationLayer: "配置层",
+                configurationLineSymbol: "配置图",
+                configurationLegend: "配置图例",
+                configurationContour: '配置轮廓颜色',
+                ok: '好',
+                close: '关闭',
+                textElement: '文本元素',
+                title: '标题',
+                titleEnable: '标题启用',
+                align: '对齐',
+                rotation: '回转',
+                labelEnable: '标签启用',
+                scale: '规模',
+                position: '位置',
+                opposite: '相反',
+                reversed: '反向的',
+                offset: '抵消',
+                height: '高度',
+                width: '宽度',
+                borderWidth: '边框宽度',
+                borderColor: '边框颜色',
+                marginTop: '保证金顶部',
+                marginRight: '保证金权利',
+                marginBottom: '保证金底部',
+                marginLeft: '保证金左',
+                plot: '情节',
+                plotvisible: '情节可见',
+                lines: '行',
+                size: '尺寸',
+                colour: '颜色',
+                style: '样式',
+                symbol: '符号',
+                colourOutline: '颜色轮廓',
+                fillColour: '填充颜色',
+                legendVisible: '传说可见',
+                floating: '漂浮的',
+                layout: '布局',
+                verticalAlign: '垂直对齐',
+                padding: '填充',
+                margin: '余量',
+                top: '最佳',
+                min: '敏',
+                max: '马克斯',
+                fontSize: '字体大小',
+                fontColor: '字体颜色'
+            }
+        }]
+
+        var highchart_test = function () {
+            var self = this;
+
+            self.Init = function () {
+                // init Lang
+                $.i18n().load(language[0]);
+
+                //Create Chart
+                let rows = w7cConfig['rowcount'];
+                let columns = w7cConfig['columncount'];
+
+                for (var r = 0; r < rows; r++) {
+                    var tr = $('<div class="row">');
+                    for (var c = 0; c < columns; c++) {
+                        if (columns === 1) {
+                            $("<div class='col-md-12' id='c" + c.toString() + '-r' + r.toString() + "' style='height:90vh'></div>").appendTo(tr);
+                        } else {
+                            $("<div class='col-md-" + 12 / columns + "' id='c" + c.toString() + '-r' + r.toString() + "'></div>").appendTo(tr);
+                        }
+
+                    }
+                    tr.appendTo('#container');
+                }
+
+                w7cConfig['charts'].forEach(function (key, value) {
+                    self.createChart('c' + key.column + '-r' + key.row);
+                })
+
+                // load default lang
+                self.loadLanguage(w7cConfig.locale);
+
+                //Add menu item to chart
+                self.addChartMenuItem();
+            }
+
+            self.createChart = function (id) {
+                let columnx = parseInt(id.substr(0, id.indexOf("-")).substring(1));
+                let rowx = parseInt(id.substr(id.indexOf("-") + 1).substring(1));
+                let xaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+                let yaxis_conf = [...xaxis_conf[0].xaxis[0].yaxis]
+                let config_yaxis_array = [];
+                const chartType = w7cConfig.charts[0].type;
+                for (i = 0; i < yaxis_conf.length; i++) {
+                    for (j = 0; j < yaxis_conf[i].plots.length; j++) {
+                        yaxis_conf[i].plots[j].label.trim();
+                        yaxis_conf[i].plots[j].name = yaxis_conf[i].label
+                        yaxis_conf[i].plots[j].scale = yaxis_conf[i].scale
+                        yaxis_conf[i].plots[j].max = yaxis_conf[i].max !== undefined ? yaxis_conf[i].max : 0
+                        yaxis_conf[i].plots[j].min = yaxis_conf[i].min !== undefined ? yaxis_conf[i].min : 0
+                        yaxis_conf[i].plots[j].title = yaxis_conf[i].title
+                        yaxis_conf[i].plots[j].position = yaxis_conf[i].position
+                        config_yaxis_array.push(yaxis_conf[i].plots[j])
+                    }
+                }
+                let yaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx)[0].xaxis[0].yaxis;
+                let series_array = [];
+                let yaxis_array = [];
+                let yaxis_count = 0
+                for (i = 0; i < yaxis_data.length; i++) {
+                    for (j = 0; j < yaxis_data[i].plots.length; j++) {
+                        let conf = config_yaxis_array.filter(x => x.label.trim() === yaxis_data[i].plots[j].label.trim())
+                        if (conf.length > 0) {
+                            yaxis_data[i].plots[j].yAxis = yaxis_count;
+                            yaxis_data[i].plots[j].name = yaxis_data[i].plots[j].label;
+                            yaxis_data[i].plots[j].lineWidth = conf[0].lineSize;
+                            yaxis_data[i].plots[j].dashStyle = conf[0].lineStyle;
+                            yaxis_data[i].plots[j].color = conf[0].lineColor !== null ? "rgba(" + Object.values(conf[0].lineColor).toString() + ")" : null;
+                            yaxis_data[i].plots[j].tooltip = conf[0].flyover;
+                            yaxis_data[i].plots[j].visible = conf[0].visible;
+
+                            yaxis_data[i].plots[j].marker = {
+                                symbol: conf[0].symbolStyle,
+                                radius: conf[0].symbolSize,
+                                lineColor: conf[0].symbolColor !== null ? "rgba(" + Object.values(conf[0].symbolColor).toString() + ")" : null,
+                                fillColor: conf[0].symbolFillColor !== null ? "rgba(" + Object.values(conf[0].symbolFillColor).toString() + ")" : null,
+                                lineWidth: 1
+                            }
+                            series_array.push(yaxis_data[i].plots[j])
+                        }
+                    }
+                    yaxis_count++;
+                    let yaxis_conf_arr = yaxis_conf.filter(x => x.label.trim() === yaxis_data[i].label.trim())
+                    if (yaxis_conf_arr.length > 0) {
+                        let yaxis = {
+                            title: {
+                                useHTML: true,
+                                enabled: yaxis_conf_arr[0].title.visible,
+                                text: yaxis_conf_arr[0].label + '(' + yaxis_data[i].unit + ')',
+                                align: yaxis_conf_arr[0].title.align,
+                                rotation: yaxis_conf_arr[0].title.rotation,
+                                y: yaxis_conf_arr[0].title.yoffset,
+                                x: yaxis_conf_arr[0].title.xoffset,
+                                textAlign: yaxis_conf_arr[0].position.opposite === true ? 'left' : 'right'
+                            },
+                            labels: {
+                                enabled: yaxis_conf_arr[0].title.ticks
+                            },
+                            top: yaxis_conf_arr[0].position.top + '%',
+                            height: yaxis_conf_arr[0].position.height + '%',
+                            reversed: yaxis_conf_arr[0].position.reversed,
+                            opposite: yaxis_conf_arr[0].position.opposite,
+                            offset: yaxis_conf_arr[0].position.offset,
+                            min: yaxis_conf_arr[0].scale === 'auto' ? null : yaxis_conf_arr[0].min,
+                            max: yaxis_conf_arr[0].scale === 'auto' ? null : yaxis_conf_arr[0].max,
+                            gridLineWidth: 0,
+                            lineWidth: 1,
+                            lineColor: '#ddd',
+                            tickWidth: 1,
+                            tickColor: '#ddd'
+                        };
+                        yaxis_array.push(yaxis);
+                    } else {
+                        yaxis_array.push({});
+                    }
+                }
+                let stops = [];
+                let chartConfig = {
+                    chart: {
+                        zoomType: 'xy',
+                        className: id.toString(),
+                        borderWidth: w7cConfig.charts[0].mainlayer.borderSize,
+                        borderColor: w7cConfig.charts[0].mainlayer.borderColor !== null ? "rgba(" + Object.values(w7cConfig.charts[0].mainlayer.borderColor).toString() + ")" : null,
+                        // marginTop: w7cConfig.charts[0].mainlayer.topMargin,
+                        // marginRight: w7cConfig.charts[0].mainlayer.rightMargin,
+                        // marginLeft: w7cConfig.charts[0].mainlayer.leftMargin,
+                        // marginBottom: w7cConfig.charts[0].mainlayer.bottomMargin,
+                        events: {
+                            load: function () {
+                                this.setSize(null, ($(window).height() / parseInt(w7cConfig["rowcount"])) - (this.marginBottom + +this.plotTop));
+                            },
+                            resize: function () {
+                                self.loadTextElement();
+                            }
+                        }
+                    },
+                    title: {
+                        useHTML: true,
+                        text: w7cData.charts[0].title
+                    },
+                    subtitle: {
+                        useHTML: true,
+                        text: w7cData.charts[0].subtitle
+                    },
+                    plotOptions: {
+                        area: {
+                            threshold: null
+                        },
+                        series: {
+                            fillOpacity: 1
+                        }
+                    },
+                    tooltip: {
+                        useHTML: true,
+                        formatter: function () {
+                            if (!this.series.options.tooltip) {
+                                return false;
+                            } else {
+                                if (this.series.userOptions.name === "additonalInfo") {
+                                    return `<strong>${this.series.name}</strong></br>
+                                    Value at <strong>${Highcharts.dateFormat("%Y-%m-%d %H:%M", this.x)}</strong> : ${this.y.toFixed(2)} ${this.series.userOptions.unit}`;
+                                } else {
+                                    let xTitle = this.series.xAxis.userOptions.title.text;
+                                    let yTitle = this.series.yAxis.userOptions.title.text;
+                                    return `<b>${this.series.name}</b><br/>
+                                        Value at 
+                                        <b>${Highcharts.numberFormat(this.y, 2)}</b>  ${xTitle.substring(xTitle.indexOf('(') + 1, xTitle.indexOf(')'))} :
+                                        <b>${Highcharts.numberFormat(this.x, 2)}</b> ${yTitle.substring(yTitle.indexOf('(') + 1, yTitle.indexOf(')'))} 
+                                        ${chartType === 'contour' ? ': <b>' + this.point.value + '</b> m' : ''}`;
+                                }
+                            }
+                        }
+                    },
+                    xAxis: [{
+                        title: {
+                            useHTML: true,
+                            enabled: xaxis_conf[0].xaxis[0].title.visible,
+                            text: w7cData.charts[0].xaxis[0].label + '(' + w7cData.charts[0].xaxis[0].unit + ')',
+                            align: xaxis_conf[0].xaxis[0].title.align !== undefined ? xaxis_conf[0].xaxis[0].title.align : 'high',
+                            rotation: xaxis_conf[0].xaxis[0].title.rotation,
+                            y: xaxis_conf[0].xaxis[0].title.yoffset,
+                            x: xaxis_conf[0].xaxis[0].title.xoffset
+                        },
+                        labels: {
+                            enabled: xaxis_conf[0].xaxis[0].title.ticks
+                        },
+                        showLastLabel: true,
+                        gridLineWidth: 0,
+                        reversed: xaxis_conf[0].xaxis[0].position.reversed,
+                        opposite: xaxis_conf[0].xaxis[0].position.opposite,
+                        top: xaxis_conf[0].xaxis[0].position.top + '%',
+                        height: xaxis_conf[0].xaxis[0].position.height + '%',
+                        offset: xaxis_conf[0].xaxis[0].position.offset,
+                        min: xaxis_conf[0].xaxis[0].scale === 'auto' ? null : xaxis_conf[0].xaxis[0].min,
+                        max: xaxis_conf[0].xaxis[0].scale === 'auto' ? null : xaxis_conf[0].xaxis[0].max,
+                        lineWidth: 1,
+                        lineColor: '#ddd',
+                        tickWidth: 1,
+                        tickColor: '#ddd',
+                        minPadding: 0,
+                        maxPadding: 0
+                    }],
+                    yAxis: yaxis_array,
+                    legend: {
+                        enabled: xaxis_conf[0].legend.visible,
+                        floating: xaxis_conf[0].legend.floating,
+                        layout: xaxis_conf[0].legend.layout,
+                        align: xaxis_conf[0].legend.hAlign,
+                        verticalAlign: xaxis_conf[0].legend.vAlign,
+                        x: xaxis_conf[0].legend.xpos,
+                        y: xaxis_conf[0].legend.ypos,
+                        padding: xaxis_conf[0].legend.padding,
+                        margin: xaxis_conf[0].legend.margin,
+                        borderWidth: xaxis_conf[0].legend.bordersize,
+                        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    colorAxis: {
+                        stops: w7cConfig.charts[0].type === "contour" ? stops : undefined,
+                        tickInterval: w7cConfig.charts[0].type === "contour" ? 0.01 : undefined,
+                        showInLegend: w7cConfig.charts[0].type === "contour"
+                    },
+                    series: series_array
+                }
+                // Contour Configs
+                if (chartType === 'contour') {
+                    const x = w7cData['charts'][0]['additonalInfo']['data'].x;
+                    const y = w7cData['charts'][0]['additonalInfo']['data'].y;
+                    const z = w7cData['charts'][0]['additonalInfo']['data'].z;
+                    let maxRowZ = [...z].map(row => {
+                        return Math.max.apply(Math, row);
+                    });
+                    maxZ = Math.max(...maxRowZ);
+                    const dataContour = [];
+                    for (let i = 0; i < y.length; i++) {
+                        for (let j = 0; j < x.length; j++) {
+                            let value = z[i][j];
+                            dataContour.push([x[j], y[i], value]);
+                        }
+                    }
+                    const confLevel = [...w7cConfig.charts[0].additonalInfo.level];
+                    confLevel.unshift({ value: 0, color: 'rgba(0,0,0,0)' });
+                    for (let i = 1; i < confLevel.length; i++) {
+                        let color = "rgba(" + Object.values(confLevel[i].color).toString() + ")";
+                        stops.push([confLevel[i].value / confLevel[confLevel.length - 1].value, color]);
+                    }
+                    series_array.push({
+                        name: 'Contour',
+                        type: xaxis_conf[0].type,
+                        yAxis: 0,
+                        showContours: true,
+                        data: dataContour,
+                        showEdges: true,
+                        turboThreshold: 0,
+                        boostThreshold: 0
+                    });
+                }
+                if (chartType === 'xsection') {
+                    const tsValues = [...w7cData.charts[0].additonalInfo.tsValues];
+                    chartConfig.xAxis.push({
+                        type: 'datetime',
+                        title: {
+                            enable: xaxis_conf[0].xaxis[0].title.visible,
+                            ticks: xaxis_conf[0].xaxis[0].title.ticks,
+                            align: xaxis_conf[0].xaxis[0].title.align,
+                            rotation: xaxis_conf[0].xaxis[0].title.rotation,
+                            text: '',
+                            y: xaxis_conf[0].xaxis[0].title.yoffset,
+                            x: xaxis_conf[0].xaxis[0].title.xoffset
+                        },
+                        labels: {
+                            formatter: function () {
+                                return Highcharts.dateFormat('%e.%m.%y %H:%M', this.value);
+                            }
+                        },
+                        reversed: xaxis_conf[0].xaxis[0].position.reversed,
+                        opposite: xaxis_conf[0].xaxis[0].position.opposite,
+                        min: new Date(tsValues[0].tstamp).getTime(),
+                        max: new Date(tsValues[tsValues.length - 1].tstamp).getTime() + 7 * 3600 * 1000, // augment 7 hours
+                        tickInterval: 2 * 3600 * 1000,
+                        tickWidth: 1,
+                        lineWidth: 1,
+                        lineColor: '#ddd',
+                        tickColor: '#ddd',
+                        tickLength: 10,
+                        minPadding: 0,
+                        maxPadding: 0
+                    });
+                    let dataTsValue = [];
+                    for (let i = 0; i < tsValues.length; i++) {
+                        let time = new Date(tsValues[i].tstamp);
+                        dataTsValue.push([time.getTime(), tsValues[i].value]);
+                    }
+                    series_array.push({
+                        name: 'additonalInfo',
+                        unit: "m",
+                        data: dataTsValue,
+                        yAxis: 0,
+                        xAxis: chartConfig.xAxis.length - 1,
+                        color: 'rgba(0, 102, 255, 1)',
+                        marker: {
+                            enabled: false
+                        },
+                        zIndex: 3
+                    });
+                    let maxRow = [...yaxis_data[0].plots[0].data].map(row => {
+                        return Math.max.apply(Math, row);
+                    });
+                    series_array.push({
+                        type: 'area',
+                        name: 'Water',
+                        data: [[0, w7cData.charts[0].additonalInfo.fillValue], [Math.max(...maxRow), w7cData.charts[0].additonalInfo.fillValue]],
+                        marker: {
+                            enabled: false
+                        },
+                        shadow: false,
+                        enableMouseTracking: false,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        color: 'rgba(169, 198, 239, 1)',
+                        zIndex: -999,
+                        style: {
+                            opacity: 1.0
+                        }
+                    });
+                    series_array[0].type = 'area';
+                    chartConfig.xAxis[0].opposite = true;
+                }
+                console.log({series_array});
+                // Init chart
+                $('#' + id.toString()).highcharts(chartConfig);
+            }
+
+            self.addChartMenuItem = function () {
+                let index = 2;
+                // Config for menu
+                var menuContext = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
+                var menuContexSeparator = {
+                    separator: true
+                }
+                menuContext.splice(index, 0, menuContexSeparator);
+                index++;
+                var menuConfiglang = {
+                    textKey: "configurationLanguage",
+                    onclick: function () {
+                        $('input[name="chartId"]').val(this.userOptions.chart.className);
+                        $(".modal").modal("hide");
+
+                        $(Highcharts.charts).each(function (i, chart) {
+                            if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                $("#modal_config_lang").modal("show");
+                                chart.setSize(null, null, true);
+                            }
+                        });
+                    }
+                };
+                menuContext.splice(index, 0, menuConfiglang);
+                index++;
+                var menuConfig_yaxis = {
+                    textKey: "configurationyAxis",
+                    onclick: function () {
+                        $('input[name="chartId"]').val(this.userOptions.chart.className);
+                        $('.modal').modal('hide');
+
+                        $(Highcharts.charts).each(function (i, chart) {
+                            if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                let columnx = parseInt(this.userOptions.chart.className.substr(0, this.userOptions.chart.className.indexOf("-")).substring(1));
+                                let rowx = parseInt(this.userOptions.chart.className.substr(this.userOptions.chart.className.indexOf("-") + 1).substring(1));
+                                let yaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+                                let yaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx);
+                                if (yaxis_conf.length > 0) {
+                                    $('#drpyAxis').empty();
+                                    yaxis_conf[0].xaxis[0].yaxis.map(data => {
+                                        $('#drpyAxis').append(
+                                            $('<option></option>').val(data.label).html(data.label)
+                                        );
+                                    });
+                                }
+                                self.LoadDefault_yAxis(yaxis_data[0].xaxis[0].yaxis[0].label);
+                                $("#modal_config_yaxis").modal("show");
+                                chart.setSize(null, null, true);
+                            }
+                        });
+                    }
+                };
+                menuContext.splice(index, 0, menuConfig_yaxis);
+                index++;
+                var menuConfig_xAxis = {
+                    textKey: "configurationxAxis",
+                    onclick: function () {
+                        $('input[name="chartId"]').val(this.userOptions.chart.className);
+                        $('.modal').modal('hide');
+
+                        $(Highcharts.charts).each(function (i, chart) {
+                            if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                let columnx = parseInt(this.userOptions.chart.className.substr(0, this.userOptions.chart.className.indexOf("-")).substring(1));
+                                let rowx = parseInt(this.userOptions.chart.className.substr(this.userOptions.chart.className.indexOf("-") + 1).substring(1));
+                                let xaxis_conf = w7cConfig.charts.filter(x => x.column === columnx && x.row === rowx);
+                                let xaxis_data = w7cData.charts.filter(x => x.column === columnx && x.row === rowx);
+                                if (xaxis_conf.length > 0) {
+                                    $('#drpxAxis').empty();
+                                    xaxis_conf[0].xaxis.map(data => {
+                                        $('#drpxAxis').append(
+                                            $('<option></option>').val(data.label).html(data.label)
+                                        );
+                                    });
+                                }
+                                self.LoadDefault_xAxis(xaxis_data[0].xaxis[0].label);
+                                $("#modal_config_xaxis").modal("show");
+                                chart.setSize(null, null, true);
+                            }
+                        });
+                    }
+                };
+                menuContext.splice(index, 0, menuConfig_xAxis);
+                index++;
+                var menuConfig_textElement = {
+                    textKey: "configurationTextElement",
+                    onclick: function () {
+                        $('input[name="chartId"]').val(this.userOptions.chart.className);
+                        $('.modal').modal('hide');
+
+                        $(Highcharts.charts).each(function (i, chart) {
+                            if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                $('.color-picker-1').each(function () {
+                                    $(this).minicolors({
+                                        control: $(this).attr('data-control') || 'hue',
+                                        defaultValue: $(this).attr('data-defaultValue') || '',
+                                        format: $(this).attr('data-format') || 'hex',
+                                        opacity: $(this).attr('data-opacity'),
+                                        change: function (value, opacity) {
+                                            if (opacity) value += ', ' + opacity;
+                                        },
+                                        theme: 'bootstrap'
+                                    });
+                                });
+                                $("#modal_config_textelement").modal("show");
+                                chart.setSize(null, null, true);
+                            }
+                        });
+                    }
+                };
+                menuContext.splice(index, 0, menuConfig_textElement);
+
+                if (w7cConfig.charts[0].layerconfiguration) {
+                    var menuConfigChart = {
+                        textKey: "configurationLayer",
+                        onclick: function () {
+                            $('input[name="chartId"]').val(this.userOptions.chart.className);
+                            $('.modal').modal('hide');
+
+                            $(Highcharts.charts).each(function (i, chart) {
+                                if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                    self.LoadDefaultChart();
+                                    $("#modal_config_layer").modal("show");
+                                    chart.setSize(null, null, true);
+                                }
+                            });
+                        }
+                    };
+                    menuContext.splice(index, 0, menuConfigChart);
+                    index++;
+                }
+                if (w7cConfig.charts[0].plotconfiguration) {
+                    var menuConfigLineAndSymbol = {
+                        textKey: "configurationLineSymbol",
+                        onclick: function () {
+                            $('input[name="chartId"]').val(this.userOptions.chart.className);
+                            $('.modal').modal('hide');
+
+                            $(Highcharts.charts).each(function (i, chart) {
+                                if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                    $('#SelectPlot').empty()
+                                    let result = w7cConfig.charts[0].xaxis[0].yaxis.map(plot => plot.plots.map(cat => {
+                                        $('#SelectPlot').append(
+                                            $('<option></option>').val(cat.label).html(cat.label)
+                                        );
+                                    }));
+                                    self.LoadDefaultLineSymbol(w7cConfig.charts[0].xaxis[0].yaxis[0].plots[0].label);
+                                    $("#modal_config_plot").modal("show");
+                                    chart.setSize(null, null, true);
+                                }
+                            });
+                        }
+                    };
+                    menuContext.splice(index, 0, menuConfigLineAndSymbol);
+                    index++;
+                }
+                if (w7cConfig.charts[0].legendconfiguration) {
+                    var menuConfigLegend = {
+                        textKey: "configurationLegend",
+                        onclick: function () {
+                            $('input[name="chartId"]').val(this.userOptions.chart.className);
+                            $('.modal').modal('hide');
+                            $(Highcharts.charts).each(function (i, chart) {
+                                if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                    self.LoadDefaultLegend();
+                                    $("#modal_config_legend").modal("show");
+                                    chart.setSize(null, null, true);
+                                }
+                            });
+                        }
+                    };
+                    menuContext.splice(index, 0, menuConfigLegend);
+                    index++;
+                }
+
+                if (w7cConfig.charts[0].type === 'contour') {
+                    self.LoadDefaultColorContour();
+                    var menuConfigContour = {
+                        textKey: "configurationContour",
+                        onclick: function () {
+                            $('input[name="chartId"]').val(this.userOptions.chart.className);
+                            $(Highcharts.charts).each(function (i, chart) {
+                                if (chart.userOptions.chart.className === this.userOptions.chart.className) {
+                                    $("#modal_config_contour").modal("show");
+                                    chart.setSize(null, null, true);
+                                }
+                            });
+                        }
+                    };
+                    menuContext.splice(index, 0, menuConfigContour);
+                }
+            }
+
+            self.getSVG = function (charts) {
+                var svgArr = [],
+                    top = 0,
+                    width = 0,
+                    endWidth = 0;
+
+                Highcharts.each(charts, function (chart) {
+                    var svg = chart.getSVG(),
+                        // Get width/height of SVG for export
+                        svgWidth = +svg.match(
+                            /^<svg[^>]*width\s*=\s*\"?(\d+)\"?[^>]*>/
+                        )[1],
+                        svgHeight = +svg.match(
+                            /^<svg[^>]*height\s*=\s*\"?(\d+)\"?[^>]*>/
+                        )[1];
+
+                    svg = svg.replace(
+                        '<svg',
+                        '<g  transform="translate(' + width + ', ' + top + ')" '
+                    );
+
+                    svg = svg.replace('</svg>', '</g>');
+
+                    width += svgWidth;
+                    endWidth = Math.max(endWidth, width)
+
+                    if (width === w7cConfig['columncount'] * svgWidth) {
+                        width = 0;
+                        top += svgHeight;
+                    }
+
+                    svgArr.push(svg);
+                });
+                // top += 100;
+                return '<svg height="' + top + '" width="' + endWidth +
+                    '" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+                    svgArr.join('') + '</svg>';
+            };
+
+            self.exportCharts = function (charts, options) {
+                // Merge the options
+                options = Highcharts.merge(Highcharts.getOptions().exporting, options);
+
+                // Post to export server
+                Highcharts.post(options.url, {
+                    filename: options.filename || 'chart',
+                    type: options.type,
+                    width: options.width,
+                    svg: self.getSVG(charts)
+                });
+            };
+
+            // ===Config yAxis===
+            self.LoadDefault_yAxis = function (plot) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.options.yAxis, function (ob, j) {
+                            let yaxislabel = ob.title.text.trim().substring(0, ob.title.text.trim().lastIndexOf('('));
+                            if (yaxislabel === plot) {
+                                $('#chktitleenable').prop('checked', ob.title.enabled);
+                                $('#drptitlealign').val(ob.title.align);
+                                $('#txtrotation').val(ob.title.rotation);
+                                $('#txttitle_x').val(ob.title.x);
+                                $('#txttitle_y').val(ob.title.y);
+                                $('#chklabelenable').prop('checked', ob.labels.enabled);
+                                $('#chkopposite').prop('checked', ob.opposite);
+                                $('#chkreversed').prop('checked', ob.reversed);
+                                $('#txttop').val(parseFloat(ob.top));
+                                $('#txtheight').val(parseFloat(ob.height));
+                                $('#txtyAxis_offset').val(ob.offset);
+                                if (ob.min !== null || ob.max !== null) {
+                                    $('#drpscale').val('fixed');
+                                    $('#txtscalemin').val(ob.min !== null ? ob.min : 0);
+                                    $('#txtscalemax').val(ob.max !== null ? ob.max : 0);
+                                } else {
+                                    $('#drpscale').val('auto');
+                                    $("#txtscalemin").prop('disabled', true);
+                                    $("#txtscalemax").prop('disabled', true);
+                                    $('#txtscalemin').val(null);
+                                    $('#txtscalemax').val(null);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            $('#drpscale').on('change', function () {
+                if ($('#drpscale').val() === 'auto') {
+                    $("#txtscalemin").prop('disabled', true);
+                    $("#txtscalemax").prop('disabled', true);
+                    $('#txtscalemin').val(null);
+                    $('#txtscalemax').val(null);
+                } else {
+                    $("#txtscalemin").prop('disabled', false);
+                    $("#txtscalemax").prop('disabled', false);
+                    $('#txtscalemin').val("0");
+                    $('#txtscalemax').val("0");
+                }
+            });
+
+            $('#btnOK').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.options.yAxis, function (ob, j) {
+                            let yaxislabel = ob.title.text.trim().substring(0, ob.title.text.trim().lastIndexOf('('));
+                            if (yaxislabel === $('#drpyAxis').val().trim()) {
+                                chart.yAxis[j].update({
+                                    title: {
+                                        enabled: $('#chktitleenable').is(':checked'),
+                                        align: $('#drptitlealign').val(),
+                                        rotation: parseInt($('#txtrotation').val()),
+                                        y: parseInt($('#txttitle_y').val()),
+                                        x: parseInt($('#txttitle_x').val())
+                                    },
+                                    labels: {
+                                        enabled: $('#chklabelenable').is(':checked')
+                                    },
+                                    min: $('#txtscalemin').val() > 0 ? $('#txtscalemin').val() : null,
+                                    max: $('#txtscalemax').val() > 0 ? $('#txtscalemax').val() : null,
+                                    opposite: $('#chkopposite').is(':checked'),
+                                    reversed: $('#chkreversed').is(':checked'),
+                                    top: $('#txttop').val() !== '' ? $('#txttop').val() + '%' : null,
+                                    height: $('#txtheight').val() !== '' ? $('#txtheight').val() + '%' : null,
+                                    offset: $('#txtyAxis_offset').val() !== '' ? parseInt($('#txtyAxis_offset').val()) : null
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#drpyAxis').on('change', function () {
+                self.LoadDefault_yAxis($('#drpyAxis').val().trim());
+            });
+
+            $('#modal_config_yaxis').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+
+            // ===Config xAxis===
+            self.LoadDefault_xAxis = function (plot) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.options.xAxis, function (ob, j) {
+                            let xaxislabel = ob.title.text.trim().substring(0, ob.title.text.trim().lastIndexOf('('));
+                            if (xaxislabel === plot) {
+                                $('#chkxAxis_titleenable').prop('checked', ob.title.enabled);
+                                $('#drpxAxis_titlealign').val(ob.title.align);
+                                $('#txtxAxis_rotation').val(ob.title.rotation);
+                                $('#txtxAxis_title_x').val(ob.title.x);
+                                $('#txtxAxis_title_y').val(ob.title.y);
+                                $('#chkxAxis_labelenable').prop('checked', ob.title.tick);
+                                $('#chkxAxis_opposite').prop('checked', ob.opposite);
+                                $('#chkxAxis_reversed').prop('checked', ob.reversed);
+                                $('#txtxAxis_top').val(parseFloat(ob.top));
+                                $('#txtxAxis_height').val(parseFloat(ob.height));
+                                if (ob.min !== null || ob.max !== null) {
+                                    $('#drpxAxis_scale').val('fixed');
+                                    $('#txtscalexAxis_min').val(ob.min !== null ? ob.min : 0);
+                                    $('#txtscalexAxis_max').val(ob.max !== null ? ob.max : 0);
+                                } else {
+                                    $('#drpxAxis_scale').val('auto');
+                                    $("#txtscalexAxis_min").prop('disabled', true);
+                                    $("#txtscalexAxis_max").prop('disabled', true);
+                                    $('#txtscalexAxis_min').val(null);
+                                    $('#txtscalexAxis_max').val(null);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            $('#drpxAxis_scale').on('change', function () {
+                if ($('#drpxAxis_scale').val() === 'auto') {
+                    $("#txtscalexAxis_min").prop('disabled', true);
+                    $("#txtscalexAxis_max").prop('disabled', true);
+                    $('#txtscalexAxis_min').val(null);
+                    $('#txtscalexAxis_max').val(null);
+                } else {
+                    $("#txtscalexAxis_min").prop('disabled', false);
+                    $("#txtscalexAxis_max").prop('disabled', false);
+                    $('#txtscalexAxis_min').val("0");
+                    $('#txtscalexAxis_max').val("0");
+                }
+            });
+
+            $('#btnOK_xAxis').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.options.xAxis, function (ob, j) {
+                            let xaxislabel = ob.title.text.trim().substring(0, ob.title.text.trim().lastIndexOf('('));
+                            if (xaxislabel === $('#drpxAxis').val().trim()) {
+                                chart.xAxis[j].update({
+                                    title: {
+                                        enabled: $('#chkxAxis_titleenable').is(':checked'),
+                                        align: $('#drpxAxis_titlealign').val(),
+                                        rotation: parseInt($('#txtxAxis_rotation').val()),
+                                        y: parseInt($('#txtxAxis_title_y').val()),
+                                        x: parseInt($('#txtxAxis_title_x').val())
+                                    },
+                                    labels: {
+                                        enabled: $('#chkxAxis_labelenable').is(':checked')
+                                    },
+                                    min: $('#txtscalexAxis_min').val() > 0 ? $('#txtscalexAxis_min').val() : null,
+                                    max: $('#txtscalexAxis_max').val() > 0 ? $('#txtscalexAxis_max').val() : null,
+                                    opposite: $('#chkxAxis_opposite').is(':checked'),
+                                    reversed: $('#chkxAxis_reversed').is(':checked'),
+                                    top: $('#txtxAxis_top').val() !== '' ? $('#txtxAxis_top').val() + '%' : null,
+                                    height: $('#txtxAxis_height').val() !== '' ? $('#txtxAxis_height').val() + '%' : null,
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#drpxAxis').on('change', function () {
+                self.LoadDefault_xAxis($('#drpxAxis').val().trim());
+            });
+
+            $('#modal_config_xaxis').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+
+            //===Add Text Element===
+            self.loadTextElement = function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        $('#xtratext').remove();
+                        var texto = chart.renderer.text($('#txtTextElement').val()).css({
+                            color: $('#txtTextElement_fontcolor').val(),
+                            fontSize: parseInt($('#txtTextElement_fontsize').val()) + 'px'
+                        }).add();
+                        var textBBox = texto.getBBox();
+                        var x = (chart.chartWidth) - (textBBox.width);
+                        var y = (chart.chartHeight) - (textBBox.height);
+                        var x1 = x * (parseInt($('#txtxAxis').val()) / 100);
+                        var y1 = y * (parseInt($('#txtyAxis').val()) / 100);
+                        texto.attr({ x: x1, y: y1, id: 'xtratext' });
+                    }
+                });
+            }
+
+            $('#btnUpateTextElement').click(function () {
+                var fself = self
+                fself.loadTextElement();
+            });
+
+            $('#modal_config_textelement').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            //===End Text Element===
+
+            //===Config Language===
+            self.update_translate_texts = function () {
+                $('body').i18n();
+            };
+
+            self.loadLanguage = function (lang) {
+                $('#drplang').val(lang);
+
+                $(Highcharts.charts).each(function (i, chart) {
+                    chart.options.lang = language[0][lang];
+                    // chart.update(chart.options);
+                });
+
+                $.i18n().locale = lang;
+                self.update_translate_texts();
+            }
+
+            $('#btnchangelang').click(function () {
+                self.loadLanguage($('#drplang').val());
+            });
+
+            $('#modal_config_lang').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            //===End Config Language===
+
+
+            // ===Config Line and Symbol===
+            self.LoadDefaultLineSymbol = function (plot) {
+                $('.color-picker-1').each(function () {
+                    $(this).minicolors({
+                        control: $(this).attr('data-control') || 'hue',
+                        defaultValue: $(this).attr('data-defaultValue') || '',
+                        format: $(this).attr('data-format') || 'hex',
+                        opacity: $(this).attr('data-opacity'),
+                        change: function (value, opacity) {
+                            if (opacity) value += ', ' + opacity;
+                        },
+                        theme: 'bootstrap'
+                    });
+                });
+
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.series, function (ob, j) {
+                            if (ob.name.trim() == plot.trim()) {
+                                //plot
+                                $('#SelectPlot').val(ob.name);
+                                $('#chkplotvisible').prop('checked', ob.options.visible);
+                                $('#chktooltip').prop('checked', ob.options.tooltip);
+
+                                //line
+                                $('#txtlineSize').val(ob.options.lineWidth);
+                                $("#SelectLineStyle").val(ob.options.dashStyle);
+                                $('#txtLineColor').minicolors('value', ob.options.color);
+
+                                //marker
+                                $('#txtMarkerRadius').val(ob.options.marker.radius);
+                                $('#SelectSymbolStyle').val(ob.options.marker.symbol);
+                                $('#txtMarkerlinecolor').minicolors('value', ob.options.marker.lineColor);
+                                $('#txtMarkerfillColor').minicolors('value', ob.options.marker.fillColor);
+
+                            }
+                        });
+                    }
+                });
+            }
+
+            $('#SelectPlot').on('change', function () {
+                const result = w7cConfig.charts[0].xaxis[0].yaxis
+                    .reduce((arr, item) => arr.concat(item.plots), [])
+                    .find(sub => sub.label === $('#SelectPlot').val())
+
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        Highcharts.each(chart.series, function (ob, j) {
+                            if (ob.name.trim() == result.label.trim()) {
+                                //plot
+                                $('#chkplotvisible').prop('checked', ob.options.visible);
+                                $('#chktooltip').prop('checked', ob.options.tooltip);
+
+                                //line
+                                $('#txtlineSize').val(ob.options.lineWidth);
+                                $("#SelectLineStyle").val(ob.options.dashStyle);
+                                $('#txtLineColor').minicolors('value', ob.options.color);
+
+                                //marker
+                                $('#txtMarkerRadius').val(ob.options.marker.radius);
+                                $('#SelectSymbolStyle').val(ob.options.marker.symbol);
+                                $('#txtMarkerlinecolor').minicolors('value', ob.options.marker.lineColor);
+                                $('#txtMarkerfillColor').minicolors('value', ob.options.marker.fillColor);
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#btnUpdateLineSymbol').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        $.each(chart.series, function (j, series) {
+                            if (series.name.trim() === $('#SelectPlot').val().trim()) {
+                                series.update({ marker: { enabled: false } });
+                            }
+                        });
+
+                        $.each(chart.series, function (j, series) {
+                            if (series.name === $('#SelectPlot').val()) {
+                                // plot visible
+                                series.setVisible($('#chkplotvisible').is(':checked'), $('#chkplotvisible').is(':checked'));
+
+                                // line and marker
+                                series.update({
+                                    lineWidth: $('#txtlineSize').val() === 0 ? 0 : $('#txtlineSize').val(),
+                                    dashStyle: $("#SelectLineStyle").val(),
+                                    color: $('#txtLineColor').val(),
+                                    marker: {
+                                        enabled: true,
+                                        symbol: $('#SelectSymbolStyle').val(),
+                                        radius: $('#txtMarkerRadius').val() === 0 ? 0 : $('#txtMarkerRadius').val(),
+                                        lineColor: $('#txtMarkerlinecolor').val(),
+                                        fillColor: $('#txtMarkerfillColor').val(),
+                                        lineWidth: 1
+                                    },
+                                    tooltip: $('#chktooltip').is(':checked')
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#modal_config_plot').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            //===end config line and symbol===
+
+            // ===Config legend===
+            self.LoadDefaultLegend = function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        $('#chkHideShowLegend').prop('checked', chart.options.legend.enabled);
+                        $('#chkLegendFloating').prop('checked', chart.options.legend.floating);
+                        $('#SelectLegendLayout').val(chart.options.legend.layout);
+                        $('#SelectLegendAlign').val(chart.options.legend.align);
+                        $('#SelectLegendVerticalAlign').val(chart.options.legend.verticalAlign);
+                        $('#txtlegendx').val(chart.options.legend.x);
+                        $('#txtlegendy').val(chart.options.legend.y);
+                        $('#txtpadding').val(chart.options.legend.padding !== undefined ? chart.options.legend.padding : 0);
+                        $('#txtmargin').val(chart.options.legend.margin !== undefined ? chart.options.legend.margin : 0);
+                        $('#txtlegendbordersize').val(chart.options.legend.borderWidth);
+                    }
+                });
+
+
+            }
+
+            $('#btnchangelegend').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.legend.update({
+                            enabled: $('#chkHideShowLegend').is(':checked'),
+                            floating: $('#chkLegendFloating').is(':checked'),
+                            layout: $('#SelectLegendLayout').val(),
+                            align: $('#SelectLegendAlign').val(),
+                            verticalAlign: $('#SelectLegendVerticalAlign').val(),
+                            x: parseInt($('#txtlegendx').val()),
+                            y: parseInt($('#txtlegendy').val()),
+                            padding: parseInt($('#txtpadding').val()),
+                            margin: parseInt($('#txtmargin').val()),
+                            borderWidth: parseInt($('#txtlegendbordersize').val())
+                        });
+                    }
+                });
+            });
+
+            $('#modal_config_legend').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            // ==end config legend===
+
+            // ==config chart===
+            self.LoadDefaultChart = function () {
+                $('.color-picker-1').each(function () {
+                    $(this).minicolors({
+                        control: $(this).attr('data-control') || 'hue',
+                        defaultValue: $(this).attr('data-defaultValue') || '',
+                        format: $(this).attr('data-format') || 'hex',
+                        opacity: $(this).attr('data-opacity'),
+                        change: function (value, opacity) {
+                            if (opacity) value += ', ' + opacity;
+                        },
+                        theme: 'bootstrap'
+                    });
+                });
+
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        $('#txtlayerheight').val(chart.options.chart.height);
+                        $('#txtlayerwidth').val(chart.options.chart.width);
+                        $('#txtborder').val(chart.options.chart.borderWidth);
+                        $('#txtlayerbordercolor').minicolors('value', chart.options.chart.borderColor);
+                        $('#txtmargin_top').val(chart.options.chart.marginTop === undefined ? 0 : chart.options.chart.marginTop);
+                        $('#txtmargin_right').val(chart.options.chart.marginRight === undefined ? 0 : chart.options.chart.marginRight);
+                        $('#txtmargin_bottom').val(chart.options.chart.marginBottom === undefined ? 0 : chart.options.chart.marginBottom);
+                        $('#txtmargin_left').val(chart.options.chart.marginLeft === undefined ? 0 : chart.options.chart.marginLeft);
+                    }
+                });
+            }
+
+            $('#btnUpdateLayer').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize($('#txtlayerwidth').val() !== "" ? parseInt($('#txtlayerwidth').val()) : null, $('#txtlayerheight').val() !== "" ? parseInt($('#txtlayerheight').val()) : null, false);
+                        chart.update({
+                            chart: {
+                                borderWidth: parseInt($('#txtborder').val()),
+                                borderColor: $('#txtlayerbordercolor').val(),
+                                marginTop: parseInt($('#txtmargin_top').val()),
+                                marginRight: parseInt($('#txtmargin_right').val()),
+                                marginBottom: parseInt($('#txtmargin_bottom').val()),
+                                marginLeft: parseInt($('#txtmargin_left').val())
+                            }
+                        })
+                    }
+                });
+            });
+
+            $('#modal_config_layer').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            // ==end config chart===
+            // ===config Level Contour===
+            self.LoadDefaultColorContour = function (plot) {
+                const confLevel = [...w7cConfig.charts[0].additonalInfo.level];
+                self.createHtmlLevel(confLevel);
+            }
+            $('#btnUpdateColorContour').click(function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        let data = [[0, 0]];
+                        let confLevel = [];
+                        $('#modal_config_contour input[type="number"].txtContourValue').each(function (index) {
+                            data.push([$(this).val()]);
+                        });
+                        $('#modal_config_contour input[type="text"].txtContourColor').each(function (index) {
+                            data[index + 1][1] = $(this).val();
+                        });
+                        data.sort(function (a, b) {
+                            return a[0] - b[0];
+                        });
+                        // remove deduplicate and < 0 select new value 
+                        for (let i = 1; i < data.length; i++) {
+                            if (data[i][0] === data[i - 1][0]) {
+                                data.splice(i - 1, 1);
+                                i -= 1;
+                            } else if (data[i - 1][0] < 0) {
+                                data.splice(i - 1, 1);
+                                i -= 1;
+                            }
+                        }
+                        // push to stops 
+                        let stops = [];
+                        for (let i = 1; i < data.length; i++) {
+                            if (data[data.length - 1][0] < maxZ) {
+                                stops.push([data[i][0] / data[data.length - 1][0], data[i][1]]);
+                                confLevel.push({ value: data[i][0], color: data[i][1] });
+                            } else if (data[i][0] < maxZ) {
+                                stops.push([data[i][0] / maxZ, data[i][1]]);
+                                confLevel.push({ value: data[i][0], color: data[i][1] });
+                            }
+                        }
+                        chart.colorAxis[0].update({
+                            stops: stops,
+                            max: data[data.length - 1][0] > maxZ.toFixed(2) ? maxZ.toFixed(2) : data[data.length - 1][0]
+                        })
+                        $('#fieldset_config_contour_color .form-group').each(function () {
+                            $(this).remove();
+                        })
+                        self.createHtmlLevel(confLevel);
+                    }
+                });
+            });
+            $('#modal_config_contour').on('hidden.bs.modal', function (e) {
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $('input[name="chartId"]').val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            })
+            $(document).on('click').on('click', '#modal_config_contour .btnRemoveLevelContour', function () {
+                $(this).parents('.form-group').remove();
+            })
+            $(document).on('click').on('click', '#modal_config_contour .btnAddLevelContour', function () {
+                let xhtml = self.createLevelElement(null, 'rgba(0,0,0,0)');
+                $(this).parents('.form-group').after(xhtml);
+                $(this).parents('.form-group').after().next().find('.txtContourValue').focus();
+                $('.color-picker-1').each(function () {
+                    $(this).minicolors({
+                        control: $(this).attr('data-control') || 'hue',
+                        defaultValue: $(this).attr('data-defaultValue') || '',
+                        format: $(this).attr('data-format') || 'hex',
+                        opacity: $(this).attr('data-opacity'),
+                        change: function (value, opacity) {
+                            if (opacity) value += ', ' + opacity;
+                        },
+                        theme: 'bootstrap'
+                    });
+                });
+            })
+            self.createLevelElement = function (value, color) {
+                let html = $('#formgroup_config_contour').html();
+                html = html.replace(/{dataValue}/g, value);
+                html = html.replace(/{colorValue}/g, color);
+                html = html.replace(/{classColorPicker}/, 'color-picker-1')
+                return html;
+            }
+            self.createHtmlLevel = function (confLevel) {
+                for (let i = 0; i < confLevel.length; i++) {
+                    let color = typeof confLevel[i].color === 'object' ? "rgba(" + Object.values(confLevel[i].color).toString() + ")" : confLevel[i].color;
+                    let xhtml = self.createLevelElement(confLevel[i].value, color);
+                    $('#fieldset_config_contour_color').append(xhtml);
+                }
+                $('.color-picker-1').each(function () {
+                    $(this).minicolors({
+                        control: $(this).attr('data-control') || 'hue',
+                        defaultValue: $(this).attr('data-defaultValue') || '',
+                        format: $(this).attr('data-format') || 'hex',
+                        opacity: $(this).attr('data-opacity'),
+                        change: function (value, opacity) {
+                            if (opacity) value += ', ' + opacity;
+                        },
+                        theme: 'bootstrap'
+                    });
+                });
+            }
+            $(window).on("resize", function () {
+                $(Highcharts.charts).each(function (i, chart) {
+                    chart.setSize(null, ($(window).height() / parseInt(w7cConfig["rowcount"])) - (chart.marginBottom + chart.plotTop));
+                });
+            });
+            // ===end config Level Contour===
+        }
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var highchart = new highchart_test();
+            highchart.Init();
+        });
+    </script>
+    <style>
+        .highcharts-menu hr {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        fieldset.box-border {
+            border: 1px groove rgba(0, 0, 0, .2) !important;
+            padding: 0 1.4em 1.4em 1.4em !important;
+            margin: 0 0 1.5em 0 !important;
+            -webkit-box-shadow: 0px 0px 0px 0px #000;
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+
+        legend.box-border {
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width: auto;
+            padding: 0 10px;
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            padding: 0 1rem;
+            border-top: 0;
+        }
+
+        .modal-backdrop.show {
+            opacity: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        aside {
+            position: absolute;
+            top: 0;
+            right: -100%;
+            overflow: auto;
+            height: 100vh;
+            width: 450px;
+            border-left: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        @media screen and (max-width: 1000px) {
+
+            aside,
+            .modal-open main {
+                width: 50% !important;
+            }
+        }
+
+        .modal-backdrop.show {
+            pointer-events: none;
+        }
+
+        .modal-open main {
+            width: calc(100% - 450px);
+        }
+
+        .modal {
+            width: auto;
+            height: auto;
+            position: relative;
+        }
+
+        .modal-content {
+            border: none;
+        }
+
+        .modal .modal-dialog {
+            margin: 0;
+            width: 100%;
+        }
+
+        .modal-open aside {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container-fluid p-4">
+            <div id="container"></div>
+            <input type="hidden" name="chartId" value="" id="chartId">
+        </div>
+    </main>
+    <aside>
+        <!-- The Modal Config yAxis-->
+        <div class="modal" id="modal_config_yaxis">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-i18n="configurationyAxis">Configuration yAxis</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="chart_title" class="col-sm-5">yAxis</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="drpyAxis" id="drpyAxis">
+                                    </select>
+                                </div>
+                            </div>
+                            <fieldset class="box-border">
+                                <legend class="box-border">Title</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="titleEnable" for="chktitleenable" class="col-sm-5">Title
+                                                Visible</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chktitleenable" name="chktitleenable"
+                                                    checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="align" for="drptitlealign" class="col-sm-5">Align</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="drptitlealign" id="drptitlealign">
+                                                    <option value="high">high</option>
+                                                    <option value="low">low</option>
+                                                    <option value="middle">middle</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="rotation" for="txtrotation"
+                                                class="col-sm-5">Rotation</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtrotation"
+                                                    name="txtrotation" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="labelEnable" for="chklabelenable" class="col-sm-5">Label
+                                                Enable</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chklabelenable" name="chklabelenable"
+                                                    checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="txttitle_x" class="col-sm-5">X</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txttitle_x"
+                                                    name="txttitle_x" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="txttitle_y" class="col-sm-5">Y</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txttitle_y"
+                                                    name="txttitle_y" value="0">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="box-border">
+                                <legend data-i18n="position" class="box-border">Position</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="opposite" for="chkopposite"
+                                                class="col-sm-5">Opposite</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkopposite" name="chkopposite" checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="reversed" for="chkreversed"
+                                                class="col-sm-5">Reversed</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkreversed" name="chkreversed" checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="offset" for="txtyAxis_offset"
+                                                class="col-sm-5">Offset</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtyAxis_offset"
+                                                    name="txtyAxis_offset" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="top" for="txttop" class="col-sm-5">Top(%)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txttop" name="txttop"
+                                                    value="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="height" for="txtheight" class="col-sm-5">Height(%)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtheight"
+                                                    name="txtheight" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="box-border">
+                                <legend data-i18n="scale" class="box-border">Scale</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="scale" for="drpscale" class="col-sm-5">Scale</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="drpscale" id="drpscale">
+                                                    <option value="auto">auto</option>
+                                                    <option value="fixed">fixed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="min" for="txtscalemin" class="col-sm-5">Min</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtscalemin"
+                                                    name="txtscalemin" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="max" for="txtscalemax" class="col-sm-5">Max</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtscalemax"
+                                                    name="txtscalemax" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnOK" type="button" class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Config xAxis-->
+        <div class="modal" id="modal_config_xaxis">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-i18n="configurationxAxis">Configuration xAxis</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="drpxAxis" class="col-sm-5">xAxis</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="drpxAxis" id="drpxAxis">
+                                    </select>
+                                </div>
+                            </div>
+                            <fieldset class="box-border">
+                                <legend data-i18n="title" class="box-border">Title</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="titleEnable" for="chkxAxis_titleenable"
+                                                class="col-sm-5">Title
+                                                Enable</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkxAxis_titleenable"
+                                                    name="chkxAxis_titleenable" checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="align" for="drpxAxis_titlealign"
+                                                class="col-sm-5">Align</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="drpxAxis_titlealign"
+                                                    id="drpxAxis_titlealign">
+                                                    <option value="high">high</option>
+                                                    <option value="low">low</option>
+                                                    <option value="middle">middle</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="rotation" for="txtxAxis_rotation"
+                                                class="col-sm-5">Rotation</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtxAxis_rotation"
+                                                    name="txtxAxis_rotation" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="labelEnable" for="chkxAxis_labelenable"
+                                                class="col-sm-5">Label
+                                                Enable</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkxAxis_labelenable"
+                                                    name="chkxAxis_labelenable" checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="txtxAxis_title_x" class="col-sm-5">X</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtxAxis_title_x"
+                                                    name="txtxAxis_title_x" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="txtxAxis_title_y" class="col-sm-5">Y</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtxAxis_title_y"
+                                                    name="txtxAxis_title_y" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="box-border">
+                                <legend data-i18n="position" class="box-border">Position</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="opposite" for="chkxAxis_opposite"
+                                                class="col-sm-5">Opposite</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkxAxis_opposite" name="chkxAxis_opposite"
+                                                    checked>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="reversed" for="chkxAxis_reversed"
+                                                class="col-sm-5">Reversed</label>
+                                            <div class="col-sm-7">
+                                                <input type="checkbox" id="chkxAxis_reversed" name="chkxAxis_reversed"
+                                                    checked>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="top" for="txtxAxis_top" class="col-sm-5">Top(%)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtxAxis_top"
+                                                    name="txtxAxis_top" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label data-i18n="height" for="txtxAxis_height"
+                                                class="col-sm-5">Height(%)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtxAxis_height"
+                                                    name="txtxAxis_height" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="box-border">
+                                <legend data-i18n="scale" class="box-border">Scale</legend>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="scale" for="drpxAxis_scale" class="col-sm-5">Scale</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="drpxAxis_scale" id="drpxAxis_scale">
+                                                    <option value="auto">auto</option>
+                                                    <option value="fixed">fixed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="min" for="txtscalexAxis_min" class="col-sm-5">Min</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtscalexAxis_min"
+                                                    name="txtscalexAxis_min" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label data-i18n="max" for="txtscalexAxis_max" class="col-sm-5">Max</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="txtscalexAxis_max"
+                                                    name="txtscalexAxis_max" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnOK_xAxis" type="button" class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Config text element -->
+        <div class="modal" id="modal_config_textelement">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-i18n="configurationTextElement">Configuration Text Element</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label data-i18n="textElement" for="txtTextElement" class="col-sm-5">Text
+                                    Element</label>
+                                <div class="col-sm-7">
+                                    <textarea class="form-control" id="txtTextElement" name="txtTextElement"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="fontSize" for="txtTextElement_fontsize" class="col-sm-5">Font
+                                    Size</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtTextElement_fontsize"
+                                        name="txtTextElement_fontsize" value="16">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="fontColor" for="txtTextElement_fontcolor" class="col-sm-5">Font
+                                    Color</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtTextElement_fontcolor" class="form-control color-picker-1"
+                                        data-format="rgb" data-opacity="1" value="rgba(250, 37, 26, 1)">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtxAxis" class="col-sm-5">X (%)</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtxAxis" name="txtxAxis" value="5">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtyAxis" class="col-sm-5">Y (%)</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtyAxis" name="txtyAxis" value="5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnUpateTextElement" type="button"
+                                class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Config language -->
+        <div class="modal" id="modal_config_lang">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-i18n="configurationLanguage">Configuration Language</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="SelectLineStyle" class="col-sm-4" data-i18n='language'>Language</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="drplang" class="select-language">
+                                        <option value="en">English</option>
+                                        <option value="de">German</option>
+                                        <option value="cn">Chinese</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnchangelang" type="button" class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Line and Marker-->
+        <div class="modal" id="modal_config_plot">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 data-i18n="configurationLineSymbol" class="modal-title">Configuration Line and Symbol style
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label data-i18n="plot" for="chart_title" class="col-sm-5">Plot</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="SelectPlot" id="SelectPlot">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="plotvisible" for="chkplotvisible" class="col-sm-5">Plot
+                                    visible</label>
+                                <div class="col-sm-7">
+                                    <input type="checkbox" id="chkplotvisible" name="chkplotvisible" checked>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="tooltip" for="chktooltip" class="col-sm-5">Tooltip</label>
+                                <div class="col-sm-7">
+                                    <input type="checkbox" id="chktooltip" name="chktooltip" checked>
+                                </div>
+                            </div>
+                            <fieldset class="box-border">
+                                <legend data-i18n="lines" class="box-border">Lines</legend>
+                                <div class="form-group row">
+                                    <label data-i18n="size" for="txtlineSize" class="col-sm-5">Size (px)</label>
+                                    <div class="col-sm-7">
+                                        <input type="number" class="form-control" id="txtlineSize" name="txtlineSize"
+                                            value="2">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label data-i18n="colour" for="txtLineColor" class="col-sm-5">Colour</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="txtLineColor" class="form-control color-picker-1"
+                                            data-format="rgb" data-opacity="1" value="rgba(250, 37, 26, 0.5)">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label data-i18n="style" for="SelectLineStyle" class="col-sm-5">Style</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="SelectLineStyle" id="SelectLineStyle">
+                                            <option value="0">No line</option>
+                                            <option value="solid">Solid</option>
+                                            <option value="dot">Dot</option>
+                                            <option value="dash">Dash</option>
+                                            <option value="longdash">LongDash</option>
+                                            <option value="dashdot">DashDot</option>
+                                            <option value="longdashdot">LongDashDot</option>
+                                            <option value="longdashdotdot">LongDashDotDot</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="box-border">
+                                <legend data-i18n="symbol" class="box-border">Symbol</legend>
+                                <div class="form-group row">
+                                    <label data-i18n="size" for="txtMarkerRadius" class="col-sm-5">Size (px)</label>
+                                    <div class="col-sm-7">
+                                        <input type="number" class="form-control" id="txtMarkerRadius"
+                                            name="txtMarkerRadius" value="2">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label data-i18n="style" for="SelectSymbolStyle" class="col-sm-5">Style</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="SelectSymbolStyle" id="SelectSymbolStyle">
+                                            <option value="0">No symbol</option>
+                                            <option value="cross">cross</option>
+                                            <option value="circle">circle</option>
+                                            <option value="square">square</option>
+                                            <option value="diamond">diamond</option>
+                                            <option value="triangle">triangle</option>
+                                            <option value="triangle-down">triangle-down</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label data-i18n="colourOutline" for="txtMarkerlinecolor" class="col-sm-5">Colour
+                                        outline</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="txtMarkerlinecolor" class="form-control color-picker-1"
+                                            data-format="rgb" data-opacity="1" value="rgba(0, 0, 0, 1)">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label data-i18n="fillColour" for="txtMarkerfillColor" class="col-sm-5">Fill
+                                        colour</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="txtMarkerfillColor" class="form-control color-picker-1"
+                                            data-format="rgb" data-opacity="1" value="rgba(0, 0, 0, 1)">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnUpdateLineSymbol" type="button"
+                                class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal legend-->
+        <div class="modal" id="modal_config_legend">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 data-i18n="configurationLegend" class="modal-title">Configuration Legend</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label data-i18n="legendVisible" for="chkHideShowLegend" class="col-sm-5">Legend
+                                    visible</label>
+                                <div class="col-sm-7">
+                                    <input type="checkbox" id="chkHideShowLegend" name="chkHideShowLegend" checked>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="floating" for="chkLegendFloating" class="col-sm-5">Floating</label>
+                                <div class="col-sm-7">
+                                    <input type="checkbox" id="chkLegendFloating" name="chkLegendFloating" checked>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="layout" for="SelectLegendLayout" class="col-sm-5">Layout</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="SelectLegendLayout" id="SelectLegendLayout">
+                                        <option value="vertical">vertical</option>
+                                        <option value="horizontal">horizontal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="align" for="SelectLegendAlign" class="col-sm-5">Align</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="SelectLegendAlign" id="SelectLegendAlign">
+                                        <option value="left">left</option>
+                                        <option value="right">right</option>
+                                        <option value="center" selected>center</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="verticalAlign" for="SelectLegendVerticalAlign"
+                                    class="col-sm-5">Vertical
+                                    Align</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="SelectLegendVerticalAlign"
+                                        id="SelectLegendVerticalAlign">
+                                        <option value="top">top</option>
+                                        <option value="middle">middle</option>
+                                        <option value="bottom" selected>bottom</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtlegendx" class="col-sm-5">X</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtlegendx" name="txtlegendx"
+                                        value="0">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtlegendy" class="col-sm-5">Y</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtlegendy" name="txtlegendy"
+                                        value="0">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="padding" for="txtpadding" class="col-sm-5">Padding</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtpadding" name="txtpadding"
+                                        value="8">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="margin" for="txtmargin" class="col-sm-5">Margin</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtmargin" name="txtmargin"
+                                        value="12">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="borderWidth" for="txtlegendbordersize" class="col-sm-5">Border
+                                    width</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtlegendbordersize"
+                                        name="txtlegendbordersize" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnchangelegend" type="button"
+                                class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal layout margin-->
+        <div class="modal" id="modal_config_layer">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 data-i18n="configurationLayer" class="modal-title">Configuration the size and extension of
+                            drawing layer</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label data-i18n="height" for="txtlayerheight" class="col-sm-5">Height</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtlayerheight" value="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="width" for="txtlayerwidth" class="col-sm-5">Width</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtlayerwidth" value="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="borderWidth" for="txtborder" class="col-sm-5">Border width</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtborder" value="1">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="borderColor" for="txtlayerbordercolor" class="col-sm-5">Border
+                                    color</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtlayerbordercolor" class="form-control color-picker-1"
+                                        data-format="rgb" data-opacity="1" value="rgba(0, 0, 0, 1)">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="marginTop" for="txtmargin_top" class="col-sm-5">Margin top</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtmargin_top" value="100">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="marginRight" for="txtmargin_right" class="col-sm-5">Margin
+                                    right</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtmargin_right" value="100">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="marginBottom" for="txtmargin_bottom" class="col-sm-5">Margin
+                                    bottom</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtmargin_bottom" value="100">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label data-i18n="marginLeft" for="txtmargin_left" class="col-sm-5">Margin Left</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="txtmargin_left" value="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnUpdateLayer" type="button" class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Lelel config-->
+        <div class="modal" id="modal_config_contour">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 data-i18n="Level configuration" class="modal-title">Level configuration</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <fieldset class="box-border" id="fieldset_config_contour_color">
+                                <legend data-i18n="Level" class="box-border">Level</legend>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label data-i18n="v(m/s)" class="box-border center-block">v(m/s)</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label data-i18n="colors" class="box-border center-block">Colors</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-i18n="ok" id="btnUpdateColorContour" type="button"
+                                class="btn btn-primary">OK</button>
+                            <button data-i18n="close" type="button" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="formgroup_config_contour" style="display: none">
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <input type="number" min="0" max="1" class="form-control txtContourValue" name="txtContourValue"
+                        value="{dataValue}">
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control {classColorPicker} txtContourColor" data-format="rgb"
+                        data-opacity="1" value="{colorValue}">
+                </div>
+                <div class="col-sm-3">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-success btnAddLevelContour" type="button">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="btn btn-danger btnRemoveLevelContour" type="button">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</body>
+
+</html>
