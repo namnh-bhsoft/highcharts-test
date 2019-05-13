@@ -2215,12 +2215,13 @@
                     textKey: "configurationLanguage",
                     onclick: function () {
                         $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                        $(".modal").modal("hide");
+                        $(".modal").removeClass("show");
 
                         $(Highcharts.charts).each(function (i, chart) {
                             let _this = this;
                             if (chart.userOptions.chart.className === _this.userOptions.chart.className) {
-                                $("#modal_config_lang").modal("show");
+                                $("body").addClass("modal-open");
+                                $("#modal_config_lang").addClass("show");
                                 chart.setSize(null, null, true);
                             }
                         });
@@ -2232,7 +2233,7 @@
                     textKey: "configurationyAxis",
                     onclick: function () {
                         $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                        $(".modal").modal("hide");
+                        $(".modal").removeClass("show");
 
                         $(Highcharts.charts).each(function (i, chart) {
                             let _this = this;
@@ -2250,7 +2251,8 @@
                                     });
                                 }
                                 self.LoadDefault_yAxis(yaxis_data[0].xaxis[0].yaxis[0].label);
-                                $("#modal_config_yaxis").modal("show");
+                                $("body").addClass("modal-open");
+                                $("#modal_config_yaxis").addClass("show");
                                 chart.setSize(null, null, true);
                             }
                         });
@@ -2262,7 +2264,7 @@
                     textKey: "configurationxAxis",
                     onclick: function () {
                         $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                        $(".modal").modal("hide");
+                        $(".modal").removeClass("show");
 
                         $(Highcharts.charts).each(function (i, chart) {
                             let _this = this;
@@ -2280,7 +2282,8 @@
                                     });
                                 }
                                 self.LoadDefault_xAxis(xaxis_data[0].xaxis[0].label);
-                                $("#modal_config_xaxis").modal("show");
+                                $("body").addClass("modal-open");
+                                $("#modal_config_xaxis").addClass("show");
                                 chart.setSize(null, null, true);
                             }
                         });
@@ -2288,11 +2291,12 @@
                 };
                 menuContext.splice(5, 0, menuConfig_xAxis);
 
+                // TODO: text elem config
                 const menuConfig_textElement = {
                     textKey: "configurationTextElement",
                     onclick: function () {
                         $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                        $(".modal").modal("hide");
+                        $(".modal").removeClass("show");
 
                         $(Highcharts.charts).each(function (i, chart) {
                             let _this = this;
@@ -2311,7 +2315,8 @@
                                         theme: "bootstrap"
                                     });
                                 });
-                                $("#modal_config_textelement").modal("show");
+                                $("body").addClass("modal-open");
+                                $("#modal_config_textelement").addClass("show");
                                 chart.setSize(null, null, true);
                             }
                         });
@@ -2324,13 +2329,14 @@
                         textKey: "configurationLayer",
                         onclick: function () {
                             $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                            $(".modal").modal("hide");
+                            $(".modal").removeClass("show");
 
                             $(Highcharts.charts).each(function (i, chart) {
                                 let _this = this;
                                 if (chart.userOptions.chart.className === _this.userOptions.chart.className) {
                                     self.LoadDefaultChart();
-                                    $("#modal_config_layer").modal("show");
+                                    $("body").addClass("modal-open");
+                                    $("#modal_config_layer").addClass("show");
                                     chart.setSize(null, null, true);
                                 }
                             });
@@ -2343,7 +2349,7 @@
                         textKey: "configurationLineSymbol",
                         onclick: function () {
                             $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                            $(".modal").modal("hide");
+                            $(".modal").removeClass("show");
 
                             $(Highcharts.charts).each(function (i, chart) {
                                 let _this = this;
@@ -2357,7 +2363,8 @@
                                         }
                                     }));
                                     self.LoadDefaultLineSymbol(w7cConfig.charts[0].xaxis[0].yaxis[0].plots[0].label);
-                                    $("#modal_config_plot").modal("show");
+                                    $("body").addClass("modal-open");
+                                    $("#modal_config_plot").addClass("show");
                                     chart.setSize(null, null, true);
                                 }
                             });
@@ -2370,12 +2377,13 @@
                         textKey: "configurationLegend",
                         onclick: function () {
                             $("input[name=\"chartId\"]").val(this.userOptions.chart.className);
-                            $(".modal").modal("hide");
+                            $(".modal").removeClass("show");
                             $(Highcharts.charts).each(function (i, chart) {
                                 let _this = this;
                                 if (chart.userOptions.chart.className === _this.userOptions.chart.className) {
                                     self.LoadDefaultLegend();
-                                    $("#modal_config_legend").modal("show");
+                                    $("body").addClass("modal-open");
+                                    $("#modal_config_legend").addClass("show");
                                     chart.setSize(null, null, true);
                                 }
                             });
@@ -2693,6 +2701,7 @@
                 });
             };
 
+            // TODO: text elem config
             $("#btnUpateTextElement").click(function () {
                 $(Highcharts.charts).each(function (i, chart) {
                     if (chart.userOptions.chart.className === $("input[name=\"chartId\"]").val()) {
@@ -2988,8 +2997,19 @@
                         chart.setSize(null, null, true);
                     }
                 });
-            })
+            });
+
             // ==end config chart===
+
+            // ==option for close modal==
+            $("button[data-dismiss=\"modal\"]").on('click', function () {
+                $("body").removeClass("modal-open");
+                $(Highcharts.charts).each(function (i, chart) {
+                    if (chart.userOptions.chart.className === $("input[name=\"chartId\"]").val()) {
+                        chart.setSize(null, null, true);
+                    }
+                });
+            });
         }
 
     </script>
@@ -3046,6 +3066,11 @@
             height: 100vh;
             width: 450px;
             border-left: 1px solid rgba(0, 0, 0, .2);
+            -webkit-transition: ease .5s;
+            -moz-transition: ease .5s;
+            -ms-transition: ease .5s;
+            -o-transition: ease .5s;
+            transition: ease .5s;
         }
 
         @media screen and (max-width: 1000px) {
@@ -3067,7 +3092,27 @@
         .modal {
             width: auto;
             height: auto;
-            position: relative;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+            display: block !important;
+            -webkit-transition: ease .5s;
+            -moz-transition: ease .5s;
+            -ms-transition: ease .5s;
+            -o-transition: ease .5s;
+            transition: ease .5s;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: ease .5s;
+            -moz-transition: ease .5s;
+            -ms-transition: ease .5s;
+            -o-transition: ease .5s;
+            transition: ease .5s;
         }
 
         .modal-content {
@@ -3081,6 +3126,15 @@
 
         .modal-open aside {
             right: 0;
+            -webkit-transition: ease .5s;
+            -moz-transition: ease .5s;
+            -ms-transition: ease .5s;
+            -o-transition: ease .5s;
+            transition: ease .5s;
+        }
+
+        button[data-dismiss="modal"]:focus {
+            outline: none;
         }
     </style>
 </head>
